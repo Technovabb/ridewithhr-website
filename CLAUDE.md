@@ -11,7 +11,7 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - Clearly separate company-owned vehicles from vehicles supplied by partner operators.
 - Any non-client fleet photo must remain labeled as reference imagery and must have suitable commercial-use rights plus attribution where required.
 - Do not say online payment is enabled until a provider, credentials and payment workflow have been supplied.
-- Keep the original fixed **BBD $2,500 basic website quote** in mind. Custom booking/payment systems, live availability, dispatch, user accounts and a full CMS are separate-scope features.
+- Keep to the agreed basic website scope (pricing lives in the private notes repo, Technovabb/ridewithhr). Custom booking/payment systems, live availability, dispatch, user accounts and a full CMS are separate-scope features.
 
 ## Architecture
 

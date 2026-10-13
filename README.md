@@ -47,7 +47,7 @@ Before connecting the final domain:
 
 ## Scope guardrail
 
-This repository stays within a polished basic marketing site appropriate to the original fixed **BBD $2,500 quote** described by the project owner. A custom booking engine, live availability, dispatch portal, customer accounts, automated pricing, payment processing, driver management, or a full CMS should be separately scoped before being promised or implemented.
+This repository stays within the agreed basic marketing-site scope. A custom booking engine, live availability, dispatch portal, customer accounts, automated pricing, payment processing, driver management, or a full CMS should be separately scoped before being promised or implemented.
 
 ## Image licence
 
