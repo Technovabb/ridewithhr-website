@@ -88,8 +88,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-visual { position: relative; margin-top: 3.5rem; min-height: 27rem; }
 .sun-disc { position: absolute; width: 20rem; height: 20rem; top: 0; right: -5.5rem; border-radius: 50%; background: radial-gradient(circle at 50% 50%, rgba(232, 197, 138, .55), rgba(232, 197, 138, 0) 70%); opacity: .9; filter: blur(2px); }
 .vehicle-frame { position: absolute; inset: 3.2rem 0 auto 1rem; z-index: 2; margin: 0; border: 1px solid var(--line-strong); border-radius: 8rem 8rem 1rem 1rem; box-shadow: var(--shadow); overflow: hidden; background: var(--panel); }
-.vehicle-frame img { aspect-ratio: 4 / 4.7; object-fit: cover; object-position: 54% center; }
-.vehicle-frame figcaption { position: absolute; right: .6rem; bottom: .6rem; padding: .4rem .6rem; color: var(--ivory); background: rgba(0, 0, 0, .6); border: 1px solid var(--line); border-radius: 999px; font-size: .55rem; letter-spacing: .04em; }
+.vehicle-frame img { aspect-ratio: 4 / 4.7; object-fit: cover; object-position: 54% center; filter: grayscale(.9) contrast(1.08) brightness(.78); }
+.vehicle-frame::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(12,12,14,.1) 45%, rgba(12,12,14,.78)); }
+.vehicle-frame figcaption { position: absolute; z-index: 2; right: .6rem; bottom: .6rem; padding: .4rem .6rem; color: var(--ivory); background: rgba(0, 0, 0, .6); border: 1px solid var(--line); border-radius: 999px; font-size: .55rem; letter-spacing: .04em; }
 .route-card { position: absolute; z-index: 3; left: 0; bottom: .5rem; display: grid; grid-template-columns: auto 2.8rem auto 1fr; align-items: center; width: 11.8rem; padding: .85rem; color: var(--ivory); background: rgba(20, 20, 23, .92); backdrop-filter: blur(10px); border: 1px solid var(--line-strong); border-radius: .9rem; box-shadow: 0 18px 45px rgba(0, 0, 0, .5); }
 .route-dot { width: .45rem; height: .45rem; border: 2px solid var(--gold); border-radius: 50%; }
 .route-dot-end { background: var(--gold); }
@@ -126,7 +127,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .fleet-title > p { max-width: 34rem; margin: 0; color: var(--muted); }
 .featured-vehicle { display: grid; overflow: hidden; background: var(--card); border: 1px solid var(--line-strong); border-radius: calc(var(--radius) + .4rem); }
 .vehicle-image-wrap { position: relative; min-height: 22rem; overflow: hidden; background: #0a0a0c; }
-.vehicle-image-wrap img { width: 100%; height: 100%; min-height: 22rem; object-fit: cover; object-position: center; }
+.vehicle-image-wrap img { width: 100%; height: 100%; min-height: 22rem; object-fit: cover; object-position: center; filter: grayscale(.9) contrast(1.08) brightness(.78); }
 .image-label { position: absolute; left: .8rem; right: .8rem; bottom: .8rem; padding: .55rem .75rem; color: var(--ivory); background: rgba(0, 0, 0, .66); border: 1px solid var(--line); border-radius: .5rem; font-size: .58rem; text-align: center; }
 .vehicle-details { padding: 2rem 1.5rem; }
 .status-pill { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .65rem; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; font-size: .62rem; font-weight: 700; }
@@ -243,7 +244,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .home-fleet h2 { max-width: 12ch; font-size: clamp(2.8rem, 11vw, 5.4rem); letter-spacing: -.04em; }
 .home-fleet-copy > p:not(.eyebrow) { max-width: 36rem; color: var(--muted); }
 .home-fleet-image { position: relative; margin: 0; overflow: hidden; border: 1px solid var(--line-strong); border-radius: calc(var(--radius) + .5rem); background: #0a0a0c; }
-.home-fleet-image img { min-height: 25rem; width: 100%; object-fit: cover; }
+.home-fleet-image img { min-height: 25rem; width: 100%; object-fit: cover; filter: grayscale(.9) contrast(1.08) brightness(.78); }
 .home-fleet-image figcaption { position: absolute; left: .8rem; right: .8rem; bottom: .8rem; padding: .6rem; color: var(--ivory); background: rgba(0, 0, 0, .66); border: 1px solid var(--line); border-radius: .5rem; font-size: .6rem; text-align: center; }
 
 .page-cta { display: grid; gap: 2rem; align-items: end; background: var(--obsidian); }
