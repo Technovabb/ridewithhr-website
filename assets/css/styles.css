@@ -23,6 +23,7 @@ body {
   background: var(--paper);
   font-family: var(--sans);
   line-height: 1.6;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 body.nav-open { overflow: hidden; }
