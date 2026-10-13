@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Add the sitemap URL after the final domain is purchased and connected.
+Sitemap: https://technovabb.com/ridewithhr-website/sitemap.xml
