@@ -15,7 +15,8 @@ Then open `http://localhost:4173`.
 ## Editing content
 
 - Business contact, domain, booking mode and fleet records: `assets/js/content.js`
-- Page copy and section order: `index.html`
+- Home page: `index.html`
+- Dedicated content pages: `services.html`, `fleet.html`, `about.html`, `enquire.html`
 - Visual design and responsive layout: `assets/css/styles.css`
 - Navigation, form and animation behavior: `assets/js/app.js`
 
@@ -29,7 +30,7 @@ Before connecting the final domain:
 
 1. Confirm that `ridewithhr.com` has been purchased and decide which account controls DNS.
 2. Add the final URL to `business.website` in `assets/js/content.js`.
-3. Add canonical and Open Graph URL metadata to `index.html`.
+3. Add canonical and Open Graph URL metadata to every HTML page.
 4. Add a `CNAME` file only after DNS ownership is confirmed.
 5. Generate `sitemap.xml` with the final production URL and update `robots.txt`.
 

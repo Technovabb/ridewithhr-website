@@ -8,7 +8,8 @@
   var form = document.querySelector("[data-booking-form]");
   var dialog = document.querySelector("[data-enquiry-dialog]");
 
-  document.querySelector("[data-year]").textContent = new Date().getFullYear();
+  var year = document.querySelector("[data-year]");
+  if (year) year.textContent = new Date().getFullYear();
 
   function closeNav() {
     if (!nav || !navToggle) return;
@@ -74,6 +75,13 @@
   }
 
   if (form) {
+    var serviceInput = form.querySelector("#service");
+    var requestedService = new URLSearchParams(window.location.search).get("service");
+    if (serviceInput && requestedService) {
+      var hasRequestedService = Array.from(serviceInput.options).some(function (option) { return option.value === requestedService; });
+      if (hasRequestedService) serviceInput.value = requestedService;
+    }
+
     var dateInput = form.querySelector("#date");
     if (dateInput) {
       var today = new Date();

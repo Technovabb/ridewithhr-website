@@ -1,6 +1,6 @@
 # Claude handoff: Ride With HR
 
-This is a buildless static website. Work directly in `index.html`, `assets/css/styles.css`, `assets/js/content.js`, and `assets/js/app.js`. Do not introduce a framework or package manager unless the owner explicitly requests one.
+This is a buildless, multi-page static website. Work directly in `index.html`, `services.html`, `fleet.html`, `about.html`, `enquire.html`, `assets/css/styles.css`, `assets/js/content.js`, and `assets/js/app.js`. Keep the main content areas as separate pages rather than collapsing them into a one-page scrolling site. Do not introduce a framework or package manager unless the owner explicitly requests one.
 
 ## Non-negotiable content rules
 
@@ -16,6 +16,7 @@ This is a buildless static website. Work directly in `index.html`, `assets/css/s
 ## Architecture
 
 - `assets/js/content.js` is the lightweight editable content/config layer.
+- The primary navigation must continue to link to standalone pages: Home, Services, Fleet, About and Enquire.
 - The booking form is preview-only until a confirmed destination email is added and `booking.mode` is set to `email`.
 - GitHub Pages is the intended preview host. All URLs are relative so project-site paths work.
 - Preserve accessibility, responsive behavior and reduced-motion support.
