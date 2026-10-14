@@ -20,7 +20,9 @@ Then open `http://localhost:4173`.
 - Visual design and responsive layout: `assets/css/styles.css`
 - Navigation, form and animation behavior: `assets/js/app.js`
 
-The current booking form is deliberately in **preview mode**. It validates the enquiry and creates a copyable summary, but it does not transmit data or take payment. Once the client supplies a public booking email, add it in `assets/js/content.js` and change `booking.mode` from `preview` to `email`.
+The booking form is in **WhatsApp mode** (`booking.mode: "whatsapp"` in `assets/js/content.js`). After validation it opens WhatsApp, a chat with the business number (`business.whatsapp`, digits only), with the enquiry typed in; the customer presses send. Nothing is stored on the website and no payment is taken. Other modes: `email` (opens a pre-filled email to `business.email`) and `preview` (copyable summary only).
+
+The WhatsApp number (+1 246 231 2679) is also hard-coded in every page's footer link and floating WhatsApp button; change all of them together.
 
 ## Deployment
 
@@ -39,7 +41,7 @@ Before connecting the final domain:
 - Confirm which proposal-listed vehicles are company-owned, partner-supplied or examples only
 - Exact trims, colours, passenger/luggage capacity and live availability for every active vehicle
 - Original fleet photographs or approvals for final licensed reference imagery
-- Booking/enquiry destination email and public phone/WhatsApp number
+- Booking email and whether the WhatsApp number (+1 246 231 2679, received 14 Oct 2026) also takes calls
 - Payment provider and whether payment means deposit, full prepayment or pay-by-link
 - Confirmed domain ownership and DNS access
 - Public business address/service hours, if the client wants them displayed

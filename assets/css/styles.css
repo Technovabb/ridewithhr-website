@@ -214,8 +214,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .consent input { margin-top: .25rem; accent-color: var(--gold); }
 .booking-form .button { width: 100%; }
 .form-status { min-height: 1.2rem; margin: 0; color: #e2706a; font-size: .72rem; }
+.form-status.is-ok { color: var(--gold); }
+.form-status a { color: var(--ivory); }
 
-.site-footer { padding: 3.5rem 1.2rem 1.2rem; color: var(--ivory); background: #0a0a0c; border-top: 1px solid var(--line); }
+.site-footer { padding: 3.5rem 1.2rem 5.5rem; color: var(--ivory); background: #0a0a0c; border-top: 1px solid var(--line); }
 .brand-light .brand-mark { color: var(--ivory); background: var(--panel); border-color: var(--gold); }
 .brand-light .brand-copy small { color: var(--gold); }
 .footer-top { display: grid; gap: 1.5rem; padding-bottom: 2.5rem; }
@@ -227,7 +229,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .footer-bottom nav { display: flex; gap: 1.2rem; }
 .footer-bottom a { color: var(--muted); text-decoration: none; }
 .footer-bottom a:hover { color: var(--gold); }
-.pending-contact { color: var(--gold) !important; }
+.footer-bottom .footer-contact a { color: var(--gold); font-weight: 700; }
+
+/* WhatsApp: home hero link and the floating button on every page */
+.hero-whatsapp { margin: 1.4rem 0 0; }
+.whatsapp-float { position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); z-index: 40; display: inline-flex; align-items: center; gap: .55rem; padding: .7rem 1.05rem .7rem .85rem; color: var(--ivory); background: rgba(12, 12, 14, .92); border: 1px solid rgba(232, 197, 138, .45); border-radius: 999px; box-shadow: 0 14px 34px rgba(0, 0, 0, .5); font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: transform .2s ease, border-color .2s ease; }
+.whatsapp-float svg { color: #25d366; }
+.whatsapp-float:hover { transform: translateY(-2px); border-color: var(--gold); }
+body.nav-open .whatsapp-float { display: none; }
 .image-credit { max-width: 75rem; margin: .5rem 0 0; color: var(--faint); font-size: .55rem; }
 .image-credit a { color: var(--muted); }
 

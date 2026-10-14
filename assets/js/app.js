@@ -120,10 +120,14 @@
     return labels[name] || name;
   }
 
-  function buildSummary(data) {
-    var lines = ["RIDE WITH HR — TRANSPORT ENQUIRY", ""];
+  function buildSummary(data, heading) {
+    var lines = [heading || "RIDE WITH HR — TRANSPORT ENQUIRY", ""];
     ["service", "pickup", "destination", "date", "time", "passengers", "flight", "name", "email", "notes"].forEach(function (key) {
       var value = String(data.get(key) || "").trim();
+      if (key === "date" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+        var parts = value.split("-");
+        value = new Date(+parts[0], +parts[1] - 1, +parts[2]).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+      }
       if (value) lines.push(labelFor(key) + ": " + value);
     });
     lines.push("", "This is an enquiry only. Journey, vehicle, price and availability require confirmation by H&R Transport.");
@@ -148,6 +152,7 @@
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       var status = form.querySelector("[data-form-status]");
+      status.classList.remove("is-ok");
       form.querySelectorAll("[aria-invalid]").forEach(function (field) { field.removeAttribute("aria-invalid"); });
 
       if (!form.checkValidity()) {
@@ -161,10 +166,31 @@
       }
 
       status.textContent = "";
-      var summary = buildSummary(new FormData(form));
       var bookingEmail = config.business && config.business.email;
+      var whatsapp = config.business && config.business.whatsapp;
       var mode = config.booking && config.booking.mode;
 
+      // WhatsApp: open a chat with the enquiry typed in; the customer presses send.
+      // A new tab keeps the site open on desktop; phones hand over to the WhatsApp app.
+      if (mode === "whatsapp" && whatsapp) {
+        var message = buildSummary(new FormData(form), "Hello Ride With HR, I'd like to arrange a journey:");
+        var waUrl = "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message);
+        var waWindow = window.open(waUrl, "_blank");
+        if (waWindow) waWindow.opener = null;
+        else window.location.href = waUrl;
+        status.classList.add("is-ok");
+        status.textContent = "WhatsApp is opening with your details. Press send there to reach us.";
+        var retry = document.createElement("a");
+        retry.href = waUrl;
+        retry.target = "_blank";
+        retry.rel = "noopener";
+        retry.textContent = "Didn't open? Tap here.";
+        status.appendChild(document.createTextNode(" "));
+        status.appendChild(retry);
+        return;
+      }
+
+      var summary = buildSummary(new FormData(form));
       if (mode === "email" && bookingEmail) {
         var subject = encodeURIComponent("Transport enquiry — " + form.elements.service.value);
         window.location.href = "mailto:" + bookingEmail + "?subject=" + subject + "&body=" + encodeURIComponent(summary);
