@@ -22,7 +22,7 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 
 - `assets/js/content.js` is the lightweight editable content/config layer.
 - The primary navigation must continue to link to standalone pages: Home, Services, Fleet, About and Enquire.
-- The booking form sends enquiries by **WhatsApp** to +1 (246) 231-2679 (`booking.mode: "whatsapp"`, supplied by Juwan on 14 Oct 2026). It opens a pre-filled chat and the customer presses send; it does not book or take payment. The same number is hard-coded in each page's footer and floating button. Don't add a `tel:` link until it's confirmed the number takes calls.
+- The booking form sends enquiries by **WhatsApp** to +1 (246) 231-2679 (`booking.mode: "whatsapp"`, supplied by Juwan on 14 Oct 2026). It opens a pre-filled chat and the customer presses send; it does not book or take payment. The same number also takes calls (confirmed 14 Oct 2026). It's hard-coded in each page's footer (call + WhatsApp), the floating WhatsApp button and the call line on `enquire.html`; change them all together.
 - GitHub Pages is the intended preview host. All URLs are relative so project-site paths work.
 - Preserve accessibility, responsive behavior and reduced-motion support.
 

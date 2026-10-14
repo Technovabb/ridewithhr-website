@@ -9,7 +9,7 @@ window.RIDE_WITH_HR = {
     legalName: "H&R Transport",
     brandName: "Ride With HR",
     email: "", // Add the confirmed booking email to enable mail delivery.
-    phone: "", // Add a confirmed public call number (the WhatsApp number may not take calls).
+    phone: "+12462312679", // +1 (246) 231-2679 takes calls too (Juwan, 14 Oct 2026). Hard-coded as tel: links in the footers and on enquire.html.
     whatsapp: "12462312679", // +1 (246) 231-2679, digits only for wa.me links (from Juwan, 14 Oct 2026). Also hard-coded in each page's footer and floating button.
     website: "", // Add https://ridewithhr.com only after the domain is purchased and connected.
   },

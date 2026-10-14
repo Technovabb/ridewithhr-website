@@ -230,6 +230,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .footer-bottom a { color: var(--muted); text-decoration: none; }
 .footer-bottom a:hover { color: var(--gold); }
 .footer-bottom .footer-contact a { color: var(--gold); font-weight: 700; }
+.enquiry-call { margin: 1.4rem 0 0; color: var(--muted); font-size: .88rem; }
+.enquiry-call a { color: var(--gold); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.enquiry-call a:hover { text-decoration: underline; }
 
 /* WhatsApp: home hero link and the floating button on every page */
 .hero-whatsapp { margin: 1.4rem 0 0; }
