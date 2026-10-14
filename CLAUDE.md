@@ -8,7 +8,10 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - Do not change the company name for SEO. Use local phrases naturally: Barbados airport transfer, Barbados chauffeur, private driver Barbados, executive transport Barbados, and Grantley Adams airport transfer.
 - Do not invent prices, testimonials, availability, vehicle specifications, business contact details or operating hours.
 - The confirmed company-owned fleet models are a **2025 Mercedes-Benz EQE SUV** and a **2025 Mercedes-Benz EQS SUV** (white; confirmed by Juwan on 14 Oct 2026). The proposal also lists a 2026 BMW iX, 2025 BMW i5, Mercedes-Benz EQE sedan, Range Rover Sport, Toyota Hiace and Nissan Serena. Treat these as proposal-listed options until ownership, specification and availability are confirmed.
-- The home-page hero uses a white Mercedes-Benz EQS saloon **reference** photo (Wikimedia Commons, CC BY-SA 3.0 DE, credit "© M 93"), because the owner wants a white EQS as the main picture. Replace it with a photo of the client's own white EQS SUV when one is supplied, and keep the credit line while the reference photo is used.
+- The home-page hero is a slideshow of every fleet model (owner's request, 14 Oct 2026), starting with the white EQS SUV. Each slide is labelled "company fleet" or "fleet option" plus "reference image". The Fleet page gallery uses the same photos (`assets/images/fleet/`, plus `eqe-suv.jpg`).
+  - All are licensed Wikimedia Commons reference photos. Their credits are in the footer of `index.html` and `fleet.html` and in the README; keep them in step when photos change.
+  - Replace photos with the client's own as they arrive (her white EQS SUV first).
+  - The slideshow pauses on hover, in hidden tabs, with its pause button, and for reduced motion. Each slide loads just before its turn (`data-src`).
 - Clearly separate company-owned vehicles from vehicles supplied by partner operators.
 - Any non-client fleet photo must remain labeled as reference imagery and must have suitable commercial-use rights plus attribution where required.
 - Do not say online payment is enabled until a provider, credentials and payment workflow have been supplied.

@@ -55,6 +55,62 @@
     else item.classList.add("visible");
   });
 
+  // Home hero: the fleet photos take turns. Each photo loads just before its turn.
+  // Stops for "reduced motion", on hover, when the tab is hidden, or with the pause button.
+  var rotator = document.querySelector("[data-rotator]");
+  if (rotator) {
+    var slides = Array.prototype.slice.call(rotator.querySelectorAll(".rotator-slides img"));
+    var caption = rotator.querySelector("[data-rotator-caption]");
+    var pauseButton = rotator.querySelector("[data-rotator-pause]");
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var current = 0;
+    var timer = null;
+    var paused = false;
+    var hovering = false;
+
+    var loadSlide = function (img) {
+      if (img && img.getAttribute("data-src")) {
+        img.src = img.getAttribute("data-src");
+        img.removeAttribute("data-src");
+      }
+    };
+    var showSlide = function (next) {
+      slides[current].classList.remove("is-active");
+      slides[current].setAttribute("aria-hidden", "true");
+      current = (next + slides.length) % slides.length;
+      loadSlide(slides[current]);
+      slides[current].classList.add("is-active");
+      slides[current].removeAttribute("aria-hidden");
+      if (caption) caption.textContent = slides[current].getAttribute("data-caption");
+      loadSlide(slides[(current + 1) % slides.length]);
+    };
+    var stopRotation = function () {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    };
+    var startRotation = function () {
+      stopRotation();
+      if (slides.length > 1 && !reduceMotion && !paused && !hovering && !document.hidden) {
+        timer = window.setInterval(function () { showSlide(current + 1); }, 5000);
+      }
+    };
+
+    if (slides.length > 1 && !reduceMotion) loadSlide(slides[1]);
+    if (pauseButton) {
+      pauseButton.addEventListener("click", function () {
+        paused = !paused;
+        pauseButton.setAttribute("aria-pressed", String(paused));
+        pauseButton.setAttribute("aria-label", paused ? "Play the fleet slideshow" : "Pause the fleet slideshow");
+        pauseButton.firstElementChild.textContent = paused ? "▶" : "❚❚";
+        startRotation();
+      });
+    }
+    rotator.addEventListener("mouseenter", function () { hovering = true; stopRotation(); });
+    rotator.addEventListener("mouseleave", function () { hovering = false; startRotation(); });
+    document.addEventListener("visibilitychange", startRotation);
+    startRotation();
+  }
+
   function labelFor(name) {
     var labels = {
       service: "Service", pickup: "Pick-up", destination: "Destination",
