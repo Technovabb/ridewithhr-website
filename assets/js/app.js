@@ -2,6 +2,7 @@
   "use strict";
 
   var config = window.RIDE_WITH_HR || {};
+  var meetAndGreetUSD = config.booking && config.booking.arrivalMeetAndGreetUSD;
   var header = document.querySelector("[data-header]");
   var nav = document.querySelector("[data-nav]");
   var navToggle = document.querySelector("[data-nav-toggle]");
@@ -129,6 +130,9 @@
         value = new Date(+parts[0], +parts[1] - 1, +parts[2]).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
       }
       if (value) lines.push(labelFor(key) + ": " + value);
+      if (key === "service" && value === "Airport arrival" && meetAndGreetUSD) {
+        lines.push("Meet-and-greet: US$" + meetAndGreetUSD + " (included with every airport arrival)");
+      }
     });
     lines.push("", "This is an enquiry only. Journey, vehicle, price and availability require confirmation by H&R Transport.");
     return lines.join("\n");
@@ -141,6 +145,14 @@
       var hasRequestedService = Array.from(serviceInput.options).some(function (option) { return option.value === requestedService; });
       if (hasRequestedService) serviceInput.value = requestedService;
     }
+
+    // Arrivals carry the compulsory meet-and-greet; show the note only for them.
+    var arrivalNote = form.querySelector("[data-arrival-note]");
+    var toggleArrivalNote = function () {
+      if (arrivalNote && serviceInput) arrivalNote.hidden = serviceInput.value !== "Airport arrival";
+    };
+    if (serviceInput) serviceInput.addEventListener("change", toggleArrivalNote);
+    toggleArrivalNote();
 
     var dateInput = form.querySelector("#date");
     if (dateInput) {

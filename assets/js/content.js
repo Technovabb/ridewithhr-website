@@ -18,6 +18,11 @@ window.RIDE_WITH_HR = {
     // "preview" only shows a copyable summary. Provider integrations are a later scope.
     mode: "whatsapp",
     paymentEnabled: false,
+    // Prices from Juwan, 14 Oct 2026. Also written into index.html, services.html and the arrival
+    // note on enquire.html; change them all together.
+    arrivalMeetAndGreetUSD: 40, // compulsory on every airport arrival
+    southCoastArrivalUSD: 100, // airport → South Coast, total including the meet-and-greet
+    westCoastArrivalUSD: 125, // airport → West Coast, total including the meet-and-greet
   },
   fleet: [
     {
