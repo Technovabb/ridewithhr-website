@@ -38,6 +38,6 @@ window.RIDE_WITH_HR = {
     { year: "", make: "Mercedes-Benz", model: "EQE sedan", relationship: "proposal-listed-to-confirm" },
     { year: "", make: "Range Rover", model: "Sport", relationship: "proposal-listed-to-confirm" },
     { year: "", make: "Toyota", model: "Hiace", relationship: "proposal-listed-to-confirm" },
-    { year: "", make: "Nissan", model: "Serena", relationship: "proposal-listed-to-confirm" },
+    // The Nissan Serena is a luggage vehicle, not a passenger fleet vehicle (Juwan, 14 Oct 2026).
   ],
 };
