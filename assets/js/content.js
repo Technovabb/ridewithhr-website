@@ -27,7 +27,14 @@ window.RIDE_WITH_HR = {
     },
     { year: "2026", make: "BMW", model: "iX", relationship: "proposal-listed-to-confirm" },
     { year: "2025", make: "BMW", model: "i5", relationship: "proposal-listed-to-confirm" },
-    { year: "2025", make: "Mercedes-Benz", model: "EQS SUV", relationship: "proposal-listed-to-confirm" },
+    {
+      year: "2025",
+      make: "Mercedes-Benz",
+      model: "EQS SUV",
+      relationship: "company-owned", // confirmed by Juwan, 14 Oct 2026 (white)
+      availability: "confirm-per-journey",
+      imageType: "licensed-reference",
+    },
     { year: "", make: "Mercedes-Benz", model: "EQE sedan", relationship: "proposal-listed-to-confirm" },
     { year: "", make: "Range Rover", model: "Sport", relationship: "proposal-listed-to-confirm" },
     { year: "", make: "Toyota", model: "Hiace", relationship: "proposal-listed-to-confirm" },

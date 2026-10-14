@@ -54,3 +54,7 @@ This repository stays within the agreed basic marketing-site scope. A custom boo
 The Mercedes-Benz EQE SUV reference photo is by Chelentano, sourced from Wikimedia Commons under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). It is cropped for display and does **not** depict H&R Transport's actual vehicle.
 
 Source: <https://commons.wikimedia.org/wiki/File:Eqe-suv.jpg>
+
+The white Mercedes-Benz EQS reference photo on the home page (`assets/images/eqs-white.jpg`) is by © M 93, sourced from Wikimedia Commons under [CC BY-SA 3.0 DE](https://creativecommons.org/licenses/by-sa/3.0/de/deed.en). It is resized and cropped for display (this adapted file is shared under the same licence) and does **not** depict H&R Transport's actual vehicle.
+
+Source: <https://commons.wikimedia.org/wiki/File:Mercedes-Benz_EQS_500_4MATIC_Electric_Art_(V_297,_Facelift)_%E2%80%93_f1_11102025.jpg>

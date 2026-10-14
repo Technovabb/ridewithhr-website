@@ -7,7 +7,8 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - The company is **H&R Transport** and the customer-facing brand is **Ride With HR**.
 - Do not change the company name for SEO. Use local phrases naturally: Barbados airport transfer, Barbados chauffeur, private driver Barbados, executive transport Barbados, and Grantley Adams airport transfer.
 - Do not invent prices, testimonials, availability, vehicle specifications, business contact details or operating hours.
-- The only explicitly confirmed company-owned fleet model is a **2025 Mercedes-Benz EQE SUV**. The proposal also lists a 2026 BMW iX, 2025 BMW i5, 2025 Mercedes-Benz EQS SUV, Mercedes-Benz EQE sedan, Range Rover Sport, Toyota Hiace and Nissan Serena. Treat these as proposal-listed options until ownership, specification and availability are confirmed.
+- The confirmed company-owned fleet models are a **2025 Mercedes-Benz EQE SUV** and a **2025 Mercedes-Benz EQS SUV** (white; confirmed by Juwan on 14 Oct 2026). The proposal also lists a 2026 BMW iX, 2025 BMW i5, Mercedes-Benz EQE sedan, Range Rover Sport, Toyota Hiace and Nissan Serena. Treat these as proposal-listed options until ownership, specification and availability are confirmed.
+- The home-page hero uses a white Mercedes-Benz EQS saloon **reference** photo (Wikimedia Commons, CC BY-SA 3.0 DE, credit "© M 93"), because the owner wants a white EQS as the main picture. Replace it with a photo of the client's own white EQS SUV when one is supplied, and keep the credit line while the reference photo is used.
 - Clearly separate company-owned vehicles from vehicles supplied by partner operators.
 - Any non-client fleet photo must remain labeled as reference imagery and must have suitable commercial-use rights plus attribution where required.
 - Do not say online payment is enabled until a provider, credentials and payment workflow have been supplied.
