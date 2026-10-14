@@ -23,6 +23,7 @@ window.RIDE_WITH_HR = {
     arrivalMeetAndGreetUSD: 40, // compulsory on every airport arrival
     southCoastArrivalUSD: 100, // airport → South Coast, total including the meet-and-greet
     westCoastArrivalUSD: 125, // airport → West Coast, total including the meet-and-greet
+    northWestArrivalUSD: 150, // airport → North West, total including the meet-and-greet
   },
   fleet: [
     {
