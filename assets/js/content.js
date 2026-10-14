@@ -18,12 +18,11 @@ window.RIDE_WITH_HR = {
     // "preview" only shows a copyable summary. Provider integrations are a later scope.
     mode: "whatsapp",
     paymentEnabled: false,
-    // Prices from Juwan, 14 Oct 2026. Also written into index.html, services.html and the arrival
-    // note on enquire.html; change them all together.
-    arrivalMeetAndGreetUSD: 40, // compulsory on every airport arrival
-    southCoastArrivalUSD: 100, // airport → South Coast, total including the meet-and-greet
-    westCoastArrivalUSD: 125, // airport → West Coast, total including the meet-and-greet
-    northWestArrivalUSD: 150, // airport → North West, total including the meet-and-greet
+    // Prices from Juwan, 14 Oct 2026: same price to or from the airport, all in. Also written into
+    // index.html, services.html and the airport note on enquire.html; change them all together.
+    arrivalMeetAndGreetUSD: 40, // compulsory on every airport arrival (already inside the prices below)
+    airportPricesUSD: { southCoast: 100, eastCoast: 120, westCoast: 125, northWest: 150 }, // cars; van rates on request
+    luggageVehicleUSD: 75, // optional extra; also written into the luggage tick box on enquire.html
   },
   fleet: [
     {

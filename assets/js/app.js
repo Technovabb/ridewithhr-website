@@ -115,15 +115,15 @@
   function labelFor(name) {
     var labels = {
       service: "Service", pickup: "Pick-up", destination: "Destination",
-      date: "Date", time: "Preferred time", passengers: "Passengers",
-      flight: "Flight number", name: "Name", email: "Email", notes: "Notes"
+      date: "Date", time: "Preferred time", passengers: "Passengers", vehicle: "Vehicle",
+      luggageVehicle: "Luggage vehicle", flight: "Flight number", name: "Name", email: "Email", notes: "Notes"
     };
     return labels[name] || name;
   }
 
   function buildSummary(data, heading) {
     var lines = [heading || "RIDE WITH HR — TRANSPORT ENQUIRY", ""];
-    ["service", "pickup", "destination", "date", "time", "passengers", "flight", "name", "email", "notes"].forEach(function (key) {
+    ["service", "pickup", "destination", "date", "time", "passengers", "vehicle", "luggageVehicle", "flight", "name", "email", "notes"].forEach(function (key) {
       var value = String(data.get(key) || "").trim();
       if (key === "date" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
         var parts = value.split("-");
@@ -146,13 +146,13 @@
       if (hasRequestedService) serviceInput.value = requestedService;
     }
 
-    // Arrivals carry the compulsory meet-and-greet; show the note only for them.
-    var arrivalNote = form.querySelector("[data-arrival-note]");
-    var toggleArrivalNote = function () {
-      if (arrivalNote && serviceInput) arrivalNote.hidden = serviceInput.value !== "Airport arrival";
+    // Airport prices (and the arrivals-only meet-and-greet) show for airport arrivals and departures.
+    var airportNote = form.querySelector("[data-airport-note]");
+    var toggleAirportNote = function () {
+      if (airportNote && serviceInput) airportNote.hidden = serviceInput.value.indexOf("Airport") !== 0;
     };
-    if (serviceInput) serviceInput.addEventListener("change", toggleArrivalNote);
-    toggleArrivalNote();
+    if (serviceInput) serviceInput.addEventListener("change", toggleAirportNote);
+    toggleAirportNote();
 
     var dateInput = form.querySelector("#date");
     if (dateInput) {
