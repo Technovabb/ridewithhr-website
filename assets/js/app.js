@@ -115,7 +115,8 @@
   function labelFor(name) {
     var labels = {
       service: "Service", pickup: "Pick-up", destination: "Destination",
-      date: "Date", time: "Preferred time", passengers: "Passengers", vehicle: "Vehicle",
+      date: "Date", time: "Preferred time", trip: "Trip", returnDate: "Return date", returnTime: "Return time",
+      passengers: "Passengers", suitcases: "Suitcases", childSeats: "Child seats", vehicle: "Vehicle",
       luggageVehicle: "Luggage vehicle", flight: "Flight number", name: "Name", email: "Email", notes: "Notes"
     };
     return labels[name] || name;
@@ -123,9 +124,11 @@
 
   function buildSummary(data, heading) {
     var lines = [heading || "RIDE WITH HR — TRANSPORT ENQUIRY", ""];
-    ["service", "pickup", "destination", "date", "time", "passengers", "vehicle", "luggageVehicle", "flight", "name", "email", "notes"].forEach(function (key) {
+    ["service", "trip", "pickup", "destination", "date", "time", "returnDate", "returnTime", "passengers", "suitcases", "childSeats",
+      "vehicle", "luggageVehicle", "flight", "name", "email", "notes"].forEach(function (key) {
       var value = String(data.get(key) || "").trim();
-      if (key === "date" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+      if (key === "childSeats" && value === "0") value = "";
+      if ((key === "date" || key === "returnDate") && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
         var parts = value.split("-");
         value = new Date(+parts[0], +parts[1] - 1, +parts[2]).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
       }
@@ -154,12 +157,44 @@
     if (serviceInput) serviceInput.addEventListener("change", toggleAirportNote);
     toggleAirportNote();
 
+    // "Request this vehicle" links pass ?vehicle=; add it as an option if the list doesn't already have it.
+    var vehicleInput = form.querySelector("#vehicle");
+    var requestedVehicle = (new URLSearchParams(window.location.search).get("vehicle") || "").trim().slice(0, 60);
+    if (vehicleInput && requestedVehicle) {
+      var hasVehicle = Array.from(vehicleInput.options).some(function (option) { return option.value === requestedVehicle; });
+      if (!hasVehicle) {
+        var extraOption = document.createElement("option");
+        extraOption.textContent = requestedVehicle;
+        vehicleInput.appendChild(extraOption);
+      }
+      vehicleInput.value = requestedVehicle;
+    }
+
     var dateInput = form.querySelector("#date");
+    var returnDateInput = form.querySelector("#return-date");
     if (dateInput) {
       var today = new Date();
       var localDate = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, "0"), String(today.getDate()).padStart(2, "0")].join("-");
       dateInput.min = localDate;
+      if (returnDateInput) {
+        returnDateInput.min = localDate;
+        dateInput.addEventListener("change", function () { returnDateInput.min = dateInput.value || localDate; });
+      }
     }
+
+    // Return trips: show and require the return date and time; one-way trips leave them out of the message.
+    var tripInput = form.querySelector("#trip");
+    var toggleReturn = function () {
+      var isReturn = tripInput && tripInput.value === "Return";
+      form.querySelectorAll("[data-return-field]").forEach(function (field) {
+        field.hidden = !isReturn;
+        var input = field.querySelector("input");
+        input.disabled = !isReturn;
+        input.required = isReturn;
+      });
+    };
+    if (tripInput) tripInput.addEventListener("change", toggleReturn);
+    toggleReturn();
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();

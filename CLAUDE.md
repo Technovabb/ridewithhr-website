@@ -1,6 +1,6 @@
 # Claude handoff: Ride With HR
 
-This is a buildless, multi-page static website. Work directly in `index.html`, `services.html`, `fleet.html`, `about.html`, `enquire.html`, `assets/css/styles.css`, `assets/js/content.js`, and `assets/js/app.js`. Keep the main content areas as separate pages rather than collapsing them into a one-page scrolling site. Do not introduce a framework or package manager unless the owner explicitly requests one.
+This is a buildless, multi-page static website. Work directly in `index.html`, `services.html`, `fleet.html`, `about.html`, `enquire.html`, `privacy.html`, `terms.html`, `assets/css/styles.css`, `assets/js/content.js`, and `assets/js/app.js`. Keep the main content areas as separate pages rather than collapsing them into a one-page scrolling site. Do not introduce a framework or package manager unless the owner explicitly requests one.
 
 ## Non-negotiable content rules
 
@@ -25,6 +25,12 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - The booking form sends enquiries by **WhatsApp** to +1 (246) 231-2679 (`booking.mode: "whatsapp"`, supplied by Juwan on 14 Oct 2026). It opens a pre-filled chat and the customer presses send; it does not book or take payment. The same number also takes calls (confirmed 14 Oct 2026). It's hard-coded in each page's footer (call + WhatsApp), the floating WhatsApp button and the call line on `enquire.html`; change them all together.
 - GitHub Pages is the intended preview host. All URLs are relative so project-site paths work.
 - Preserve accessibility, responsive behavior and reduced-motion support.
+
+## Privacy and booking terms
+
+- `privacy.html` and `terms.html` are drafts (14 Oct 2026). They are linked from every footer and from the form's consent box.
+- Policy points the client hasn't given are marked with `<span class="tbc">… to be confirmed …</span>`: retention period, data-protection contact, payment methods/deposit, cancellation, waiting time. Never fill these in with guesses. Replace each with her wording, then remove the "draft" ribbon and notice.
+- Keep the prices in `terms.html` in step with `index.html`, `services.html`, `enquire.html` and `content.js`.
 
 ## Before production launch
 

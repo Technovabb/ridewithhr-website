@@ -16,7 +16,7 @@ Then open `http://localhost:4173`.
 
 - Business contact, domain, booking mode and fleet records: `assets/js/content.js`
 - Home page: `index.html`
-- Dedicated content pages: `services.html`, `fleet.html`, `about.html`, `enquire.html`
+- Dedicated content pages: `services.html`, `fleet.html`, `about.html`, `enquire.html`, `privacy.html`, `terms.html` (privacy and booking terms are drafts: see CLAUDE.md)
 - Visual design and responsive layout: `assets/css/styles.css`
 - Navigation, form and animation behavior: `assets/js/app.js`
 
