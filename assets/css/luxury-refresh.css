@@ -607,3 +607,53 @@ h2,h3 { text-wrap:balance; }
   .hero-cinematic-bottom {justify-content:center;gap:.7rem 1.2rem;}
   .hero-cinematic-bottom span::before {display:none;}
 }
+
+
+/* Final cohesive hero artwork treatment: one seamless scene for each breakpoint. */
+.hero-cinematic {
+  display:grid;grid-template-columns:1fr;align-content:space-between;
+  min-height:clamp(48rem,88vh,58rem);padding-top:clamp(4.8rem,8vh,7rem);
+}
+.hero-cinematic-backdrop {
+  background-image:
+    linear-gradient(90deg,rgba(8,11,13,.96) 0%,rgba(10,13,15,.83) 31%,rgba(11,14,16,.48) 49%,rgba(12,14,15,.12) 74%,rgba(12,14,15,.08) 100%),
+    url("../images/hero/barbados-luxury-arrival.webp");
+  background-position:center,center;
+  background-size:cover;
+}
+.hero-cinematic::after {
+  background:linear-gradient(180deg,rgba(8,11,13,.12) 42%,rgba(8,11,13,.68) 100%);
+}
+.hero-cinematic-copy {max-width:44rem;padding-bottom:4rem;}
+.hero-cinematic .hero-intro {max-width:31rem;}
+.hero-scene-note {
+  margin:.85rem 0 0;color:rgba(244,235,220,.72);
+  font-size:.58rem;letter-spacing:.055em;line-height:1.5;
+}
+.hero-cinematic-bottom {align-self:end;margin-top:0;}
+.hero-cinematic-visual {display:none;}
+
+@media (min-width:64rem) {
+  .hero-cinematic {
+    grid-template-columns:1fr;column-gap:0;padding-top:clamp(5.4rem,8vh,7.2rem);
+  }
+  .hero-cinematic-copy {padding-bottom:4.5rem;}
+  .hero-cinematic h1 {font-size:clamp(5.6rem,7.35vw,9rem);}
+}
+@media (max-width:63.99rem) {
+  .hero-cinematic-backdrop {
+    background-image:
+      linear-gradient(180deg,rgba(8,11,13,.95) 0%,rgba(9,12,14,.84) 39%,rgba(10,13,15,.28) 64%,rgba(8,11,13,.72) 100%),
+      url("../images/hero/barbados-luxury-arrival-mobile.webp");
+    background-position:center 58%;
+    background-size:cover;
+  }
+}
+@media (max-width:41.99rem) {
+  .hero-cinematic {min-height:58rem;padding-top:4rem;}
+  .hero-cinematic-copy {padding-bottom:15rem;}
+  .hero-cinematic h1 {font-size:clamp(4rem,14vw,5.75rem);}
+  .hero-cinematic .hero-intro {max-width:29rem;}
+  .hero-scene-note {max-width:25rem;}
+  .hero-cinematic-bottom {background:rgba(9,12,14,.62);}
+}
