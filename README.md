@@ -17,12 +17,21 @@ Then open `http://localhost:4173`.
 - Business contact, domain, booking mode and fleet records: `assets/js/content.js`
 - Home page: `index.html`
 - Dedicated content pages: `services.html`, `fleet.html`, `about.html`, `enquire.html`, `privacy.html`, `terms.html` (privacy and booking terms are drafts: see CLAUDE.md)
-- Visual design and responsive layout: `assets/css/styles.css`
+- Original layout CSS: `assets/css/styles.css`; the new ivory / charcoal / champagne design, Cormorant Garamond + Manrope, responsive enhancements and fleet presentation: `assets/css/luxury-refresh.css` (loaded after the original on every page)
 - Navigation, form and animation behavior: `assets/js/app.js`
 
 The booking form is in **WhatsApp mode** (`booking.mode: "whatsapp"` in `assets/js/content.js`). After validation it opens WhatsApp, a chat with the business number (`business.whatsapp`, digits only), with the enquiry typed in; the customer presses send. Nothing is stored on the website and no payment is taken. Other modes: `email` (opens a pre-filled email to `business.email`) and `preview` (copyable summary only).
 
 The business number (+1 246 231 2679, WhatsApp and calls) is also hard-coded in every page's footer (call and WhatsApp links), the floating WhatsApp button and the call line on `enquire.html`; change all of them together.
+
+## October 15, 2026 design update
+
+- The `main` branch includes the premium light design with selected charcoal feature panels, dark footer, refreshed vehicle cards, and a new homepage service promise section.
+- White vehicle model references are used for the BMW iX, BMW i5, EQE sedan and Range Rover via Wikimedia Commons `Special:FilePath` links. EQS SUV, EQE SUV and Toyota Hiace continue using locally held white-vehicle references. **All seven are illustrative model photos, not client fleet photographs.**
+- Wikimedia Commons links are intentionally external. Download appropriately licensed/approved final images to the local assets folder before launch to eliminate third-party network dependence, retaining license credits.
+- Update all pages' `luxury-refresh.css?v=1` cache key together after future style changes.
+- Confirm whether the site at `technovabb.com/ridewithhr-website/` automatically syncs from this repository. GitHub commits alone do **not** establish that deployment; if the folder is uploaded manually, it needs a separate publish step.
+- Follow up for complete client fleet photography and approved commercial/terms details. Do not imply online payment or confirmed partner-vehicle availability.
 
 ## Deployment
 
