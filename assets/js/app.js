@@ -149,6 +149,14 @@
       if (hasRequestedService) serviceInput.value = requestedService;
     }
 
+    // The homepage journey starter carries the first details into this full form.
+    var requestedDetails = new URLSearchParams(window.location.search);
+    ["pickup", "destination", "date"].forEach(function (name) {
+      var target = form.elements[name];
+      var value = (requestedDetails.get(name) || "").trim();
+      if (target && value) target.value = value.slice(0, 120);
+    });
+
     // Airport prices (and the arrivals-only meet-and-greet) show for airport arrivals and departures.
     var airportNote = form.querySelector("[data-airport-note]");
     var toggleAirportNote = function () {
@@ -249,6 +257,13 @@
       if (dialog && typeof dialog.showModal === "function") dialog.showModal();
       else window.prompt("Copy your enquiry summary:", summary);
     });
+  }
+
+  // Prevent past dates in the compact homepage journey starter.
+  var starterDate = document.querySelector("[data-journey-starter] input[type='date']");
+  if (starterDate) {
+    var starterToday = new Date();
+    starterDate.min = [starterToday.getFullYear(), String(starterToday.getMonth() + 1).padStart(2, "0"), String(starterToday.getDate()).padStart(2, "0")].join("-");
   }
 
   if (dialog) {
