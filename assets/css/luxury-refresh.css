@@ -409,3 +409,122 @@ h2,h3 { text-wrap:balance; }
  .hero-cinematic-car-label {right:.5rem;bottom:3.2rem;}
  .hero-cinematic-bottom i {display:none;}
 }
+
+
+/* Homepage story sections: experience, destinations, airport welcome, and planning. */
+.experience-section {
+  display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
+  background:#f8f6f1;
+}
+.experience-visual {position:relative;margin:0;min-width:0;}
+.experience-visual-frame {
+  position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:1.1rem;
+  border:1px solid #d9d0c2;background:#ded9d0;box-shadow:0 28px 65px rgba(34,35,33,.13);
+}
+.experience-visual-frame::after {
+  content:"";position:absolute;inset:45% 0 0;
+  background:linear-gradient(to top,rgba(20,22,23,.68),transparent);pointer-events:none;
+}
+.experience-visual img {
+  width:100%;height:100%;object-fit:cover;object-position:center 58%;
+  filter:contrast(1.02) saturate(.8) brightness(1.02);
+}
+.experience-visual figcaption {
+  position:absolute;z-index:2;left:1rem;right:1rem;bottom:1rem;padding:.7rem .85rem;
+  color:#f8f4ea;background:rgba(34,36,37,.8);border-left:2px solid #caa56c;
+  font-size:.66rem;line-height:1.5;
+}
+.experience-copy h2,.destinations-section h2,.airport-welcome h2,.journey-planner h2 {
+  margin:0 0 1.35rem;font-size:clamp(3rem,7vw,5.35rem);
+}
+.experience-copy>p:not(.eyebrow) {max-width:39rem;color:#62686a;}
+.experience-details {display:grid;gap:0;margin:2rem 0 2.2rem;border-top:1px solid #ddd5ca;}
+.experience-detail {display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;padding:1.25rem 0;border-bottom:1px solid #ddd5ca;}
+.experience-detail>span {color:#9a7440;font-size:.7rem;font-weight:800;letter-spacing:.12em;}
+.experience-detail strong {display:block;color:#292b2c;font-family:var(--serif);font-size:1.55rem;font-weight:600;line-height:1.05;}
+.experience-detail small {display:block;margin-top:.35rem;color:#656a6c;font-size:.74rem;line-height:1.55;}
+
+.destinations-section {
+  --ivory:#f8f4eb;--muted:#cbc4b9;--line:rgba(255,255,255,.16);
+  color:#f8f4eb;background:#242729;
+}
+.destinations-heading {display:grid;gap:1rem;margin-bottom:2.5rem;}
+.destinations-heading h2 {max-width:14ch;color:#fffaf1;}
+.destinations-heading>p:last-child {max-width:40rem;margin:0;color:#cbc4b9;}
+.destinations-panorama {
+  position:relative;overflow:hidden;min-height:clamp(22rem,45vw,35rem);margin:0;
+  border:1px solid rgba(255,255,255,.18);border-radius:1.1rem;background:#303537;
+}
+.destinations-panorama::after {
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(16,19,20,.76),rgba(18,20,21,.08) 70%),linear-gradient(0deg,rgba(18,20,21,.66),transparent 50%);
+}
+.destinations-panorama img {width:100%;height:100%;min-height:inherit;object-fit:cover;object-position:center;filter:saturate(.86) contrast(1.04);}
+.destinations-panorama figcaption {
+  position:absolute;z-index:2;left:clamp(1.25rem,4vw,3rem);bottom:clamp(1.2rem,4vw,2.7rem);max-width:31rem;
+}
+.destinations-panorama figcaption span {display:block;margin-bottom:.55rem;color:#e0bd85;font-size:.65rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;}
+.destinations-panorama figcaption strong {display:block;font-family:var(--serif);font-size:clamp(2.1rem,5vw,4rem);font-weight:500;line-height:1;}
+.destinations-panorama figcaption small {display:block;margin-top:.65rem;color:#eee7dc;font-size:.68rem;}
+.destination-grid {display:grid;grid-template-columns:1fr;gap:1px;margin-top:1px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.15);border-radius:1rem;overflow:hidden;}
+.destination-card {min-height:14rem;padding:1.7rem;background:#2a2d2f;}
+.destination-card span {color:#d7b37a;font-size:.65rem;font-weight:800;letter-spacing:.14em;}
+.destination-card h3 {margin:2.2rem 0 .7rem;color:#fff8ee;font-size:2rem;}
+.destination-card p {margin:0;color:#c9c3ba;font-size:.82rem;}
+
+.airport-welcome {display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,6vw,6rem);align-items:start;background:#eee8de;}
+.airport-intro>p:not(.eyebrow) {max-width:41rem;color:#606668;}
+.arrival-steps {margin:2.1rem 0 0;padding:0;list-style:none;border-top:1px solid #d9d0c2;}
+.arrival-steps li {display:grid;grid-template-columns:2.7rem 1fr;gap:1rem;padding:1.3rem 0;border-bottom:1px solid #d9d0c2;}
+.arrival-steps>li>span {display:grid;place-items:center;width:2.2rem;height:2.2rem;color:#795a33;border:1px solid #bea77f;border-radius:50%;font-size:.7rem;font-weight:800;}
+.arrival-steps h3 {margin:.15rem 0 .45rem;color:#292b2c;font-size:1.55rem;}
+.arrival-steps p {margin:0;color:#62686a;font-size:.8rem;}
+.airport-rate-card {padding:clamp(1.5rem,3vw,2.4rem);color:#f8f3e9;background:#292c2e;border:1px solid #3c4041;border-radius:1rem;box-shadow:0 24px 55px rgba(30,31,29,.16);}
+.airport-rate-card .eyebrow {color:#d4ae75;}
+.rate-heading {display:flex;justify-content:space-between;gap:1rem;align-items:end;margin-bottom:1.2rem;}
+.rate-heading h3 {color:#fff9ef;font-size:2.35rem;}
+.rate-heading span {color:#c9c1b5;font-size:.65rem;text-align:right;}
+.airport-rates {margin:0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.18);}
+.airport-rates li {display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:.78rem;}
+.airport-rates strong {color:#e3c28f;font-size:.88rem;}
+.airport-rate-note {margin:1.2rem 0;color:#ccc5bb;font-size:.72rem;line-height:1.65;}
+.airport-rate-card .button {width:100%;}
+
+.journey-planner {
+  --ivory:#faf5eb;--muted:#ccc5bb;--line:rgba(255,255,255,.17);
+  display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,6vw,6rem);align-items:center;
+  color:#faf5eb;background:linear-gradient(135deg,#202325,#303335);
+}
+.journey-planner h2 {color:#fff9ef;}
+.journey-planner-copy>p:not(.eyebrow) {max-width:37rem;color:#ccc5bb;}
+.planner-promise {display:grid;gap:.75rem;margin-top:1.8rem;}
+.planner-promise span {display:flex;gap:.75rem;align-items:center;color:#e4ddd1;font-size:.74rem;}
+.planner-promise span::before {content:"✓";display:grid;place-items:center;width:1.35rem;height:1.35rem;color:#24221e;background:#d4b17a;border-radius:50%;font-size:.65rem;font-weight:900;}
+.journey-starter {display:grid;grid-template-columns:1fr;gap:1rem;padding:clamp(1.35rem,3vw,2.35rem);background:#f8f5ef;border:1px solid #d8cdbd;border-radius:1rem;box-shadow:0 30px 70px rgba(0,0,0,.2);}
+.journey-starter .field label {color:#303335;}
+.journey-starter .field input,.journey-starter .field select {color:#2d3032;background:#fff;border-color:#d6cfc4;}
+.journey-starter .button {width:100%;margin-top:.3rem;}
+.journey-starter-note {margin:0;color:#65696a;font-size:.68rem;line-height:1.55;text-align:center;}
+.journey-starter-note strong {color:#76572f;}
+
+@media (min-width:48rem) {
+  .destination-grid {grid-template-columns:repeat(3,1fr);}
+  .journey-starter {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .journey-starter .field-wide,.journey-starter .button,.journey-starter-note {grid-column:1/-1;}
+}
+@media (min-width:64rem) {
+  .experience-section {grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);}
+  .experience-visual-frame {aspect-ratio:4/4.7;}
+  .airport-welcome {grid-template-columns:minmax(0,1.07fr) minmax(22rem,.93fr);}
+  .airport-rate-card {position:sticky;top:8.2rem;}
+  .journey-planner {grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);}
+}
+@media (max-width:41.99rem) {
+  .experience-section,.destinations-section,.airport-welcome,.journey-planner {padding-inline:1.2rem;}
+  .experience-copy h2,.destinations-section h2,.airport-welcome h2,.journey-planner h2 {font-size:clamp(2.8rem,13vw,4.2rem);}
+  .experience-visual-frame {aspect-ratio:1/1;}
+  .destinations-panorama {min-height:25rem;}
+  .destination-card {min-height:12rem;}
+  .rate-heading {align-items:start;flex-direction:column;}
+  .rate-heading span {text-align:left;}
+}
