@@ -528,3 +528,82 @@ h2,h3 { text-wrap:balance; }
   .rate-heading {align-items:start;flex-direction:column;}
   .rate-heading span {text-align:left;}
 }
+
+
+/* Reference-led full-bleed hero refinement: integrated vehicle, not a boxed photo. */
+.hero-cinematic {
+  min-height:clamp(46rem,88vh,58rem);
+  background:#15191b;
+}
+.hero-cinematic-backdrop {
+  background-image:
+    linear-gradient(90deg,rgba(9,12,14,.98) 0%,rgba(11,14,16,.88) 32%,rgba(16,18,18,.42) 64%,rgba(25,20,14,.08) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_In_Barbados_West_Indies.jpg?width=2200");
+  background-position:center,center 47%;
+}
+.hero-cinematic-copy {max-width:49rem;}
+.hero-cinematic .hero-intro {max-width:34rem;}
+.hero-cinematic-visual {isolation:isolate;}
+.hero-cinematic-visual::before {
+  content:"";position:absolute;z-index:-1;inset:8% -8% 4% 8%;
+  background:radial-gradient(ellipse at center,rgba(232,203,158,.16),transparent 68%);
+  filter:blur(16px);pointer-events:none;
+}
+.hero-cinematic-vehicle {
+  overflow:visible;height:clamp(21rem,39vw,40rem);
+  border:0;border-radius:0;background:transparent;box-shadow:none;
+}
+.hero-cinematic-vehicle img {
+  object-position:center 53%;transform:scale(1.13);
+  filter:brightness(1.055) contrast(1.035) saturate(.84);
+  -webkit-mask-image:radial-gradient(ellipse 73% 68% at 52% 50%,#000 54%,rgba(0,0,0,.88) 70%,transparent 100%);
+  mask-image:radial-gradient(ellipse 73% 68% at 52% 50%,#000 54%,rgba(0,0,0,.88) 70%,transparent 100%);
+}
+.hero-cinematic-car-label {
+  right:.5rem;bottom:1rem;max-width:28rem;padding:.7rem 0 .7rem 1rem;
+  background:linear-gradient(90deg,rgba(17,20,22,.76),rgba(17,20,22,0));
+  border-left:1px solid #d2aa70;-webkit-backdrop-filter:none;backdrop-filter:none;
+}
+.hero-cinematic-car-label span {font-size:.57rem;}
+.hero-cinematic-car-label strong {font-size:clamp(1.3rem,1.7vw,1.8rem);}
+.hero-cinematic-car-label small {font-size:.58rem;}
+.hero-cinematic-bottom {
+  margin-inline:calc(-1 * clamp(1.25rem,5.5vw,6rem));
+  padding-inline:clamp(1.25rem,5.5vw,6rem);
+  background:linear-gradient(90deg,rgba(10,13,15,.68),rgba(10,13,15,.38));
+  border-top-color:rgba(236,216,184,.3);justify-content:space-between;
+}
+.hero-cinematic-bottom span {display:inline-flex;align-items:center;gap:.55rem;}
+.hero-cinematic-bottom span::before {content:"◇";color:#d7b27a;font-size:.85rem;}
+
+@media (min-width:64rem) {
+  .hero-cinematic {
+    grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);
+    column-gap:clamp(1rem,2.5vw,3rem);padding-top:clamp(4.8rem,7vh,6.5rem);
+  }
+  .hero-cinematic-visual {margin-right:-3.5rem;margin-top:1rem;}
+  .hero-cinematic-vehicle {height:clamp(31rem,42vw,43rem);}
+  .hero-cinematic h1 {font-size:clamp(5.6rem,7.35vw,9.35rem);}
+}
+@media (max-width:63.99rem) {
+  .hero-cinematic-backdrop {
+    background-image:
+      linear-gradient(180deg,rgba(10,13,15,.84) 0%,rgba(11,14,16,.72) 47%,rgba(13,16,18,.44) 72%,rgba(12,15,17,.72) 100%),
+      url("https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_In_Barbados_West_Indies.jpg?width=1500");
+  }
+  .hero-cinematic-visual {margin-inline:-.75rem;}
+}
+@media (max-width:41.99rem) {
+  .hero-cinematic {min-height:unset;padding-top:3.8rem;}
+  .hero-cinematic h1 {font-size:clamp(4.15rem,14.5vw,6rem);}
+  .hero-cinematic .hero-intro {font-size:.98rem;line-height:1.72;}
+  .hero-cinematic-vehicle {height:clamp(18rem,82vw,23rem);}
+  .hero-cinematic-vehicle img {
+    transform:scale(1.18);object-position:52% 51%;
+    -webkit-mask-image:radial-gradient(ellipse 77% 72% at 51% 50%,#000 50%,rgba(0,0,0,.9) 68%,transparent 100%);
+    mask-image:radial-gradient(ellipse 77% 72% at 51% 50%,#000 50%,rgba(0,0,0,.9) 68%,transparent 100%);
+  }
+  .hero-cinematic-car-label {right:1rem;bottom:1rem;max-width:78%;}
+  .hero-cinematic-bottom {justify-content:center;gap:.7rem 1.2rem;}
+  .hero-cinematic-bottom span::before {display:none;}
+}
