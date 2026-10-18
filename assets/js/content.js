@@ -1,13 +1,13 @@
 /**
- * Ride With HR content settings
+ * H&R Executive Services (ridewithhr.com) content settings
  * -----------------------------
  * Keep business details here so they can be updated without changing the layout.
  * Empty values intentionally keep unconfirmed details off the public site.
  */
 window.RIDE_WITH_HR = {
   business: {
-    legalName: "H&R Transport",
-    brandName: "Ride With HR",
+    legalName: "", // registered legal name to be confirmed by the client
+    brandName: "H&R Executive Services",
     email: "", // Add the confirmed booking email to enable mail delivery.
     phone: "+12462312679", // +1 (246) 231-2679 takes calls too (Juwan, 14 Oct 2026). Hard-coded as tel: links in the footers and on enquire.html.
     whatsapp: "12462312679", // +1 (246) 231-2679, digits only for wa.me links (from Juwan, 14 Oct 2026). Also hard-coded in each page's footer and floating button.

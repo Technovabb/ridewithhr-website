@@ -123,7 +123,7 @@
   }
 
   function buildSummary(data, heading) {
-    var lines = [heading || "RIDE WITH HR — TRANSPORT ENQUIRY", ""];
+    var lines = [heading || "H&R EXECUTIVE SERVICES — TRANSPORT ENQUIRY", ""];
     ["service", "trip", "pickup", "destination", "date", "time", "returnDate", "returnTime", "passengers", "suitcases", "childSeats",
       "vehicle", "luggageVehicle", "flight", "name", "email", "notes"].forEach(function (key) {
       var value = String(data.get(key) || "").trim();
@@ -137,7 +137,7 @@
         lines.push("Meet-and-greet: US$" + meetAndGreetUSD + " (included with every airport arrival)");
       }
     });
-    lines.push("", "This is an enquiry only. Journey, vehicle, price and availability require confirmation by H&R Transport.");
+    lines.push("", "This is an enquiry only. Journey, vehicle, price and availability are still to be confirmed.");
     return lines.join("\n");
   }
 
@@ -228,7 +228,7 @@
       // WhatsApp: open a chat with the enquiry typed in; the customer presses send.
       // A new tab keeps the site open on desktop; phones hand over to the WhatsApp app.
       if (mode === "whatsapp" && whatsapp) {
-        var message = buildSummary(new FormData(form), "Hello Ride With HR, I'd like to arrange a journey:");
+        var message = buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:");
         var waUrl = "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message);
         var waWindow = window.open(waUrl, "_blank");
         if (waWindow) waWindow.opener = null;
