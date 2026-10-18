@@ -14,6 +14,9 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
   - The Fleet page doesn't use these photos. Since 17 Oct 2026 it uses the seven illustrative 1600x1000 WebP studio images Juwan supplied (`assets/images/fleet/*.webp`, listed in the README).
     - Keep their "Illustrative model reference" labels and the footer disclosure.
     - The featured EQE SUV image is never cropped. Below 80rem it stacks above the details; from 80rem it sits whole in the side column. The rules are in the "Fleet artwork" block of `luxury-refresh.css`.
+    - Clicking any fleet image opens a larger viewer (Juwan, 17 Oct 2026). It's built by `app.js` from the gallery figures and styled under "Fleet image viewer" in `luxury-refresh.css`.
+      - Arrows, keys and swipe move between cars. Esc, the close button or a click outside closes it.
+      - The viewer caption keeps the "Illustrative model reference" note and the "Request this vehicle" link.
   - Replace photos with the client's own as they arrive (her white EQS SUV first).
   - The slideshow pauses on hover, in hidden tabs, with its pause button, and for reduced motion. Each slide loads just before its turn (`data-src`).
 - Clearly separate company-owned vehicles from vehicles supplied by partner operators.

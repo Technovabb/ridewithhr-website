@@ -282,4 +282,120 @@
       });
     });
   }
+
+  // Fleet page: click or tap a vehicle image (or press Enter on it) to see it larger.
+  // The arrow buttons, arrow keys or a swipe move between vehicles; Esc, the close button
+  // or a click outside the picture closes it. Each image keeps its "illustrative" note.
+  var fleetFigures = Array.prototype.slice.call(document.querySelectorAll(".fleet-gallery figure"));
+  if (fleetFigures.length && typeof HTMLDialogElement === "function") {
+    var viewerItems = [];
+    fleetFigures.forEach(function (figure) {
+      var img = figure.querySelector(".fg-img img");
+      var nameEl = figure.querySelector("figcaption strong");
+      if (!img || !nameEl) return;
+      var tag = figure.querySelector(".fg-tag");
+      var request = figure.querySelector(".fg-request");
+      viewerItems.push({ img: img, name: nameEl.textContent.trim(), status: tag ? tag.textContent.trim() : "", href: request ? request.getAttribute("href") : "" });
+    });
+
+    var viewer = document.createElement("dialog");
+    viewer.className = "fleet-lightbox";
+    viewer.setAttribute("aria-label", "Vehicle image viewer");
+    viewer.innerHTML =
+      '<div class="lb-stage"><img class="lb-img" alt="" width="1600" height="1000" />' +
+      '<button class="lb-prev" type="button" aria-label="Previous vehicle"><span aria-hidden="true">&#8249;</span></button>' +
+      '<button class="lb-next" type="button" aria-label="Next vehicle"><span aria-hidden="true">&#8250;</span></button>' +
+      '<p class="lb-count"></p></div>' +
+      '<div class="lb-caption" aria-live="polite"><strong class="lb-name"></strong><span class="lb-note"></span>' +
+      '<a class="lb-request" href="enquire.html">Request this vehicle <b aria-hidden="true">&rarr;</b></a></div>' +
+      '<button class="lb-close" type="button" aria-label="Close the image viewer"><span aria-hidden="true">&times;</span></button>';
+    document.body.appendChild(viewer);
+    var viewerImg = viewer.querySelector(".lb-img");
+    var viewerRequest = viewer.querySelector(".lb-request");
+    var shownIndex = 0;
+
+    var srcOf = function (img) { return img.currentSrc || img.getAttribute("src"); };
+    var showVehicle = function (index) {
+      shownIndex = (index + viewerItems.length) % viewerItems.length;
+      var item = viewerItems[shownIndex];
+      viewerImg.src = srcOf(item.img);
+      viewerImg.alt = item.img.alt;
+      viewer.querySelector(".lb-name").textContent = item.name;
+      viewer.querySelector(".lb-note").textContent = (item.status ? item.status + " · " : "") + "Illustrative model reference · exact vehicle confirmed when booking";
+      viewerRequest.hidden = !item.href;
+      if (item.href) viewerRequest.setAttribute("href", item.href);
+      viewer.querySelector(".lb-count").textContent = (shownIndex + 1) + " of " + viewerItems.length;
+      // Fetch the neighbours now so the next swipe is instant (the gallery images are lazy-loaded).
+      [shownIndex + 1, shownIndex - 1].forEach(function (n) {
+        new Image().src = srcOf(viewerItems[(n + viewerItems.length) % viewerItems.length].img);
+      });
+    };
+    var viewerOpener = null;
+    var openViewer = function (index, opener) {
+      viewerOpener = opener || null;
+      showVehicle(index);
+      document.documentElement.classList.add("lb-open");
+      viewer.showModal();
+      viewer.querySelector(".lb-close").focus();
+    };
+
+    // Each image becomes a button. The featured EQE SUV opens on its gallery entry.
+    var addTrigger = function (img, index, name) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "zoom-trigger";
+      button.setAttribute("aria-label", "View a larger image of the " + name);
+      img.parentNode.insertBefore(button, img);
+      button.appendChild(img);
+      var hint = document.createElement("span");
+      hint.className = "zoom-hint";
+      hint.setAttribute("aria-hidden", "true");
+      hint.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+      button.appendChild(hint);
+      button.addEventListener("click", function () { openViewer(index, button); });
+    };
+    viewerItems.forEach(function (item, index) { addTrigger(item.img, index, item.name); });
+    var featuredImg = document.querySelector(".fleet-page .vehicle-image-wrap img");
+    if (featuredImg) {
+      var featuredIndex = -1;
+      viewerItems.forEach(function (item, index) {
+        if (item.img.getAttribute("src") === featuredImg.getAttribute("src")) featuredIndex = index;
+      });
+      if (featuredIndex >= 0) addTrigger(featuredImg, featuredIndex, viewerItems[featuredIndex].name);
+    }
+
+    viewer.querySelector(".lb-prev").addEventListener("click", function () { showVehicle(shownIndex - 1); });
+    viewer.querySelector(".lb-next").addEventListener("click", function () { showVehicle(shownIndex + 1); });
+    // Esc, the close button and a click outside all close it the same way: unlock the page and
+    // return focus to the image that opened it. (The dialog's own "close" event covers any other route.)
+    var afterViewerClose = function () {
+      if (!document.documentElement.classList.contains("lb-open")) return;
+      document.documentElement.classList.remove("lb-open");
+      if (viewerOpener) viewerOpener.focus();
+    };
+    var closeViewer = function () {
+      if (viewer.open) viewer.close();
+      afterViewerClose();
+    };
+    viewer.querySelector(".lb-close").addEventListener("click", closeViewer);
+    viewer.addEventListener("click", function (event) { if (event.target === viewer) closeViewer(); });
+    viewer.addEventListener("close", afterViewerClose);
+    viewer.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") { event.preventDefault(); closeViewer(); }
+      if (event.key === "ArrowRight") { event.preventDefault(); showVehicle(shownIndex + 1); }
+      if (event.key === "ArrowLeft") { event.preventDefault(); showVehicle(shownIndex - 1); }
+    });
+    var touchX = null, touchY = null;
+    viewer.addEventListener("touchstart", function (event) {
+      touchX = event.touches[0].clientX;
+      touchY = event.touches[0].clientY;
+    }, { passive: true });
+    viewer.addEventListener("touchend", function (event) {
+      if (touchX === null) return;
+      var dx = event.changedTouches[0].clientX - touchX;
+      var dy = event.changedTouches[0].clientY - touchY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showVehicle(shownIndex + (dx < 0 ? 1 : -1));
+      touchX = touchY = null;
+    }, { passive: true });
+  }
 })();
