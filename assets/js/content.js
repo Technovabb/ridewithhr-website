@@ -35,7 +35,7 @@ window.RIDE_WITH_HR = {
     },
     { year: "2026", make: "BMW", model: "iX", relationship: "proposal-listed-to-confirm" },
     { year: "2025", make: "BMW", model: "i5 (white)", relationship: "proposal-listed-to-confirm" },
-    { year: "", make: "BMW", model: "i5 (charcoal)", relationship: "client-requested-to-confirm" }, // added at the client's request, 17 Oct 2026
+    { year: "", make: "BMW", model: "i5 (charcoal)", relationship: "company-owned" }, // her own car, confirmed by Juwan 17 Oct 2026 (model year not given)
     {
       year: "2025",
       make: "Mercedes-Benz",
