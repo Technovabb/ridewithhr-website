@@ -62,7 +62,13 @@ This repository stays within the agreed basic marketing-site scope. A custom boo
 
 ## Image licence
 
-All vehicle photos are **reference images** of the models, sourced from Wikimedia Commons and resized/cropped for display. They do **not** depict H&R Transport's actual vehicles; replace them with the client's own photos when supplied. Adapted CC BY-SA files are shared under the same licence.
+### Fleet page images (October 2026)
+
+The Fleet page (`fleet.html`) uses seven local 1600×1000 WebP studio images in `assets/images/fleet/`: `mercedes-eqs-suv.webp`, `mercedes-eqe-suv.webp` (also the featured image), `bmw-ix.webp`, `bmw-i5.webp`, `mercedes-eqe-saloon.webp`, `range-rover-sport.webp` and `toyota-hiace.webp`, plus `mercedes-eqs-suv-share.jpg` (1200×630) for link previews. Juwan Prescod (Tech Nova) supplied them on 17 Oct 2026. They are **illustrative model references**, not photographs of H&R Transport's vehicles. The page says so in three places: a label on each image, the gallery introduction and the footer ("exact vehicle confirmed when booking"). Replace them with the client's own photos when supplied, starting with her white EQS SUV and EQE SUV.
+
+### Other vehicle photos
+
+The photos below are still used on the home page and for link previews on the other pages. They are **reference images** of the models, sourced from Wikimedia Commons and resized/cropped for display. They do **not** depict H&R Transport's actual vehicles; replace them with the client's own photos when supplied. Adapted CC BY-SA files are shared under the same licence.
 
 - **Mercedes-Benz EQS SUV** (`fleet/eqs-suv.jpg`): Harvey Bold, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Source: <https://commons.wikimedia.org/wiki/File:2023_Mercedes-Benz_EQS_450_Business_Class_4Matic_-_108kWh_(360PS)_Electric_-_Diamond_White_-_02-2024,_Front.jpg>
 - **Mercedes-Benz EQE SUV** (`eqe-suv.jpg`): Chelentano, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Source: <https://commons.wikimedia.org/wiki/File:Eqe-suv.jpg>

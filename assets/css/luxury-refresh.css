@@ -657,3 +657,28 @@ h2,h3 { text-wrap:balance; }
   .hero-scene-note {max-width:25rem;}
   .hero-cinematic-bottom {background:rgba(9,12,14,.62);}
 }
+
+/* Fleet artwork (Oct 2026): every vehicle has a 1600x1000 (16:10) studio image on a warm champagne
+   backdrop, so cards use the same 16:10 frame and show each image whole. The featured EQE SUV stacks
+   above its details below 80rem (a narrower side-by-side column would leave the car tiny); from 80rem its column is taller than 16:10, so the image spans the
+   column width, sits centred, and fades into bands of its own top and bottom edge colours instead of
+   being cropped and zoomed. */
+.fleet-page .vehicle-image-wrap { min-height:0; aspect-ratio:16 / 10; background:#e3d3c2; }
+.fleet-page .vehicle-image-wrap img { position:absolute; inset:0; width:100%; height:100%; min-height:0; object-fit:cover; object-position:50% 50%; filter:none; }
+.fleet-gallery .fg-img { aspect-ratio:16 / 10; background:#e3d3c2; }
+.fleet-gallery .fg-img img { object-fit:cover; object-position:50% 50%; filter:none; }
+/* The disclosure sits top-left over the empty backdrop so it never covers the car; phones get the short form. */
+.fleet-page .image-label { top:.75rem; bottom:auto; left:.75rem; right:auto; max-width:calc(100% - 1.5rem); padding:.32rem .65rem; border-radius:999px; background:rgba(33,35,36,.74); font-size:.62rem; text-align:left; }
+@media (max-width:41.99rem) { .fleet-page .image-label .il-more { display:none; } }
+.fleet-gallery .fg-ref { position:absolute; right:.6rem; bottom:.55rem; padding:.18rem .45rem; color:#4f4a43; background:rgba(255,255,255,.74); border-radius:.35rem; font-size:.56rem; letter-spacing:.02em; }
+@media (min-width:42rem) and (max-width:79.99rem) {
+  .fleet-page .featured-vehicle { grid-template-columns:1fr; }
+}
+@media (min-width:80rem) {
+  .fleet-page .vehicle-image-wrap { aspect-ratio:auto; min-height:38rem; background:linear-gradient(180deg,#e8d8c6 0%,#e6d6c4 45%,#ddcdbf 55%,#dbcbbd 100%); }
+  .fleet-page .vehicle-image-wrap img { inset:auto 0 auto 0; top:50%; height:auto; aspect-ratio:16 / 10; transform:translateY(-50%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 9%,#000 91%,transparent 100%); mask-image:linear-gradient(180deg,transparent 0,#000 9%,#000 91%,transparent 100%); }
+}
+@media (max-width:41.99rem) {
+  .fleet-gallery .fg-img { aspect-ratio:16 / 10; }
+}

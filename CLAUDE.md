@@ -9,8 +9,11 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - Do not invent prices, testimonials, availability, vehicle specifications, business contact details or operating hours.
 - The confirmed company-owned fleet models are a **2025 Mercedes-Benz EQE SUV** and a **2025 Mercedes-Benz EQS SUV** (white; confirmed by Juwan on 14 Oct 2026). The proposal also lists a 2026 BMW iX, 2025 BMW i5, Mercedes-Benz EQE sedan, Range Rover Sport and Toyota Hiace. Treat these as proposal-listed options until ownership, specification and availability are confirmed.
 - The proposal's Nissan Serena is a **luggage vehicle, not part of the passenger fleet** (Juwan, 14 Oct 2026). Keep it out of the fleet gallery, slideshow and vehicle lists.
-- The home-page hero is a slideshow of every fleet model (owner's request, 14 Oct 2026), starting with the white EQS SUV. Each slide is labelled "company fleet" or "fleet option" plus "reference image". The Fleet page gallery uses the same photos (`assets/images/fleet/`, plus `eqe-suv.jpg`).
-  - All are licensed Wikimedia Commons reference photos. Their credits are in the footer of `index.html` and `fleet.html` and in the README; keep them in step when photos change.
+- The home-page hero is a slideshow of every fleet model (owner's request, 14 Oct 2026), starting with the white EQS SUV. Each slide is labelled "company fleet" or "fleet option" plus "reference image". The slideshow photos are in `assets/images/fleet/*.jpg`, plus `eqe-suv.jpg`.
+  - All are licensed Wikimedia Commons reference photos. Their credits are in the footer of `index.html` and in the README; keep them in step when photos change.
+  - The Fleet page doesn't use these photos. Since 17 Oct 2026 it uses the seven illustrative 1600x1000 WebP studio images Juwan supplied (`assets/images/fleet/*.webp`, listed in the README).
+    - Keep their "Illustrative model reference" labels and the footer disclosure.
+    - The featured EQE SUV image is never cropped. Below 80rem it stacks above the details; from 80rem it sits whole in the side column. The rules are in the "Fleet artwork" block of `luxury-refresh.css`.
   - Replace photos with the client's own as they arrive (her white EQS SUV first).
   - The slideshow pauses on hover, in hidden tabs, with its pause button, and for reduced motion. Each slide loads just before its turn (`data-src`).
 - Clearly separate company-owned vehicles from vehicles supplied by partner operators.
