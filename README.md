@@ -48,13 +48,11 @@ Before connecting the final domain:
 ## Client information still required
 
 - Confirm which proposal-listed vehicles are company-owned, partner-supplied or examples only
-- Exact trims, colours, passenger/luggage capacity and live availability for every active vehicle
-- Original fleet photographs or approvals for final licensed reference imagery
-- Booking email (phone/WhatsApp +1 246 231 2679 received 14 Oct 2026)
-- Payment provider and whether payment means deposit, full prepayment or pay-by-link
+- Business email: **info@ridewithhr.com**, being set up (phone/WhatsApp +1 246 231 2679 received 14 Oct 2026)
+- Payments: she already takes card payments and sends payment links after pricing; Juwan wants this built into the site with a backend (separate scope, to be quoted)
 - Confirmed domain ownership and DNS access
 - Public business address/service hours, if the client wants them displayed
-- Cancellation, privacy and booking terms
+- Booking terms still open: data-protection contact, any deposit, cancellation, waiting time (retention is 4 weeks; payment by card, cash or bank transfer)
 
 ## Scope guardrail
 

@@ -18,11 +18,9 @@ window.RIDE_WITH_HR = {
     // "preview" only shows a copyable summary. Provider integrations are a later scope.
     mode: "whatsapp",
     paymentEnabled: false,
-    // Prices from Juwan, 14 Oct 2026: same price to or from the airport, all in. Also written into
-    // index.html, services.html and the airport note on enquire.html; change them all together.
-    arrivalMeetAndGreetUSD: 40, // compulsory on every airport arrival (already inside the prices below)
-    airportPricesUSD: { southCoast: 100, eastCoast: 120, westCoast: 125, northWest: 150 }, // cars; van rates on request
-    luggageVehicleUSD: 75, // optional extra; also written into the luggage tick box on enquire.html
+    // No prices on the site (Juwan, 18 Oct 2026): the owner prices each journey after the request.
+    // Prices stay in the private notes repo (docs/pricing.md).
+    arrivalMeetAndGreet: true, // every airport arrival includes a meet-and-greet
   },
   fleet: [
     {

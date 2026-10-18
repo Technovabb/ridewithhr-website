@@ -7,8 +7,10 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - The business is **H&R Executive Services**, the name in its logo (Juwan, 17 Oct 2026). `ridewithhr.com` is only the web address (the available domain they chose). Earlier notes called it "H&R Transport" and "Ride With HR"; don't use either name on the site.
 - The logo files are in `assets/images/brand/`: the full logo, the dark-background version, the monogram (favicon), and `hr-executive-services-mark.svg` (the logo panel without the tagline, for the header). They are vector reconstructions of the client's logo; don't change the wording, colours or proportions without her approval.
 - Do not change the company name for SEO. Use local phrases naturally: Barbados airport transfer, Barbados chauffeur, private driver Barbados, executive transport Barbados, and Grantley Adams airport transfer.
+- **No prices on the site** (Juwan, 18 Oct 2026). She prices each journey after the request and sends the price and a payment link herself. Prices stay in the private notes repo only. Payment methods: card, cash and bank transfer.
+- Passenger/luggage capacity and her own car photos are **not needed**: she assigns the right vehicle for each request. The "20+ years" collective tourism experience is confirmed accurate (18 Oct 2026).
 - Do not invent prices, testimonials, availability, vehicle specifications, business contact details or operating hours.
-- The confirmed company-owned fleet models are a **2025 Mercedes-Benz EQE SUV** and a **2025 Mercedes-Benz EQS SUV** (white; confirmed by Juwan on 14 Oct 2026) and a **charcoal BMW i5** (her own car, confirmed by Juwan on 17 Oct 2026; model year not given, so don't state one). The proposal also lists a 2026 BMW iX, 2025 BMW i5, Mercedes-Benz EQE sedan, Range Rover Sport and Toyota Hiace. Treat these as proposal-listed options until ownership, specification and availability are confirmed.
+- The confirmed company-owned fleet models are a **2025 Mercedes-Benz EQE SUV** and a **2025 Mercedes-Benz EQS SUV** (white; confirmed by Juwan on 14 Oct 2026) and a **charcoal BMW i5** (her own car, confirmed by Juwan on 17 Oct 2026; model year not given, so don't state one). The proposal also lists a 2026 BMW iX, 2025 BMW i5, Mercedes-Benz EQE sedan, Range Rover Sport and Toyota Hiace. Juwan (18 Oct 2026): they are hers, but not solely hers, so leave them listed as they are.
 - The proposal's Nissan Serena is a **luggage vehicle, not part of the passenger fleet** (Juwan, 14 Oct 2026). Keep it out of the fleet gallery and vehicle lists.
 - The home-page hero is a single illustrative backdrop (`assets/images/hero/barbados-luxury-arrival-blank-plate.webp`, mobile `barbados-luxury-arrival-mobile-blank-plate.webp`, set in `luxury-refresh.css`). The earlier fleet slideshow was removed in the October 2026 redesign.
   - The `-blank-plate` versions (17 Oct 2026) are the `-branded` artwork with the old "RIDE WITH HR" number plate painted out. Never put a business name on a car plate; it would present the artwork as her own vehicle.
@@ -38,8 +40,8 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 ## Privacy and booking terms
 
 - `privacy.html` and `terms.html` are drafts (14 Oct 2026). They are linked from every footer and from the form's consent box.
-- Policy points the client hasn't given are marked with `<span class="tbc">… to be confirmed …</span>`: retention period, data-protection contact, payment methods/deposit, cancellation, waiting time. Never fill these in with guesses. Replace each with her wording, then remove the "draft" ribbon and notice.
-- Keep the prices in `terms.html` in step with `index.html`, `services.html`, `enquire.html` and `content.js`.
+- Answered 18 Oct 2026: enquiry details are kept for 4 weeks; payment by card, cash or bank transfer. Still marked `<span class="tbc">… to be confirmed …</span>`: data-protection contact, any deposit, cancellation, waiting time. Never fill these in with guesses. Replace each with her wording, then remove the "draft" ribbon and notice.
+- The terms say how prices work (priced per request), not the prices themselves.
 
 ## Before production launch
 

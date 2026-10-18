@@ -2,7 +2,7 @@
   "use strict";
 
   var config = window.RIDE_WITH_HR || {};
-  var meetAndGreetUSD = config.booking && config.booking.arrivalMeetAndGreetUSD;
+  var meetAndGreet = config.booking && config.booking.arrivalMeetAndGreet;
   var header = document.querySelector("[data-header]");
   var nav = document.querySelector("[data-nav]");
   var navToggle = document.querySelector("[data-nav-toggle]");
@@ -138,8 +138,8 @@
         : key === "flightTime" ? (isDeparture ? "Flight departs" : "Flight lands")
         : labelFor(key);
       if (value) lines.push(label + ": " + value);
-      if (key === "service" && value === "Airport arrival" && meetAndGreetUSD) {
-        lines.push("Meet-and-greet: US$" + meetAndGreetUSD + " (included with every airport arrival)");
+      if (key === "service" && value === "Airport arrival" && meetAndGreet) {
+        lines.push("Meet-and-greet: included with every airport arrival");
       }
     });
     lines.push("", "This is an enquiry only. Journey, vehicle, price and availability are still to be confirmed.");
@@ -162,7 +162,7 @@
       if (target && value) target.value = value.slice(0, 120);
     });
 
-    // Airport prices (and the arrivals-only meet-and-greet) show for airport arrivals and departures.
+    // The airport note (the meet-and-greet) shows for airport arrivals and departures.
     var airportNote = form.querySelector("[data-airport-note]");
     var toggleAirportNote = function () {
       if (airportNote && serviceInput) airportNote.hidden = serviceInput.value.indexOf("Airport") !== 0;
