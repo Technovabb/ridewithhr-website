@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://technovabb.com/ridewithhr-website/sitemap.xml
+Sitemap: https://ridewithhr.com/sitemap.xml

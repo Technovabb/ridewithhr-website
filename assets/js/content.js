@@ -11,7 +11,7 @@ window.RIDE_WITH_HR = {
     email: "renne@ridewithhr.com", // enquiry copies go here for now (Juwan, 18 Oct 2026); switch to info@ridewithhr.com once that shared mailbox exists.
     phone: "+12462312679", // +1 (246) 231-2679 takes calls too (Juwan, 14 Oct 2026). Hard-coded as tel: links in the footers and on enquire.html.
     whatsapp: "12462312679", // +1 (246) 231-2679, digits only for wa.me links (from Juwan, 14 Oct 2026). Also hard-coded in each page's footer and floating button.
-    website: "", // Add https://ridewithhr.com only after the domain is purchased and connected.
+    website: "https://ridewithhr.com", // live domain (GitHub Pages custom domain, Oct 2026)
   },
   booking: {
     // "whatsapp" opens WhatsApp with the enquiry ready to send; "email" opens a mail to business.email;
