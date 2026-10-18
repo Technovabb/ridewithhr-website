@@ -34,6 +34,7 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - `assets/js/content.js` is the lightweight editable content/config layer.
 - The primary navigation must continue to link to standalone pages: Home, Services, Fleet, About and Enquire.
 - The booking form sends enquiries by **WhatsApp** to +1 (246) 231-2679 (`booking.mode: "whatsapp"`, supplied by Juwan on 14 Oct 2026). It opens a pre-filled chat and the customer presses send; it does not book or take payment. The same number also takes calls (confirmed 14 Oct 2026). It's hard-coded in each page's footer (call + WhatsApp), the floating WhatsApp button and the call line on `enquire.html`; change them all together.
+- Every enquiry also gets a reference (HR-YYMMDD-NNNN) and an **email copy** to `business.email` in content.js (renne@ridewithhr.com for now; info@ once that shared mailbox exists), sent through FormSubmit's AJAX endpoint (`booking.emailCopy`). FormSubmit needs a one-time activation click in that inbox, and it answers 200 even on failure, so check the JSON `success` field. A hidden `_honey` field traps bots. The privacy notice names FormSubmit.
 - GitHub Pages is the intended preview host. All URLs are relative so project-site paths work.
 - Preserve accessibility, responsive behavior and reduced-motion support.
 

@@ -122,8 +122,47 @@
     return labels[name] || name;
   }
 
-  function buildSummary(data, heading) {
+  // A short reference shared by the WhatsApp message and the email copy, e.g. HR-261018-4821.
+  function makeReference() {
+    var d = new Date();
+    var ymd = String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0");
+    return "HR-" + ymd + "-" + String(Math.floor(1000 + Math.random() * 9000));
+  }
+
+  // Every enquiry is also emailed to the business through FormSubmit (form-to-email service).
+  // FormSubmit answers 200 even when it fails, so the JSON "success" field is what counts.
+  // keepalive lets the request finish even if the page hands over to the WhatsApp app.
+  function sendEmailCopy(form, summary, reference) {
+    var to = config.business && config.business.email;
+    if (!to || !(config.booking && config.booking.emailCopy) || !window.fetch) return;
+    var data = new FormData(form);
+    var payload = {
+      _subject: "Website enquiry " + reference + " (" + (data.get("service") || "journey") + ")",
+      _template: "box",
+      _honey: data.get("_honey") || "",
+      reference: reference,
+      name: data.get("name") || "",
+      email: data.get("email") || "",
+      enquiry: summary
+    };
+    if (data.get("email")) {
+      payload._replyto = data.get("email");
+      payload._autoresponse = "Thank you for your enquiry to H&R Executive Services (reference " + reference + "). " +
+        "We'll reply with your price and confirmation. Nothing is booked until we confirm it.";
+    }
+    fetch("https://formsubmit.co/ajax/" + to, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).then(function (response) { return response.json(); }).then(function (result) {
+      if (String(result.success) !== "true" && window.console) console.warn("Enquiry email copy not sent:", result.message);
+    }).catch(function () {});
+  }
+
+  function buildSummary(data, heading, reference) {
     var lines = [heading || "H&R EXECUTIVE SERVICES — TRANSPORT ENQUIRY", ""];
+    if (reference) lines.push("Reference: " + reference);
     ["service", "trip", "pickup", "destination", "date", "time", "returnDate", "returnTime", "passengers", "suitcases", "childSeats",
       "vehicle", "luggageVehicle", "airline", "flight", "flightRoute", "flightTime", "name", "email", "notes"].forEach(function (key) {
       var value = String(data.get(key) || "").trim();
@@ -253,13 +292,15 @@
       // WhatsApp: open a chat with the enquiry typed in; the customer presses send.
       // A new tab keeps the site open on desktop; phones hand over to the WhatsApp app.
       if (mode === "whatsapp" && whatsapp) {
-        var message = buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:");
+        var reference = makeReference();
+        var message = buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:", reference);
+        sendEmailCopy(form, buildSummary(new FormData(form), null, reference), reference);
         var waUrl = "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message);
         var waWindow = window.open(waUrl, "_blank");
         if (waWindow) waWindow.opener = null;
         else window.location.href = waUrl;
         status.classList.add("is-ok");
-        status.textContent = "WhatsApp is opening with your details. Press send there to reach us.";
+        status.textContent = "WhatsApp is opening with your details (reference " + reference + "). Press send there to reach us.";
         var retry = document.createElement("a");
         retry.href = waUrl;
         retry.target = "_blank";

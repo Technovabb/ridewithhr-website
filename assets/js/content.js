@@ -8,7 +8,7 @@ window.RIDE_WITH_HR = {
   business: {
     legalName: "", // registered legal name to be confirmed by the client
     brandName: "H&R Executive Services",
-    email: "", // Add the confirmed booking email to enable mail delivery.
+    email: "renne@ridewithhr.com", // enquiry copies go here for now (Juwan, 18 Oct 2026); switch to info@ridewithhr.com once that shared mailbox exists.
     phone: "+12462312679", // +1 (246) 231-2679 takes calls too (Juwan, 14 Oct 2026). Hard-coded as tel: links in the footers and on enquire.html.
     whatsapp: "12462312679", // +1 (246) 231-2679, digits only for wa.me links (from Juwan, 14 Oct 2026). Also hard-coded in each page's footer and floating button.
     website: "", // Add https://ridewithhr.com only after the domain is purchased and connected.
@@ -17,6 +17,7 @@ window.RIDE_WITH_HR = {
     // "whatsapp" opens WhatsApp with the enquiry ready to send; "email" opens a mail to business.email;
     // "preview" only shows a copyable summary. Provider integrations are a later scope.
     mode: "whatsapp",
+    emailCopy: true, // also email each enquiry to business.email through FormSubmit (needs a one-time activation click in that inbox)
     paymentEnabled: false,
     // No prices on the site (Juwan, 18 Oct 2026): the owner prices each journey after the request.
     // Prices stay in the private notes repo (docs/pricing.md).

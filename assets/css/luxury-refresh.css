@@ -737,3 +737,6 @@ html.lb-open { overflow:hidden; }
 /* Enquiry form: "Flight details" sub-heading, shown for airport journeys only (app.js). */
 .form-subhead { margin:.6rem 0 -.3rem; color:#8b6b43; font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
 .form-subhead span { color:#6b6f71; font-weight:500; letter-spacing:0; text-transform:none; }
+
+/* Enquiry form spam trap: a field people never see; bots that fill it are dropped by FormSubmit. */
+.hp-field { position:absolute !important; left:-9999px !important; width:1px; height:1px; opacity:0; }
