@@ -733,3 +733,7 @@ html.lb-open { overflow:hidden; }
 .home-fleet-image img { min-height:0; height:auto; aspect-ratio:16 / 10; object-fit:cover; object-position:50% 50%; filter:none; }
 .home-fleet-image figcaption { top:.75rem; right:auto; bottom:auto; left:.75rem; max-width:calc(100% - 1.5rem); padding:.32rem .65rem; border-radius:999px; background:rgba(33,35,36,.74); font-size:.62rem; text-align:left; }
 @media (max-width:41.99rem) { .home-fleet-image figcaption .fc-more { display:none; } }
+
+/* Enquiry form: "Flight details" sub-heading, shown for airport journeys only (app.js). */
+.form-subhead { margin:.6rem 0 -.3rem; color:#8b6b43; font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+.form-subhead span { color:#6b6f71; font-weight:500; letter-spacing:0; text-transform:none; }

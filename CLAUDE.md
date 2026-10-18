@@ -15,11 +15,13 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
   - The hero note says it's illustrative campaign artwork; keep that note.
 - Fleet page images: since 17 Oct 2026 the Fleet page uses the seven illustrative 1600x1000 WebP studio images Juwan supplied (`assets/images/fleet/*.webp`, listed in the README).
   - Keep their "Illustrative model reference" labels and the footer disclosure.
+  - There are two BMW i5 cards: white and charcoal. The charcoal one was added at the client's request (17 Oct 2026); whether it is her own car or a partner's is still to be confirmed.
   - The featured EQE SUV image is never cropped. Below 80rem it stacks above the details; from 80rem it sits whole in the side column. The rules are in the "Fleet artwork" block of `luxury-refresh.css`.
   - Clicking any fleet image opens a larger viewer (Juwan, 17 Oct 2026). It's built by `app.js` from the gallery figures and styled under "Fleet image viewer" in `luxury-refresh.css`.
     - Arrows, keys and swipe move between cars. Esc, the close button or a click outside closes it.
     - The viewer caption keeps the "Illustrative model reference" note and the "Request this vehicle" link.
 - The home page's "Our own fleet" image and every page's link preview also use the studio EQS SUV image (`mercedes-eqs-suv.webp`, `mercedes-eqs-suv-share.jpg`). The older Wikimedia photos in `assets/images/fleet/*.jpg` (plus `eqe-suv.jpg`) are no longer shown anywhere; their credits are kept in the README. Replace all of these with the client's own photos as they arrive (her white EQS SUV first).
+- The enquiry form has a "Flight details" group (airline, flight number, arriving from / flying to, scheduled time). It shows only for airport services, and its labels switch between arrival and departure (app.js); its values go into the WhatsApp message.
 - Clearly separate company-owned vehicles from vehicles supplied by partner operators.
 - Any non-client fleet photo must remain labeled as reference imagery and must have suitable commercial-use rights plus attribution where required.
 - Do not say online payment is enabled until a provider, credentials and payment workflow have been supplied.

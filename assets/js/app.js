@@ -117,7 +117,7 @@
       service: "Service", pickup: "Pick-up", destination: "Destination",
       date: "Date", time: "Preferred time", trip: "Trip", returnDate: "Return date", returnTime: "Return time",
       passengers: "Passengers", suitcases: "Suitcases", childSeats: "Child seats", vehicle: "Vehicle",
-      luggageVehicle: "Luggage vehicle", flight: "Flight number", name: "Name", email: "Email", notes: "Notes"
+      luggageVehicle: "Luggage vehicle", airline: "Airline", flight: "Flight number", name: "Name", email: "Email", notes: "Notes"
     };
     return labels[name] || name;
   }
@@ -125,14 +125,19 @@
   function buildSummary(data, heading) {
     var lines = [heading || "H&R EXECUTIVE SERVICES — TRANSPORT ENQUIRY", ""];
     ["service", "trip", "pickup", "destination", "date", "time", "returnDate", "returnTime", "passengers", "suitcases", "childSeats",
-      "vehicle", "luggageVehicle", "flight", "name", "email", "notes"].forEach(function (key) {
+      "vehicle", "luggageVehicle", "airline", "flight", "flightRoute", "flightTime", "name", "email", "notes"].forEach(function (key) {
       var value = String(data.get(key) || "").trim();
       if (key === "childSeats" && value === "0") value = "";
       if ((key === "date" || key === "returnDate") && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
         var parts = value.split("-");
         value = new Date(+parts[0], +parts[1] - 1, +parts[2]).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
       }
-      if (value) lines.push(labelFor(key) + ": " + value);
+      // Flight labels follow the service: where an arriving flight comes from, or where a departing one goes.
+      var isDeparture = data.get("service") === "Airport departure";
+      var label = key === "flightRoute" ? (isDeparture ? "Flying to" : "Arriving from")
+        : key === "flightTime" ? (isDeparture ? "Flight departs" : "Flight lands")
+        : labelFor(key);
+      if (value) lines.push(label + ": " + value);
       if (key === "service" && value === "Airport arrival" && meetAndGreetUSD) {
         lines.push("Meet-and-greet: US$" + meetAndGreetUSD + " (included with every airport arrival)");
       }
@@ -164,6 +169,26 @@
     };
     if (serviceInput) serviceInput.addEventListener("change", toggleAirportNote);
     toggleAirportNote();
+
+    // Flight details show only for airport journeys (hidden fields are disabled, so they stay out of the message).
+    // The labels follow the service: arriving from / landing time, or flying to / departure time.
+    var flightFields = form.querySelectorAll("[data-flight-field]");
+    var toggleFlight = function () {
+      var service = serviceInput ? serviceInput.value : "";
+      var isAirport = service.indexOf("Airport") === 0;
+      var isDeparture = service === "Airport departure";
+      flightFields.forEach(function (field) {
+        field.hidden = !isAirport;
+        var input = field.querySelector("input");
+        if (input) input.disabled = !isAirport;
+      });
+      var routeLabel = form.querySelector("[data-flight-route-label]");
+      var timeLabel = form.querySelector("[data-flight-time-label]");
+      if (routeLabel) routeLabel.textContent = isDeparture ? "Flying to" : "Arriving from";
+      if (timeLabel) timeLabel.textContent = isDeparture ? "Scheduled departure time" : "Scheduled landing time";
+    };
+    if (serviceInput) serviceInput.addEventListener("change", toggleFlight);
+    toggleFlight();
 
     // "Request this vehicle" links pass ?vehicle=; add it as an option if the list doesn't already have it.
     var vehicleInput = form.querySelector("#vehicle");
