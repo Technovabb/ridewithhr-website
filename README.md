@@ -30,27 +30,21 @@ The business number (+1 246 231 2679, WhatsApp and calls) is also hard-coded in 
 - White vehicle model references are used for the BMW iX, BMW i5, EQE sedan and Range Rover via Wikimedia Commons `Special:FilePath` links. EQS SUV, EQE SUV and Toyota Hiace continue using locally held white-vehicle references. **All seven are illustrative model photos, not client fleet photographs.**
 - Wikimedia Commons links are intentionally external. Download appropriately licensed/approved final images to the local assets folder before launch to eliminate third-party network dependence, retaining license credits.
 - Update all pages' `luxury-refresh.css?v=1` cache key together after future style changes.
-- Confirm whether the site at `technovabb.com/ridewithhr-website/` automatically syncs from this repository. GitHub commits alone do **not** establish that deployment; if the folder is uploaded manually, it needs a separate publish step.
 - Follow up for complete client fleet photography and approved commercial/terms details. Do not imply online payment or confirmed partner-vehicle availability.
 
 ## Deployment
 
-The site is compatible with GitHub Pages because it is a static site with relative asset paths. GitHub Pages can publish directly from the repository's `main` branch and root folder.
+The site is live at **https://ridewithhr.com** (18 Oct 2026). GitHub Pages publishes it from this repository's `main` branch and root folder, so every push to `main` goes live within about a minute. HTTPS is enforced, and the old `technovabb.com/ridewithhr-website/` addresses redirect to the new domain.
 
-Before connecting the final domain:
-
-1. Confirm that `ridewithhr.com` has been purchased and decide which account controls DNS.
-2. Add the final URL to `business.website` in `assets/js/content.js`.
-3. Add canonical and Open Graph URL metadata to every HTML page.
-4. Add a `CNAME` file only after DNS ownership is confirmed.
-5. Generate `sitemap.xml` with the final production URL and update `robots.txt`.
+- `CNAME` holds `ridewithhr.com`. Don't remove it, or the site drops back to the Technovabb address.
+- DNS is at Namecheap: four GitHub Pages A records on `@` (185.199.108.153 to 185.199.111.153) and `www` as a CNAME to `technovabb.github.io`. The mail records (MX, SPF, autodiscover) belong to Microsoft 365; leave them alone.
+- Canonical, Open Graph, `sitemap.xml`, `robots.txt` and `business.website` all use `https://ridewithhr.com/`.
 
 ## Client information still required
 
 - Confirm which proposal-listed vehicles are company-owned, partner-supplied or examples only
 - Business email: **info@ridewithhr.com**, being set up (phone/WhatsApp +1 246 231 2679 received 14 Oct 2026)
 - Payments: she already takes card payments and sends payment links after pricing; Juwan wants this built into the site with a backend (separate scope, to be quoted)
-- Confirmed domain ownership and DNS access
 - Public business address/service hours, if the client wants them displayed
 - Booking terms still open: data-protection contact, any deposit, cancellation, waiting time (retention is 4 weeks; payment by card, cash or bank transfer)
 
