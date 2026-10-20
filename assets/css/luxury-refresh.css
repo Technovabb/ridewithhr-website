@@ -617,7 +617,7 @@ h2,h3 { text-wrap:balance; }
 .hero-cinematic-backdrop {
   background-image:
     linear-gradient(90deg,rgba(8,11,13,.96) 0%,rgba(10,13,15,.83) 31%,rgba(11,14,16,.48) 49%,rgba(12,14,15,.12) 74%,rgba(12,14,15,.08) 100%),
-    url("../images/hero/barbados-luxury-arrival-blank-plate.webp");
+    url("../images/hero/barbados-luxury-arrival-branded.webp");
   background-position:center,center;
   background-size:cover;
 }
@@ -644,7 +644,7 @@ h2,h3 { text-wrap:balance; }
   .hero-cinematic-backdrop {
     background-image:
       linear-gradient(180deg,rgba(8,11,13,.95) 0%,rgba(9,12,14,.84) 39%,rgba(10,13,15,.28) 64%,rgba(8,11,13,.72) 100%),
-      url("../images/hero/barbados-luxury-arrival-mobile-blank-plate.webp");
+      url("../images/hero/barbados-luxury-arrival-mobile-branded.webp");
     background-position:center 58%;
     background-size:cover;
   }

@@ -10,16 +10,21 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - **No prices on the site** (Juwan, 18 Oct 2026). She prices each journey after the request and sends the price and a payment link herself. Prices stay in the private notes repo only. Payment methods: card, cash and bank transfer.
 - Passenger/luggage capacity and her own car photos are **not needed**: she assigns the right vehicle for each request. The "20+ years" collective tourism experience is confirmed accurate (18 Oct 2026).
 - Do not invent prices, testimonials, availability, vehicle specifications, business contact details or operating hours.
-- Her own (company-owned) cars are exactly two: a **white 2025 Mercedes-Benz EQE SUV** and a **charcoal 2026 BMW i5** (Juwan: i5 is her own car, 17 Oct 2026; it's a 2026, 19 Oct 2026).
-  - She has **no EQS SUV**: her only Mercedes is the EQE SUV (Juwan, 19 Oct 2026). Earlier notes calling the EQS hers were wrong. The EQS SUV stays on the Fleet page only as a "Fleet option, to confirm".
-  - The proposal also lists a 2026 BMW iX, 2025 BMW i5, Mercedes-Benz EQE sedan, Range Rover Sport and Toyota Hiace. Juwan (18 Oct 2026): they are hers, but not solely hers, so leave them listed as they are.
+- Her company fleet is four vehicles:
+  - a **white 2025 Mercedes-Benz EQE SUV**
+  - a **charcoal 2026 BMW i5** (her own car, 17 Oct 2026; a 2026, 19 Oct 2026)
+  - a **2026 BMW iX** and a **Toyota Hiace** (Renne, via Juwan, 20 Oct 2026; the iX year comes from her proposal)
+
+  The three cars are electric; the Hiace is not, so don't call the whole fleet "fully electric".
+  - She has **no EQS SUV**: her only Mercedes is the EQE SUV (Juwan, 19 Oct 2026). The EQS SUV stays on the Fleet page only as a "Fleet option, to confirm".
+  - The proposal also lists a 2025 BMW i5 (white), Mercedes-Benz EQE sedan and Range Rover Sport. They stay listed as fleet options (Juwan, 18 Oct 2026: hers, but not solely hers).
 - The proposal's Nissan Serena is a **luggage vehicle, not part of the passenger fleet** (Juwan, 14 Oct 2026). Keep it out of the fleet gallery and vehicle lists.
-- The home-page hero is a single illustrative backdrop (`assets/images/hero/barbados-luxury-arrival-blank-plate.webp`, mobile `barbados-luxury-arrival-mobile-blank-plate.webp`, set in `luxury-refresh.css`). The earlier fleet slideshow was removed in the October 2026 redesign.
-  - The `-blank-plate` versions (17 Oct 2026) are the `-branded` artwork with the old "RIDE WITH HR" number plate painted out. Never put a business name on a car plate; it would present the artwork as her own vehicle.
+- The home-page hero is a single illustrative backdrop (`assets/images/hero/barbados-luxury-arrival-branded.webp`, mobile `barbados-luxury-arrival-mobile-branded.webp`, set in `luxury-refresh.css`). The earlier fleet slideshow was removed in the October 2026 redesign.
+  - The **"RIDE WITH HR" plate is back** at the client's request (Renne, via Juwan, 20 Oct 2026). The `-blank-plate` versions (plate painted out, 17 Oct 2026) are kept but unused.
   - The hero note says it's illustrative campaign artwork; keep that note.
 - Fleet page images: since 17 Oct 2026 the Fleet page uses the seven illustrative 1600x1000 WebP studio images Juwan supplied (`assets/images/fleet/*.webp`, listed in the README).
   - Keep their "Illustrative model reference" labels and the footer disclosure.
-  - Card order: her two cars first (EQE SUV, then charcoal BMW i5, both tagged "Company fleet"), then the fleet options, starting with the EQS SUV.
+  - Card order: her four company vehicles first (EQE SUV, charcoal BMW i5, BMW iX, Toyota Hiace, all tagged "Company fleet"), then the fleet options (EQS SUV, white BMW i5, EQE saloon, Range Rover Sport).
   - Customers don't choose a vehicle (Juwan with the client, 20 Oct 2026): she assigns it. The enquiry form has no vehicle field, and every fleet card, the featured car and the image viewer link to the plain form as "Plan a journey". The optional luggage-vehicle tick box stays.
   - There are two BMW i5 cards. The charcoal one is hers; the white one is still a proposal-listed option.
   - The featured EQE SUV image is never cropped. Below 80rem it stacks above the details; from 80rem it sits whole in the side column. The rules are in the "Fleet artwork" block of `luxury-refresh.css`.
