@@ -13,14 +13,14 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - Her company fleet is four vehicles:
   - a **white 2025 Mercedes-Benz EQE SUV**
   - a **charcoal 2026 BMW i5** (her own car, 17 Oct 2026; a 2026, 19 Oct 2026)
-  - a **2026 BMW iX** and a **Toyota Hiace** (Renne, via Juwan, 20 Oct 2026; the iX year comes from her proposal)
+  - a **2026 BMW iX** and a **Toyota Hiace** (Renee, via Juwan, 20 Oct 2026; the iX year comes from her proposal)
 
   The three cars are electric; the Hiace is not, so don't call the whole fleet "fully electric".
   - She has **no EQS SUV**: her only Mercedes is the EQE SUV (Juwan, 19 Oct 2026). The EQS SUV stays on the Fleet page only as a "Fleet option, to confirm".
   - The proposal also lists a 2025 BMW i5 (white), Mercedes-Benz EQE sedan and Range Rover Sport. They stay listed as fleet options (Juwan, 18 Oct 2026: hers, but not solely hers).
 - The proposal's Nissan Serena is a **luggage vehicle, not part of the passenger fleet** (Juwan, 14 Oct 2026). Keep it out of the fleet gallery and vehicle lists.
 - The home-page hero is a single illustrative backdrop (`assets/images/hero/barbados-luxury-arrival-branded.webp`, mobile `barbados-luxury-arrival-mobile-branded.webp`, set in `luxury-refresh.css`). The earlier fleet slideshow was removed in the October 2026 redesign.
-  - The **"RIDE WITH HR" plate is back** at the client's request (Renne, via Juwan, 20 Oct 2026). The `-blank-plate` versions (plate painted out, 17 Oct 2026) are kept but unused.
+  - The **"RIDE WITH HR" plate is back** at the client's request (Renee, via Juwan, 20 Oct 2026). The `-blank-plate` versions (plate painted out, 17 Oct 2026) are kept but unused.
   - The hero note says it's illustrative campaign artwork; keep that note.
 - Fleet page images: since 17 Oct 2026 the Fleet page uses the seven illustrative 1600x1000 WebP studio images Juwan supplied (`assets/images/fleet/*.webp`, listed in the README).
   - Keep their "Illustrative model reference" labels and the footer disclosure.
@@ -43,7 +43,7 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - `assets/js/content.js` is the lightweight editable content/config layer.
 - The primary navigation must continue to link to standalone pages: Home, Services, Fleet, About and Enquire.
 - The booking form sends enquiries by **WhatsApp** to +1 (246) 231-2679 (`booking.mode: "whatsapp"`, supplied by Juwan on 14 Oct 2026). It opens a pre-filled chat and the customer presses send; it does not book or take payment. The same number also takes calls (confirmed 14 Oct 2026). It's hard-coded in each page's footer (call + WhatsApp), the floating WhatsApp button and the call line on `enquire.html`; change them all together.
-- Every enquiry also gets a reference (HR-YYMMDD-NNNN) and an **email copy** to `business.email` in content.js (renne@ridewithhr.com for now; info@ once that shared mailbox exists), sent through FormSubmit's AJAX endpoint (`booking.emailCopy`). FormSubmit needs a one-time activation click in that inbox, and it answers 200 even on failure, so check the JSON `success` field. A hidden `_honey` field traps bots. The privacy notice names FormSubmit.
+- Every enquiry also gets a reference (HR-YYMMDD-NNNN) and an **email copy** to `business.email` in content.js (renee@ridewithhr.com for now; info@ once that shared mailbox exists), sent through FormSubmit's AJAX endpoint (`booking.emailCopy`). FormSubmit needs a one-time activation click in that inbox, and it answers 200 even on failure, so check the JSON `success` field. A hidden `_honey` field traps bots. The privacy notice names FormSubmit.
 - The site is live at https://ridewithhr.com on GitHub Pages (from `main`, root; `CNAME` file; HTTPS enforced). Every push to `main` goes live. Asset links stay relative.
 - Preserve accessibility, responsive behavior and reduced-motion support.
 

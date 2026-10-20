@@ -8,7 +8,7 @@ window.RIDE_WITH_HR = {
   business: {
     legalName: "", // registered legal name to be confirmed by the client
     brandName: "H&R Executive Services",
-    email: "renne@ridewithhr.com", // enquiry copies go here for now (Juwan, 18 Oct 2026); switch to info@ridewithhr.com once that shared mailbox exists.
+    email: "renee@ridewithhr.com", // enquiry copies go here for now (Juwan, 18 Oct 2026); switch to info@ridewithhr.com once that shared mailbox exists.
     phone: "+12462312679", // +1 (246) 231-2679 takes calls too (Juwan, 14 Oct 2026). Hard-coded as tel: links in the footers and on enquire.html.
     whatsapp: "12462312679", // +1 (246) 231-2679, digits only for wa.me links (from Juwan, 14 Oct 2026). Also hard-coded in each page's footer and floating button.
     website: "https://ridewithhr.com", // live domain (GitHub Pages custom domain, Oct 2026)
@@ -32,7 +32,7 @@ window.RIDE_WITH_HR = {
       availability: "confirm-per-journey",
       imageType: "licensed-reference",
     },
-    { year: "2026", make: "BMW", model: "iX", relationship: "company-owned" }, // her company fleet (Renne via Juwan, 20 Oct 2026); year from her proposal
+    { year: "2026", make: "BMW", model: "iX", relationship: "company-owned" }, // her company fleet (Renee via Juwan, 20 Oct 2026); year from her proposal
     { year: "2025", make: "BMW", model: "i5 (white)", relationship: "proposal-listed-to-confirm" },
     { year: "2026", make: "BMW", model: "i5 (charcoal)", relationship: "company-owned" }, // her own car (Juwan, 17 Oct 2026); 2026 model (Juwan, 19 Oct 2026)
     {
@@ -45,7 +45,7 @@ window.RIDE_WITH_HR = {
     },
     { year: "", make: "Mercedes-Benz", model: "EQE sedan", relationship: "proposal-listed-to-confirm" },
     { year: "", make: "Range Rover", model: "Sport", relationship: "proposal-listed-to-confirm" },
-    { year: "", make: "Toyota", model: "Hiace", relationship: "company-owned" }, // her company fleet (Renne via Juwan, 20 Oct 2026)
+    { year: "", make: "Toyota", model: "Hiace", relationship: "company-owned" }, // her company fleet (Renee via Juwan, 20 Oct 2026)
     // The Nissan Serena is a luggage vehicle, not a passenger fleet vehicle (Juwan, 14 Oct 2026).
   ],
 };
