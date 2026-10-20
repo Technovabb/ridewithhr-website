@@ -8,7 +8,7 @@ window.RIDE_WITH_HR = {
   business: {
     legalName: "", // registered legal name to be confirmed by the client
     brandName: "H&R Executive Services",
-    email: "renee@ridewithhr.com", // enquiry copies go here for now (Juwan, 18 Oct 2026); switch to info@ridewithhr.com once that shared mailbox exists.
+    email: "admin@ridewithhr.com", // shared mailbox for enquiry copies and the site's contact links (Juwan, 20 Oct 2026). FormSubmit needs a one-time activation click in this inbox.
     phone: "+12462312679", // +1 (246) 231-2679 takes calls too (Juwan, 14 Oct 2026). Hard-coded as tel: links in the footers and on enquire.html.
     whatsapp: "12462312679", // +1 (246) 231-2679, digits only for wa.me links (from Juwan, 14 Oct 2026). Also hard-coded in each page's footer and floating button.
     website: "https://ridewithhr.com", // live domain (GitHub Pages custom domain, Oct 2026)

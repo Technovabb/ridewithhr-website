@@ -43,7 +43,7 @@ The site is live at **https://ridewithhr.com** (18 Oct 2026). GitHub Pages publi
 ## Client information still required
 
 - Confirm which proposal-listed vehicles are company-owned, partner-supplied or examples only
-- Business email: **info@ridewithhr.com**, being set up (phone/WhatsApp +1 246 231 2679 received 14 Oct 2026)
+- Business email: **admin@ridewithhr.com** (shared mailbox, live 20 Oct 2026). Phone and WhatsApp: +1 246 231 2679.
 - Payments: she already takes card payments and sends payment links after pricing; Juwan wants this built into the site with a backend (separate scope, to be quoted)
 - Public business address/service hours, if the client wants them displayed
 - Booking terms still open: data-protection contact, any deposit, cancellation, waiting time (retention is 4 weeks; payment by card, cash or bank transfer)
