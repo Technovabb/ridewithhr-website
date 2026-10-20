@@ -229,19 +229,6 @@
     if (serviceInput) serviceInput.addEventListener("change", toggleFlight);
     toggleFlight();
 
-    // "Request this vehicle" links pass ?vehicle=; add it as an option if the list doesn't already have it.
-    var vehicleInput = form.querySelector("#vehicle");
-    var requestedVehicle = (new URLSearchParams(window.location.search).get("vehicle") || "").trim().slice(0, 60);
-    if (vehicleInput && requestedVehicle) {
-      var hasVehicle = Array.from(vehicleInput.options).some(function (option) { return option.value === requestedVehicle; });
-      if (!hasVehicle) {
-        var extraOption = document.createElement("option");
-        extraOption.textContent = requestedVehicle;
-        vehicleInput.appendChild(extraOption);
-      }
-      vehicleInput.value = requestedVehicle;
-    }
-
     var dateInput = form.querySelector("#date");
     var returnDateInput = form.querySelector("#return-date");
     if (dateInput) {
@@ -373,7 +360,7 @@
       '<button class="lb-next" type="button" aria-label="Next vehicle"><span aria-hidden="true">&#8250;</span></button>' +
       '<p class="lb-count"></p></div>' +
       '<div class="lb-caption" aria-live="polite"><strong class="lb-name"></strong><span class="lb-note"></span>' +
-      '<a class="lb-request" href="enquire.html">Request this vehicle <b aria-hidden="true">&rarr;</b></a></div>' +
+      '<a class="lb-request" href="enquire.html">Plan a journey <b aria-hidden="true">&rarr;</b></a></div>' +
       '<button class="lb-close" type="button" aria-label="Close the image viewer"><span aria-hidden="true">&times;</span></button>';
     document.body.appendChild(viewer);
     var viewerImg = viewer.querySelector(".lb-img");

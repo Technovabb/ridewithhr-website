@@ -19,12 +19,13 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
   - The hero note says it's illustrative campaign artwork; keep that note.
 - Fleet page images: since 17 Oct 2026 the Fleet page uses the seven illustrative 1600x1000 WebP studio images Juwan supplied (`assets/images/fleet/*.webp`, listed in the README).
   - Keep their "Illustrative model reference" labels and the footer disclosure.
-  - Card order: her two cars first (EQE SUV, then charcoal BMW i5, both tagged "Company fleet" and in the form's "Our own cars" group), then the fleet options, starting with the EQS SUV.
+  - Card order: her two cars first (EQE SUV, then charcoal BMW i5, both tagged "Company fleet"), then the fleet options, starting with the EQS SUV.
+  - Customers don't choose a vehicle (Juwan with the client, 20 Oct 2026): she assigns it. The enquiry form has no vehicle field, and every fleet card, the featured car and the image viewer link to the plain form as "Plan a journey". The optional luggage-vehicle tick box stays.
   - There are two BMW i5 cards. The charcoal one is hers; the white one is still a proposal-listed option.
   - The featured EQE SUV image is never cropped. Below 80rem it stacks above the details; from 80rem it sits whole in the side column. The rules are in the "Fleet artwork" block of `luxury-refresh.css`.
   - Clicking any fleet image opens a larger viewer (Juwan, 17 Oct 2026). It's built by `app.js` from the gallery figures and styled under "Fleet image viewer" in `luxury-refresh.css`.
     - Arrows, keys and swipe move between cars. Esc, the close button or a click outside closes it.
-    - The viewer caption keeps the "Illustrative model reference" note and the "Request this vehicle" link.
+    - The viewer caption keeps the "Illustrative model reference" note and the "Plan a journey" link.
 - The home page's "Our own fleet" image and every page's link preview use the studio EQE SUV image (`mercedes-eqe-suv.webp`, `mercedes-eqe-suv-share.jpg`; switched from the EQS on 19 Oct 2026). The home page's interior photo is a Wikimedia EQS SUV interior, labelled as a reference photo. The older Wikimedia photos in `assets/images/fleet/*.jpg` (plus `eqe-suv.jpg`) are no longer shown anywhere; their credits are kept in the README. Replace all of these with the client's own photos as they arrive (her white EQE SUV first).
 - The enquiry form has a "Flight details" group (airline, flight number, arriving from / flying to, scheduled time). It shows only for airport services, and its labels switch between arrival and departure (app.js); its values go into the WhatsApp message.
 - Clearly separate company-owned vehicles from vehicles supplied by partner operators.
