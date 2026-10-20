@@ -49,10 +49,10 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 
 ## Privacy and booking terms
 
-- `privacy.html` and `terms.html` are drafts (14 Oct 2026). They are linked from every footer and from the form's consent box.
-- Answered 18 Oct 2026: enquiry details are kept for 4 weeks; payment by card, cash or bank transfer. Still marked `<span class="tbc">… to be confirmed …</span>`: data-protection contact, any deposit, cancellation, waiting time. Never fill these in with guesses. Replace each with her wording, then remove the "draft" ribbon and notice.
+- **The site went live on 20 Oct 2026** (Juwan: "take down any unpublished stuff, we are going live"). The preview ribbons and the draft notices are gone. `privacy.html` and `terms.html` are live, dated 20 October 2026, and linked from every footer and from the form's consent box.
+- Answered 18 Oct 2026: enquiry details are kept for 4 weeks; payment is by card, cash or bank transfer. Data-protection requests go to the phone number or admin@ridewithhr.com. Renee has not given her own deposit, cancellation or waiting-time terms, so the terms say each is **set out when we confirm your booking**. Never invent figures; when she supplies her terms, replace those sentences with her wording. Fleet options read "available on request".
 - The terms say how prices work (priced per request), not the prices themselves.
 
 ## Before production launch
 
-Resolve every item in the README's “Client information still required” section, replace preview notices as appropriate, verify final contact routing, add privacy/booking terms, and test the final domain on mobile.
+Launched 20 Oct 2026. Still open from the client: her own deposit, cancellation and waiting-time terms, the registered company name, real photos of her cars, and her business address and hours (for Google Business Profile and TripAdvisor).
