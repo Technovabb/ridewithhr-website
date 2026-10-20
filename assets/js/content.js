@@ -14,10 +14,12 @@ window.RIDE_WITH_HR = {
     website: "https://ridewithhr.com", // live domain (GitHub Pages custom domain, Oct 2026)
   },
   booking: {
+    // "email-direct" emails each enquiry straight to business.email through FormSubmit and confirms on the page,
+    // offering WhatsApp only if sending fails (Juwan, 20 Oct 2026: "push all requests to the email").
     // "whatsapp" opens WhatsApp with the enquiry ready to send; "email" opens a mail to business.email;
-    // "preview" only shows a copyable summary. Provider integrations are a later scope.
-    mode: "whatsapp",
-    emailCopy: true, // also email each enquiry to business.email through FormSubmit (needs a one-time activation click in that inbox)
+    // "preview" only shows a copyable summary.
+    mode: "email-direct",
+    emailCopy: true, // in "whatsapp" mode, also email a copy through FormSubmit (needs a one-time activation click in that inbox)
     paymentEnabled: false,
     // No prices on the site (Juwan, 18 Oct 2026): the owner prices each journey after the request.
     // Prices stay in the private notes repo (docs/pricing.md).

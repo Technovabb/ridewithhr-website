@@ -132,9 +132,13 @@
   // Every enquiry is also emailed to the business through FormSubmit (form-to-email service).
   // FormSubmit answers 200 even when it fails, so the JSON "success" field is what counts.
   // keepalive lets the request finish even if the page hands over to the WhatsApp app.
-  function sendEmailCopy(form, summary, reference) {
+  // Emails an enquiry to business.email through FormSubmit. Resolves to { ok, message } and never rejects.
+  // FormSubmit answers 200 even when it refuses, so success is its JSON "success" field. It can take
+  // 15-20 seconds to answer, hence the generous timeout. keepalive lets a background copy finish while
+  // the page hands over to WhatsApp.
+  function sendEnquiryEmail(form, summary, reference, keepalive) {
     var to = config.business && config.business.email;
-    if (!to || !(config.booking && config.booking.emailCopy) || !window.fetch) return;
+    if (!to || !window.fetch) return Promise.resolve({ ok: false, message: "No email address is set up." });
     var data = new FormData(form);
     var payload = {
       _subject: "Website enquiry " + reference + " (" + (data.get("service") || "journey") + ")",
@@ -150,14 +154,24 @@
       payload._autoresponse = "Thank you for your enquiry to H&R Executive Services (reference " + reference + "). " +
         "We'll reply with your price and confirmation. Nothing is booked until we confirm it.";
     }
-    fetch("https://formsubmit.co/ajax/" + to, {
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 45000) : null;
+    return fetch("https://formsubmit.co/ajax/" + to, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(payload),
-      keepalive: true
+      keepalive: !!keepalive,
+      signal: controller ? controller.signal : undefined
     }).then(function (response) { return response.json(); }).then(function (result) {
-      if (String(result.success) !== "true" && window.console) console.warn("Enquiry email copy not sent:", result.message);
-    }).catch(function () {});
+      var ok = String(result.success) === "true";
+      if (!ok && window.console) console.warn("Enquiry email not sent:", result.message);
+      return { ok: ok, message: result.message || "" };
+    }).catch(function (error) {
+      return { ok: false, message: String(error) };
+    }).then(function (outcome) {
+      if (timer) clearTimeout(timer);
+      return outcome;
+    });
   }
 
   function buildSummary(data, heading, reference) {
@@ -276,12 +290,44 @@
       var whatsapp = config.business && config.business.whatsapp;
       var mode = config.booking && config.booking.mode;
 
+      // Email: the enquiry goes straight to the team's inbox and the page confirms it. If the email can't
+      // be sent, the customer is offered WhatsApp instead, so no request is lost.
+      if (mode === "email-direct" && bookingEmail) {
+        var emailReference = makeReference();
+        var submitButton = form.querySelector("[type='submit']");
+        var waFallback = whatsapp ? "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:", emailReference)) : "";
+        if (submitButton) submitButton.disabled = true;
+        status.textContent = "Sending your enquiry. This can take up to half a minute.";
+        sendEnquiryEmail(form, buildSummary(new FormData(form), null, emailReference), emailReference, false).then(function (result) {
+          if (submitButton) submitButton.disabled = false;
+          if (result.ok) {
+            form.reset();
+            toggleFlight();
+            toggleReturn();
+            status.classList.add("is-ok");
+            status.textContent = "Thank you. Your enquiry has been sent to our team (reference " + emailReference + "). We'll reply to confirm your price and availability. Nothing is booked until we confirm it.";
+            return;
+          }
+          status.textContent = "We couldn't send your enquiry just now. Your details are still in the form.";
+          if (waFallback) {
+            var fallback = document.createElement("a");
+            fallback.href = waFallback;
+            fallback.target = "_blank";
+            fallback.rel = "noopener";
+            fallback.textContent = "Send it to us on WhatsApp instead.";
+            status.appendChild(document.createTextNode(" "));
+            status.appendChild(fallback);
+          }
+        });
+        return;
+      }
+
       // WhatsApp: open a chat with the enquiry typed in; the customer presses send.
       // A new tab keeps the site open on desktop; phones hand over to the WhatsApp app.
       if (mode === "whatsapp" && whatsapp) {
         var reference = makeReference();
         var message = buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:", reference);
-        sendEmailCopy(form, buildSummary(new FormData(form), null, reference), reference);
+        if (config.booking && config.booking.emailCopy) sendEnquiryEmail(form, buildSummary(new FormData(form), null, reference), reference, true);
         var waUrl = "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message);
         var waWindow = window.open(waUrl, "_blank");
         if (waWindow) waWindow.opener = null;
