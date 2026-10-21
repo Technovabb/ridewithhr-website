@@ -21,6 +21,12 @@ window.RIDE_WITH_HR = {
     mode: "email-direct",
     emailCopy: true, // in "whatsapp" mode, also email a copy through FormSubmit (needs a one-time activation click in that inbox)
     paymentEnabled: false,
+    // The H&R app server (prepared 20 Oct 2026). Empty = switched off.
+    // appIntake: each enquiry also goes to the app's back office, beside the email; the guest's confirmation
+    // shows if either arrives. Switched on 28 Oct 2026 (Juwan: website requests into the back office as well as the email).
+    // visitBeacon: "https://app.ridewithhr.com/api/public/hit" would add cookieless visitor counting (no IPs stored); still off.
+    appIntake: "https://app.ridewithhr.com/api/public/enquiries",
+    visitBeacon: "",
     // No prices on the site (Juwan, 18 Oct 2026): the owner prices each journey after the request.
     // Prices stay in the private notes repo (docs/pricing.md).
     arrivalMeetAndGreet: true, // every airport arrival includes a meet-and-greet

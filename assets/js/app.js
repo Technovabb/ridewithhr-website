@@ -131,7 +131,7 @@
       service: "Service", pickup: "Pick-up", destination: "Destination",
       date: "Date", time: "Preferred time", trip: "Trip", returnDate: "Return date", returnTime: "Return time",
       passengers: "Passengers", suitcases: "Suitcases", childSeats: "Child seats", vehicle: "Vehicle",
-      luggageVehicle: "Luggage vehicle", airline: "Airline", flight: "Flight number", name: "Name", email: "Email", notes: "Notes"
+      luggageVehicle: "Luggage vehicle", airline: "Airline", flight: "Flight number", name: "Name", email: "Email", phone: "Mobile / WhatsApp", notes: "Notes"
     };
     return labels[name] || name;
   }
@@ -188,11 +188,36 @@
     });
   }
 
+  // Each enquiry also goes to the H&R app server (when booking.appIntake is set), in parallel with the email.
+  // text/plain JSON needs no CORS preflight; no cookies are sent. Resolves to { ok } and never rejects.
+  var formShownAt = Date.now();
+  function sendToApp(form, reference, keepalive) {
+    var url = config.booking && config.booking.appIntake;
+    if (!url || !window.fetch) return Promise.resolve({ ok: false, skipped: true });
+    var d = new FormData(form);
+    var get = function (k) { return String(d.get(k) || "").trim(); };
+    var payload = {
+      reference: reference, service: get("service"), pickup: get("pickup"), destination: get("destination"),
+      date: get("date"), time: get("time"), passengers: Number(get("passengers")) || 1,
+      trip: get("trip") === "Return" ? "Return" : "One-way", returnDate: get("returnDate") || null, returnTime: get("returnTime") || null,
+      suitcases: Number(get("suitcases")) || 0, childSeats: Number(get("childSeats")) || 0, luggageVehicle: d.get("luggageVehicle") !== null,
+      airline: get("airline"), flight: get("flight"), flightRoute: get("flightRoute"), flightTime: get("flightTime"),
+      name: get("name"), email: get("email"), phone: get("phone"), notes: get("notes"),
+      consent: d.get("consent") !== null, _honey: get("_honey"), t: Date.now() - formShownAt
+    };
+    return fetch(url, {
+      method: "POST", mode: "cors", credentials: "omit", keepalive: !!keepalive,
+      headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: JSON.stringify(payload)
+    }).then(function (response) {
+      return response.json().then(function (json) { return { ok: response.ok && !!json.ok }; }, function () { return { ok: response.ok }; });
+    }).catch(function () { return { ok: false }; });
+  }
+
   function buildSummary(data, heading, reference) {
     var lines = [heading || "H&R EXECUTIVE SERVICES — TRANSPORT ENQUIRY", ""];
     if (reference) lines.push("Reference: " + reference);
     ["service", "trip", "pickup", "destination", "date", "time", "returnDate", "returnTime", "passengers", "suitcases", "childSeats",
-      "vehicle", "luggageVehicle", "airline", "flight", "flightRoute", "flightTime", "name", "email", "notes"].forEach(function (key) {
+      "vehicle", "luggageVehicle", "airline", "flight", "flightRoute", "flightTime", "name", "email", "phone", "notes"].forEach(function (key) {
       var value = String(data.get(key) || "").trim();
       if (key === "childSeats" && value === "0") value = "";
       if ((key === "date" || key === "returnDate") && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -299,6 +324,15 @@
         return;
       }
 
+      // A reply needs a way to reach the guest: an email or a mobile number.
+      var emailField = form.elements.email; var phoneField = form.elements.phone;
+      if (phoneField && emailField && !emailField.value.trim() && !phoneField.value.trim()) {
+        emailField.setAttribute("aria-invalid", "true");
+        emailField.focus();
+        status.textContent = "Please give an email address or a mobile number so we can reply with your price.";
+        return;
+      }
+
       status.textContent = "";
       var bookingEmail = config.business && config.business.email;
       var whatsapp = config.business && config.business.whatsapp;
@@ -312,7 +346,11 @@
         var waFallback = whatsapp ? "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:", emailReference)) : "";
         if (submitButton) submitButton.disabled = true;
         status.textContent = "Sending your enquiry. This can take up to half a minute.";
-        sendEnquiryEmail(form, buildSummary(new FormData(form), null, emailReference), emailReference, false).then(function (result) {
+        Promise.all([
+          sendEnquiryEmail(form, buildSummary(new FormData(form), null, emailReference), emailReference, false),
+          sendToApp(form, emailReference, false)
+        ]).then(function (results) {
+          var result = { ok: results[0].ok || results[1].ok };   // either the email or the app is enough
           if (submitButton) submitButton.disabled = false;
           if (result.ok) {
             track("generate_lead", { method: "enquiry form", service: form.elements.service ? form.elements.service.value : "" });
@@ -343,6 +381,7 @@
         var reference = makeReference();
         var message = buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:", reference);
         if (config.booking && config.booking.emailCopy) sendEnquiryEmail(form, buildSummary(new FormData(form), null, reference), reference, true);
+        sendToApp(form, reference, true); // fire and forget: WhatsApp must still open in this same tap
         var waUrl = "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message);
         var waWindow = window.open(waUrl, "_blank");
         if (waWindow) waWindow.opener = null;
@@ -512,5 +551,14 @@
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showVehicle(shownIndex + (dx < 0 ? 1 : -1));
       touchX = touchY = null;
     }, { passive: true });
+  }
+
+  // Cookieless visit counting for the H&R back office (when booking.visitBeacon is set): the page path
+  // and the referring site's name only. No cookies, nothing stored on the phone, no IP addresses kept.
+  var beacon = config.booking && config.booking.visitBeacon;
+  if (beacon && navigator.sendBeacon && !document.prerendering) {
+    var refHost = "";
+    try { refHost = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) { refHost = ""; }
+    try { navigator.sendBeacon(beacon, new Blob([JSON.stringify({ p: location.pathname, r: refHost, s: "web" })], { type: "text/plain" })); } catch (e) { /* never mind */ }
   }
 })();
