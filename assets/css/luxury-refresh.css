@@ -660,3 +660,17 @@ html.lb-open { overflow:hidden; }
 
 /* Enquiry form spam trap: a field people never see; bots that fill it are dropped by FormSubmit. */
 .hp-field { position:absolute !important; left:-9999px !important; width:1px; height:1px; opacity:0; }
+
+/* Inner-page heroes with a picture (25 Oct 2026). The pictures carry their own titles, so they sit
+   beside the page heading instead of behind it, and under it on phones. */
+.page-hero-media { grid-template-areas:"copy" "figure" "aside"; }
+.page-hero-media .page-hero-copy { grid-area:copy; }
+.page-hero-media .page-hero-aside { grid-area:aside; }
+.page-hero-figure { grid-area:figure; position:relative; z-index:1; margin:0; border-radius:1.25rem; overflow:hidden; box-shadow:0 1.5rem 3.5rem rgba(20,16,10,.22); }
+.page-hero-figure img { display:block; width:100%; height:auto; }
+@media (min-width:64rem) {
+  .page-hero-media { grid-template-columns:minmax(0,1fr) minmax(0,32rem); grid-template-areas:"copy figure" "aside figure"; column-gap:clamp(2.5rem,5vw,5rem); align-items:center; }
+  .page-hero-media.page-hero-wide { grid-template-columns:minmax(0,1fr) minmax(0,40rem); }
+  .page-hero-media h1 { font-size:clamp(3.4rem,5.4vw,5.6rem); }
+  .page-hero-media .page-hero-figure { align-self:center; }
+}
