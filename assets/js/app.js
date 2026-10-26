@@ -12,6 +12,20 @@
   var year = document.querySelector("[data-year]");
   if (year) year.textContent = new Date().getFullYear();
 
+  // Google Ads and Analytics (the Google tag in each page's head): count enquiries and taps on WhatsApp,
+  // phone and email links, so Google Ads can learn which clicks lead to bookings. Does nothing if the
+  // tag is blocked.
+  function track(name, params) {
+    if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+  }
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest ? event.target.closest("a[href]") : null;
+    if (!link) return;
+    var href = link.getAttribute("href") || "";
+    var method = href.indexOf("https://wa.me/") === 0 ? "whatsapp" : href.indexOf("tel:") === 0 ? "phone" : href.indexOf("mailto:") === 0 ? "email" : "";
+    if (method) track("contact", { method: method });
+  });
+
   function closeNav() {
     if (!nav || !navToggle) return;
     nav.classList.remove("open");
@@ -311,6 +325,7 @@
         sendEnquiryEmail(form, buildSummary(new FormData(form), null, emailReference), emailReference, false).then(function (result) {
           if (submitButton) submitButton.disabled = false;
           if (result.ok) {
+            track("generate_lead", { method: "enquiry form", service: form.elements.service ? form.elements.service.value : "" });
             form.reset();
             toggleFlight();
             toggleReturn();
@@ -342,6 +357,7 @@
         var waWindow = window.open(waUrl, "_blank");
         if (waWindow) waWindow.opener = null;
         else window.location.href = waUrl;
+        track("generate_lead", { method: "whatsapp form", service: form.elements.service ? form.elements.service.value : "" });
         status.classList.add("is-ok");
         status.textContent = "WhatsApp is opening with your details (reference " + reference + "). Press send there to reach us.";
         var retry = document.createElement("a");
