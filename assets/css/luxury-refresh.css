@@ -336,6 +336,81 @@ h2,h3 { text-wrap:balance; }
   .hero-editorial-services i {display:none;}
 }
 
+/* Cinematic seaside hero: white Mercedes, genuine Barbados sunset, restrained charcoal. */
+.hero-cinematic {
+  --hero-cream: #f9f5ec;
+  position:relative;isolation:isolate;display:grid;
+  grid-template-columns:1fr;align-items:center;gap:0;
+  min-height:clamp(44rem,82vh,53rem);padding:4.5rem clamp(1.25rem,5.5vw,6rem) 0;
+  background:#171b1d;color:var(--hero-cream);overflow:hidden;
+}
+.hero-cinematic::before { display:none; }
+.hero-cinematic-backdrop {
+  position:absolute;inset:0;z-index:-2;
+  background-image:linear-gradient(90deg,rgba(12,15,18,.97) 0%,rgba(14,17,20,.87) 30%,rgba(17,18,19,.52) 64%,rgba(27,22,15,.17) 100%),url("https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_In_Barbados_West_Indies.jpg?width=1800");
+  background-position:center,center 44%;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.hero-cinematic::after {
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,transparent 55%,rgba(12,15,17,.43));
+  pointer-events:none;
+}
+.hero-cinematic-copy {position:relative;z-index:3;max-width:48rem;padding-bottom:3rem;}
+.hero-cinematic .eyebrow {color:#e2bd81;font-size:.68rem;letter-spacing:.18em;}
+.hero-cinematic .eyebrow span {padding:0 .25rem;color:#b38b55;}
+.hero-cinematic h1 {font-family:var(--serif);font-size:clamp(4.5rem,11vw,9.1rem);font-weight:500;line-height:.86;letter-spacing:-.055em;margin:0;color:#fffaf2;text-shadow:0 2px 22px rgba(0,0,0,.12);}
+.hero-cinematic h1 em {font-weight:400;color:#e7c48f;}
+.hero-cinematic .hero-intro {max-width:32rem;margin:2.3rem 0 1.9rem;color:#efe9dc;font-size:clamp(1rem,1.6vw,1.12rem);line-height:1.85;}
+.hero-cinematic .hero-actions {display:flex;flex-wrap:wrap;flex-direction:row;gap:.85rem;align-items:center;}
+.hero-cinematic .hero-actions .button {width:auto;min-height:3.35rem;}
+.hero-cinematic .button-outline {color:#fff9ee;background:rgba(10,13,15,.18);border:1px solid rgba(255,247,230,.7);}
+.hero-cinematic .button-outline:hover {background:rgba(255,255,255,.14);color:#fff;}
+.hero-cinematic-wa {display:inline-flex;gap:.8rem;align-items:center;margin-top:1.6rem;color:#edcb95;font-size:.76rem;font-weight:700;letter-spacing:.02em;text-decoration:none;border-bottom:1px solid #c9a16a;padding-bottom:.25rem;}
+.hero-cinematic-wa:hover {color:#fff3df;}
+.hero-cinematic-visual {position:relative;z-index:2;min-width:0;padding:1rem 0 3rem;}
+.hero-cinematic-vehicle {
+  overflow:hidden;margin:0;position:relative;width:100%;height:clamp(16rem,34vw,34rem);
+  border-radius:1.25rem;border:1px solid rgba(239,223,199,.35);
+  box-shadow:0 40px 90px rgba(0,0,0,.3);background:#dfd7cc;
+}
+.hero-cinematic-vehicle img {display:block;width:100%;height:100%;object-fit:cover;object-position:50% 49%;filter:brightness(1.04) contrast(1.025) saturate(.83);}
+.hero-cinematic-car-label {
+  display:flex;flex-direction:column;gap:.27rem;position:absolute;z-index:3;right:1rem;bottom:4rem;
+  max-width:85%;padding:.8rem 1rem;background:rgba(22,24,26,.88);border-left:2px solid #cb9f62;color:#fffaf1;
+  -webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px);
+}
+.hero-cinematic-car-label span {font-size:.61rem;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#dec08c;}
+.hero-cinematic-car-label strong {font-family:var(--serif);font-weight:500;font-size:clamp(1.45rem,2vw,2.1rem);line-height:1;}
+.hero-cinematic-car-label small {font-size:.62rem;color:#ddd5c8;}
+.hero-cinematic-bottom {
+  grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.8rem 1.4rem;
+  border-top:1px solid rgba(255,255,255,.25);padding:1.35rem .25rem;z-index:3;color:#e5dfd3;
+  font-size:.67rem;letter-spacing:.105em;font-weight:700;text-transform:uppercase;
+}
+.hero-cinematic-bottom i {color:#d3a766;font-style:normal;}
+@media (min-width:64rem){
+ .hero-cinematic {grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);column-gap:clamp(2rem,4vw,5rem);row-gap:1.2rem;min-height:clamp(42rem,82vh,54rem);padding-top:5rem;}
+ .hero-cinematic-copy {padding-bottom:0;}
+ .hero-cinematic h1 {font-size:clamp(5.4rem,7vw,9rem);}
+ .hero-cinematic-visual {padding:0;margin-top:2rem;margin-bottom:3rem;align-self:center;}
+ .hero-cinematic-vehicle {height:clamp(27rem,37vw,39rem);}
+ .hero-cinematic-car-label {bottom:1rem;}
+}
+@media (max-width:41.99rem){
+ .hero-cinematic {padding-top:3.5rem;}
+ .hero-cinematic h1 {font-size:clamp(4.1rem,14vw,6rem);}
+ .hero-cinematic-copy {padding-bottom:1.2rem;}
+ .hero-cinematic .hero-actions {flex-direction:column;align-items:stretch;}
+ .hero-cinematic .hero-actions .button {width:100%;}
+ .hero-cinematic-visual {padding-bottom:2.7rem;}
+ .hero-cinematic-vehicle {height:20rem;}
+ .hero-cinematic-car-label {right:.5rem;bottom:3.2rem;}
+ .hero-cinematic-bottom i {display:none;}
+}
+
+
 /* Homepage story sections: experience, destinations, airport welcome, and planning. */
 .experience-section {
   display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
@@ -455,127 +530,132 @@ h2,h3 { text-wrap:balance; }
 }
 
 
-/* Home hero, "showroom" (20 Oct 2026): the client's illustrative white Mercedes SUV with the RIDE WITH HR plate
-   (transparent WebPs, assets/images/hero/hr-mercedes-ride-with-hr-front.webp and -side.webp, each with an -800 copy)
-   on a dark charcoal stage with a soft champagne light, a lit floor with a gold hairline edge and a contact shadow, so the cut-out
-   sits on a floor instead of looking pasted. Text left and the car right from 64rem; below that the text comes first
-   and the car follows (front three-quarter view, or the more side-on view on phones via <picture>). The car is always
-   shown whole. The old full-bleed sunset artwork (barbados-luxury-arrival-*.webp) is kept in the folder but unused. */
+/* Reference-led full-bleed hero refinement: integrated vehicle, not a boxed photo. */
 .hero-cinematic {
-  --hero-cream:#f9f5ec;
-  --hero-pad:clamp(1.25rem,5.5vw,6rem);
-  position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr);
-  align-items:center;gap:0;min-height:0;
-  padding:clamp(3.4rem,7vw,5rem) var(--hero-pad) 0;
-  color:var(--hero-cream);overflow:hidden;
-  background:
-    radial-gradient(ellipse 70% 55% at 0% 0%,rgba(255,250,240,.045),transparent 70%),
-    linear-gradient(160deg,#272a2d 0%,#1d2022 52%,#141719 100%);
+  min-height:clamp(46rem,88vh,58rem);
+  background:#15191b;
 }
-.hero-cinematic::before { display:none; }
-.hero-cinematic::after {
-  content:"";position:absolute;z-index:-1;left:0;right:0;top:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(214,178,122,.45),transparent);pointer-events:none;
+.hero-cinematic-backdrop {
+  background-image:
+    linear-gradient(90deg,rgba(9,12,14,.98) 0%,rgba(11,14,16,.88) 32%,rgba(16,18,18,.42) 64%,rgba(25,20,14,.08) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_In_Barbados_West_Indies.jpg?width=2200");
+  background-position:center,center 47%;
 }
-.hero-cinematic-copy {position:relative;z-index:3;max-width:40rem;min-width:0;}
-.hero-cinematic .eyebrow {margin-bottom:1.6rem;color:#e2bd81;font-size:.68rem;letter-spacing:.18em;}
-.hero-cinematic .eyebrow span {padding:0 .25rem;color:#b38b55;}
-.hero-cinematic h1 {
-  margin:0;font-family:var(--serif);font-size:clamp(3.4rem,16vw,5.75rem);font-weight:500;
-  line-height:.88;letter-spacing:-.055em;color:#fffaf2;
+.hero-cinematic-copy {max-width:49rem;}
+.hero-cinematic .hero-intro {max-width:34rem;}
+.hero-cinematic-visual {isolation:isolate;}
+.hero-cinematic-visual::before {
+  content:"";position:absolute;z-index:-1;inset:8% -8% 4% 8%;
+  background:radial-gradient(ellipse at center,rgba(232,203,158,.16),transparent 68%);
+  filter:blur(16px);pointer-events:none;
 }
-.hero-cinematic h1 em {font-weight:400;color:#e7c48f;}
-.hero-cinematic .hero-intro {max-width:31rem;margin:2rem 0 1.8rem;color:#e9e3d6;font-size:clamp(.98rem,1.4vw,1.1rem);line-height:1.8;}
-.hero-cinematic .hero-actions {display:flex;flex-wrap:wrap;flex-direction:row;gap:.85rem;align-items:center;}
-.hero-cinematic .hero-actions .button {width:auto;min-height:3.35rem;}
-.hero-cinematic .button-outline {color:#fff9ee;background:rgba(10,13,15,.18);border:1px solid rgba(255,247,230,.62);}
-.hero-cinematic .button-outline:hover {background:rgba(255,255,255,.12);border-color:#e0c496;color:#fff;}
-.hero-cinematic-wa {display:inline-flex;gap:.8rem;align-items:center;margin-top:1.5rem;padding-bottom:.25rem;color:#edcb95;font-size:.76rem;font-weight:700;letter-spacing:.02em;text-decoration:none;border-bottom:1px solid #c9a16a;}
-.hero-cinematic-wa:hover {color:#fff3df;}
-
-/* The car and its stage. */
-.hero-car {position:relative;z-index:2;min-width:0;margin:2.6rem 0 0;isolation:isolate;}
-.hero-car::before {
-  /* soft champagne light behind the car */
-  content:"";position:absolute;z-index:-1;left:50%;top:42%;width:92%;aspect-ratio:1.6;
-  transform:translate(-50%,-50%);border-radius:50%;
-  background:radial-gradient(ellipse,rgba(226,196,148,.13) 0%,rgba(226,196,148,.05) 45%,transparent 70%);
-  pointer-events:none;
+.hero-cinematic-vehicle {
+  overflow:visible;height:clamp(21rem,39vw,40rem);
+  border:0;border-radius:0;background:transparent;box-shadow:none;
 }
-.hero-car-stage {position:relative;}
-.hero-car-stage::before {
-  /* a lit turntable floor with a gold hairline edge, the tyres standing on it */
-  content:"";position:absolute;z-index:0;left:-4%;right:-1%;top:75%;bottom:-8%;border-radius:50%;
-  border:1px solid rgba(214,178,122,.38);
-  background:radial-gradient(ellipse at 50% 45%,rgba(226,194,146,.26),rgba(226,194,146,.09) 58%,rgba(226,194,146,.03) 100%);
-  box-shadow:0 0 40px rgba(214,178,122,.06);
-  pointer-events:none;
+.hero-cinematic-vehicle img {
+  object-position:center 53%;transform:scale(1.13);
+  filter:brightness(1.055) contrast(1.035) saturate(.84);
+  -webkit-mask-image:radial-gradient(ellipse 73% 68% at 52% 50%,#000 54%,rgba(0,0,0,.88) 70%,transparent 100%);
+  mask-image:radial-gradient(ellipse 73% 68% at 52% 50%,#000 54%,rgba(0,0,0,.88) 70%,transparent 100%);
 }
-.hero-car-stage::after {
-  /* contact shadow under the body and tyres */
-  content:"";position:absolute;z-index:1;left:3%;right:1%;bottom:-3.5%;height:15%;
-  background:radial-gradient(ellipse 50% 50% at 52% 50%,rgba(4,5,6,.78),rgba(4,5,6,.38) 52%,transparent 74%);
-  filter:blur(6px);pointer-events:none;
+.hero-cinematic-car-label {
+  right:.5rem;bottom:1rem;max-width:28rem;padding:.7rem 0 .7rem 1rem;
+  background:linear-gradient(90deg,rgba(17,20,22,.76),rgba(17,20,22,0));
+  border-left:1px solid #d2aa70;-webkit-backdrop-filter:none;backdrop-filter:none;
 }
-.hero-car picture {display:block;position:relative;z-index:2;}
-.hero-car img {display:block;width:100%;height:auto;}
-.hero-car .hero-scene-note {
-  position:relative;z-index:2;margin:clamp(2.4rem,6vw,3.4rem) 0 0;text-align:center;
-  color:rgba(244,235,220,.68);font-size:.6rem;letter-spacing:.06em;line-height:1.5;
-}
-
-/* Services strip along the foot of the hero. */
+.hero-cinematic-car-label span {font-size:.57rem;}
+.hero-cinematic-car-label strong {font-size:clamp(1.3rem,1.7vw,1.8rem);}
+.hero-cinematic-car-label small {font-size:.58rem;}
 .hero-cinematic-bottom {
-  grid-column:1/-1;align-self:end;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.8rem 1.4rem;
-  position:relative;z-index:3;margin:2.2rem calc(-1 * var(--hero-pad)) 0;padding:1.35rem var(--hero-pad);
-  color:#e5dfd3;background:rgba(10,13,15,.42);border-top:1px solid rgba(236,216,184,.26);
-  font-size:.67rem;font-weight:700;letter-spacing:.105em;text-transform:uppercase;
+  margin-inline:calc(-1 * clamp(1.25rem,5.5vw,6rem));
+  padding-inline:clamp(1.25rem,5.5vw,6rem);
+  background:linear-gradient(90deg,rgba(10,13,15,.68),rgba(10,13,15,.38));
+  border-top-color:rgba(236,216,184,.3);justify-content:space-between;
 }
 .hero-cinematic-bottom span {display:inline-flex;align-items:center;gap:.55rem;}
 .hero-cinematic-bottom span::before {content:"◇";color:#d7b27a;font-size:.85rem;}
-.hero-cinematic-bottom i {color:#d3a766;font-style:normal;}
 
-/* The floating WhatsApp button is tucked away (app.js adds .is-tucked) while the hero's own WhatsApp link is
-   on screen, so it never covers the car on phones and tablets or the services strip on desktop. */
-.whatsapp-float {transition:transform .25s ease,border-color .2s ease,opacity .25s ease,visibility .25s;}
-.whatsapp-float.is-tucked {opacity:0;visibility:hidden;pointer-events:none;transform:translateY(.75rem);}
-
-/* A gentle drive-in for the car; none for reduced motion. */
-@media (prefers-reduced-motion:no-preference) {
-  .hero-car picture {animation:hero-car-in 1.15s cubic-bezier(.2,.7,.2,1) .1s both;}
-  .hero-car-stage::after,.hero-car-stage::before {animation:hero-car-floor 1.15s ease .1s both;}
-}
-@keyframes hero-car-in { from {opacity:0;transform:translate3d(4%,0,0);} to {opacity:1;transform:none;} }
-@keyframes hero-car-floor { from {opacity:0;} to {opacity:1;} }
-
-@media (min-width:42rem) {
-  .hero-car {width:min(100%,44rem);margin:2.4rem auto 0;}
-}
 @media (min-width:64rem) {
   .hero-cinematic {
-    grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);grid-template-rows:minmax(0,1fr) auto;column-gap:clamp(1.5rem,3vw,3.5rem);
-    min-height:clamp(38rem,calc(100svh - 8.5rem),50rem);padding-top:clamp(3.5rem,6vh,5rem);
+    grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);
+    column-gap:clamp(1rem,2.5vw,3rem);padding-top:clamp(4.8rem,7vh,6.5rem);
   }
-  .hero-cinematic h1 {font-size:clamp(4.2rem,6.2vw,8.4rem);}
-  .hero-car {
-    --car-bleed:calc(var(--hero-pad) - clamp(1rem,2vw,2rem));
-    width:auto;margin:0 calc(-1 * var(--car-bleed)) 0 calc(-1 * clamp(0rem,2.5vw,2.5rem));align-self:center;
-  }
-  .hero-car .hero-scene-note {text-align:right;padding-right:var(--car-bleed);}
-  .hero-cinematic-bottom {margin-top:2.6rem;}
+  .hero-cinematic-visual {margin-right:-3.5rem;margin-top:1rem;}
+  .hero-cinematic-vehicle {height:clamp(31rem,42vw,43rem);}
+  .hero-cinematic h1 {font-size:clamp(5.6rem,7.35vw,9.35rem);}
 }
-@media (min-width:42rem) and (max-width:63.99rem) {
-  .hero-cinematic-bottom {display:grid;grid-template-columns:repeat(2,auto);justify-content:center;gap:.9rem 3rem;}
-  .hero-cinematic-bottom i {display:none;}
+@media (max-width:63.99rem) {
+  .hero-cinematic-backdrop {
+    background-image:
+      linear-gradient(180deg,rgba(10,13,15,.84) 0%,rgba(11,14,16,.72) 47%,rgba(13,16,18,.44) 72%,rgba(12,15,17,.72) 100%),
+      url("https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_In_Barbados_West_Indies.jpg?width=1500");
+  }
+  .hero-cinematic-visual {margin-inline:-.75rem;}
 }
 @media (max-width:41.99rem) {
-  .hero-cinematic {padding-top:3.6rem;}
-  .hero-cinematic .hero-actions {flex-direction:column;align-items:stretch;}
-  .hero-cinematic .hero-actions .button {width:100%;}
-  .hero-car {margin:2.4rem -.5rem 0;}
-  .hero-car-stage::before {left:-1%;right:-1%;}
+  .hero-cinematic {min-height:unset;padding-top:3.8rem;}
+  .hero-cinematic h1 {font-size:clamp(4.15rem,14.5vw,6rem);}
+  .hero-cinematic .hero-intro {font-size:.98rem;line-height:1.72;}
+  .hero-cinematic-vehicle {height:clamp(18rem,82vw,23rem);}
+  .hero-cinematic-vehicle img {
+    transform:scale(1.18);object-position:52% 51%;
+    -webkit-mask-image:radial-gradient(ellipse 77% 72% at 51% 50%,#000 50%,rgba(0,0,0,.9) 68%,transparent 100%);
+    mask-image:radial-gradient(ellipse 77% 72% at 51% 50%,#000 50%,rgba(0,0,0,.9) 68%,transparent 100%);
+  }
+  .hero-cinematic-car-label {right:1rem;bottom:1rem;max-width:78%;}
   .hero-cinematic-bottom {justify-content:center;gap:.7rem 1.2rem;}
-  .hero-cinematic-bottom span::before,.hero-cinematic-bottom i {display:none;}
+  .hero-cinematic-bottom span::before {display:none;}
+}
+
+
+/* Final cohesive hero artwork treatment: one seamless scene for each breakpoint. */
+.hero-cinematic {
+  display:grid;grid-template-columns:1fr;align-content:space-between;
+  min-height:clamp(48rem,88vh,58rem);padding-top:clamp(4.8rem,8vh,7rem);
+}
+.hero-cinematic-backdrop {
+  background-image:
+    linear-gradient(90deg,rgba(8,11,13,.96) 0%,rgba(10,13,15,.83) 31%,rgba(11,14,16,.48) 49%,rgba(12,14,15,.12) 74%,rgba(12,14,15,.08) 100%),
+    url("../images/hero/barbados-luxury-arrival-branded.webp");
+  background-position:center,center;
+  background-size:cover;
+}
+.hero-cinematic::after {
+  background:linear-gradient(180deg,rgba(8,11,13,.12) 42%,rgba(8,11,13,.68) 100%);
+}
+.hero-cinematic-copy {max-width:44rem;padding-bottom:4rem;}
+.hero-cinematic .hero-intro {max-width:31rem;}
+.hero-scene-note {
+  margin:.85rem 0 0;color:rgba(244,235,220,.72);
+  font-size:.58rem;letter-spacing:.055em;line-height:1.5;
+}
+.hero-cinematic-bottom {align-self:end;margin-top:0;}
+.hero-cinematic-visual {display:none;}
+
+@media (min-width:64rem) {
+  .hero-cinematic {
+    grid-template-columns:1fr;column-gap:0;padding-top:clamp(5.4rem,8vh,7.2rem);
+  }
+  .hero-cinematic-copy {padding-bottom:4.5rem;}
+  .hero-cinematic h1 {font-size:clamp(5.6rem,7.35vw,9rem);}
+}
+@media (max-width:63.99rem) {
+  .hero-cinematic-backdrop {
+    background-image:
+      linear-gradient(180deg,rgba(8,11,13,.95) 0%,rgba(9,12,14,.84) 39%,rgba(10,13,15,.28) 64%,rgba(8,11,13,.72) 100%),
+      url("../images/hero/barbados-luxury-arrival-mobile-branded.webp");
+    background-position:center 58%;
+    background-size:cover;
+  }
+}
+@media (max-width:41.99rem) {
+  .hero-cinematic {min-height:58rem;padding-top:4rem;}
+  .hero-cinematic-copy {padding-bottom:15rem;}
+  .hero-cinematic h1 {font-size:clamp(4rem,14vw,5.75rem);}
+  .hero-cinematic .hero-intro {max-width:29rem;}
+  .hero-scene-note {max-width:25rem;}
+  .hero-cinematic-bottom {background:rgba(9,12,14,.62);}
 }
 
 /* Fleet artwork (Oct 2026): every vehicle has a 1600x1000 (16:10) studio image on a warm champagne

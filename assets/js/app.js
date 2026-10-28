@@ -70,16 +70,6 @@
     else item.classList.add("visible");
   });
 
-  // Home hero: the floating WhatsApp button stays tucked away while the hero's own
-  // "Prefer WhatsApp?" link is on screen, so it never sits over the car or the services strip.
-  var heroWhatsApp = document.querySelector(".hero-cinematic-wa");
-  var whatsAppFloat = document.querySelector(".whatsapp-float");
-  if (heroWhatsApp && whatsAppFloat && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      whatsAppFloat.classList.toggle("is-tucked", entries[entries.length - 1].isIntersecting);
-    }).observe(heroWhatsApp);
-  }
-
   // Home hero: the fleet photos take turns. Each photo loads just before its turn.
   // Stops for "reduced motion", on hover, when the tab is hidden, or with the pause button.
   var rotator = document.querySelector("[data-rotator]");
