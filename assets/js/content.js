@@ -28,10 +28,10 @@ window.RIDE_WITH_HR = {
   reviews: {
     // Guest reviews (reviews.html, 28 Oct 2026). Guests write them on the page; they go to the H&R app,
     // and only the ones the office publishes show here. Empty = switched off: the page says reviews open soon.
-    // Switch on with Juwan's OK once the app server has the reviews update:
-    //   api: "https://app.ridewithhr.com/api/public/reviews"
-    api: "",
-    // Tripadvisor: H&R had no listing on 28 Oct 2026. Once Renee has one, put its address here, and
+    // Switched on 28 Oct 2026 (Juwan: "get it live"), once the app server had the reviews update.
+    // Empty it to switch the reviews off again.
+    api: "https://app.ridewithhr.com/api/public/reviews",
+    // Tripadvisor: the listing ("H&R Executive Chauffeur Services") was approved on 28 Oct 2026. Put its address here, and
     // optionally the script address from Tripadvisor's "Review snippets" widget code (https://www.jscache.com/wejs?...).
     // Add Tripadvisor to the privacy notice when the widget goes on.
     tripadvisorUrl: "",
