@@ -1,0 +1,45 @@
+/* ---------- Our guests (home page) ----------
+   Real photos of H&R guests, sent by Renee (26 Oct 2026). Juwan asked for the look of the
+   October Instagram ads (marketing/instagram-2026-10 in the notes repo): the black stage with
+   gold glows, Playfair Display with a gold italic phrase, gold capitals, gold-edged frames and
+   the gold pill button. Playfair Display and Inter are already loaded by styles.css. */
+.guests-section { padding-inline:clamp(1rem,4vw,3rem); }
+.guests-stage {
+  position:relative; max-width:76rem; margin:0 auto; overflow:hidden;
+  padding:clamp(2.2rem,6vw,4.5rem) clamp(1.25rem,5vw,4rem);
+  border:1px solid rgba(232,197,138,.22); border-radius:clamp(1.25rem,3vw,2rem);
+  color:#f4f1ea;
+  background:
+    radial-gradient(60rem 40rem at 95% -10%, rgba(232,197,138,.17), transparent 62%),
+    radial-gradient(50rem 36rem at -10% 110%, rgba(201,154,84,.13), transparent 60%),
+    #0c0c0e;
+}
+.guests-heading { max-width:44rem; }
+.guests-eyebrow { margin:0 0 1.1rem; color:#e8c58a; font-family:Inter,"Segoe UI",sans-serif; font-size:.78rem; font-weight:800; letter-spacing:.22em; text-transform:uppercase; }
+.guests-heading h1, .guests-heading h2 { margin:0; color:#f4f1ea; font-family:"Playfair Display",Georgia,serif; font-size:clamp(2.4rem,6vw,4.4rem); font-weight:600; line-height:1.03; letter-spacing:-.02em; }
+.guests-heading h1 em, .guests-heading h2 em { color:#e8c58a; font-style:italic; font-weight:500; }
+.guests-lead { max-width:36rem; margin:1.2rem 0 0; color:#bdb7ac; font-family:Inter,"Segoe UI",sans-serif; font-size:clamp(1rem,1.6vw,1.15rem); line-height:1.6; }
+
+/* a photo wall in columns, so every photo keeps its own shape and nobody gets cropped */
+.guests-wall { margin-top:clamp(1.8rem,4vw,2.8rem); columns:2; column-gap:clamp(.7rem,1.6vw,1.1rem); }
+@media (min-width:56rem) { .guests-wall { columns:3; } }
+.guest-photo { margin:0 0 clamp(.7rem,1.6vw,1.1rem); break-inside:avoid; overflow:hidden; border:1px solid rgba(232,197,138,.28); border-radius:1.1rem; background:#141417; box-shadow:0 24px 60px -30px rgba(0,0,0,.8); }
+.guest-photo img { display:block; width:100%; height:auto; }
+
+.guests-cta {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:26rem;
+  margin-top:clamp(1.6rem,4vw,2.4rem); padding:1.05rem 1.6rem; border-radius:999px;
+  background:linear-gradient(135deg,#f3dcab,#e8c58a 52%,#c99a54); color:#17130a;
+  font-family:Inter,"Segoe UI",sans-serif; font-size:.92rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+  box-shadow:0 24px 60px -24px rgba(232,197,138,.6);
+}
+.guests-actions { display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.6rem; margin-top:clamp(1.6rem,4vw,2.4rem); }
+.guests-actions .guests-cta { margin-top:0; flex:1 1 18rem; }
+.guests-more { color:#e8c58a; font-family:Inter,"Segoe UI",sans-serif; font-size:.92rem; font-weight:700; letter-spacing:.04em; text-decoration:none; border-bottom:1px solid rgba(232,197,138,.4); padding-bottom:.2rem; }
+.guests-more:hover { border-bottom-color:#e8c58a; }
+.guests-more:focus-visible { outline:2px solid #e8c58a; outline-offset:3px; }
+.guests-cta:hover { filter:brightness(1.05); }
+.guests-cta:focus-visible { outline:2px solid #e8c58a; outline-offset:3px; }
+
+/* phones: six photos are enough */
+@media (max-width:40rem) { .guest-photo:nth-child(n+7) { display:none; } }

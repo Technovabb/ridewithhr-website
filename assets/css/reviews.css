@@ -1,0 +1,54 @@
+/* ---------- Guest reviews page (reviews.html, 28 Oct 2026) ----------
+   The top uses the "Our guests" stage from guests.css (the October Instagram ads' look).
+   The form reuses the enquiry form's styles; only the star picker and the review cards are new. */
+.reviews-top .guests-stage { padding-bottom:clamp(2.4rem,6vw,4rem); }
+.reviews-summary { margin:1.4rem 0 0; color:#e8c58a; font-family:Inter,"Segoe UI",sans-serif; font-size:1rem; font-weight:700; letter-spacing:.04em; }
+.reviews-summary .stars { margin-right:.5rem; font-size:1.2rem; letter-spacing:.12em; }
+.reviews-empty { margin:clamp(1.6rem,4vw,2.4rem) 0 0; color:#bdb7ac; font-family:Inter,"Segoe UI",sans-serif; }
+
+/* review cards in columns, like the photo wall, so long and short reviews sit together */
+.review-wall { margin-top:clamp(1.8rem,4vw,2.8rem); columns:1; column-gap:clamp(.7rem,1.6vw,1.1rem); }
+.review-wall:empty { display:none; }
+@media (min-width:44rem) { .review-wall { columns:2; } }
+@media (min-width:64rem) { .review-wall { columns:3; } }
+.review-card { margin:0 0 clamp(.7rem,1.6vw,1.1rem); padding:1.4rem 1.4rem 1.2rem; break-inside:avoid; border:1px solid rgba(232,197,138,.28); border-radius:1.1rem; background:rgba(20,20,23,.86); box-shadow:0 24px 60px -30px rgba(0,0,0,.8); }
+.review-card .stars { margin:0 0 .8rem; color:#e8c58a; font-size:1.05rem; letter-spacing:.14em; }
+.review-card blockquote { margin:0; color:#f4f1ea; font-family:"Playfair Display",Georgia,serif; font-size:1.12rem; line-height:1.5; white-space:pre-line; overflow-wrap:anywhere; }
+.review-card figcaption { margin-top:1rem; color:#bdb7ac; font-family:Inter,"Segoe UI",sans-serif; font-size:.82rem; }
+.review-card figcaption strong { color:#f4f1ea; font-weight:700; }
+
+.tripadvisor-widget:empty { display:none; }
+.tripadvisor-widget { margin-bottom:1.6rem; }
+.tripadvisor-links { display:flex; flex-wrap:wrap; gap:.8rem; margin:0; }
+
+.reviews-closed { align-self:start; max-width:34rem; margin:0; padding:1.2rem 1.4rem; border-left:3px solid var(--gold-deep); border-radius:0 .6rem .6rem 0; background:rgba(232,197,138,.08); }
+.review-thanks { align-self:start; max-width:34rem; margin:0; padding:1.4rem; border:1px solid rgba(201,154,84,.4); border-radius:var(--radius); }
+.review-thanks h3 { margin:0 0 .5rem; }
+.review-thanks p { margin:0; color:var(--muted); }
+
+/* the star picker: five radio buttons; the chosen star and those before it light up */
+.star-field { margin:0; padding:0; border:0; min-width:0; }
+.star-field legend { margin-bottom:.4rem; padding:0; font-size:.67rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+.star-input { display:inline-flex; gap:.15rem; }
+.star-input input { position:absolute; opacity:0; width:1px; height:1px; }
+.star-input label { padding:.1rem .15rem; color:#cbc4b6; font-size:2.1rem; line-height:1; cursor:pointer; transition:color .15s ease, transform .15s ease; }
+.star-input label span { color:inherit; font-weight:inherit; }   /* the form's ".field label span" greys its hints */
+.star-input label:hover { transform:scale(1.08); }
+.star-input input:focus-visible + label { outline:2px solid var(--gold-deep); outline-offset:2px; border-radius:.3rem; }
+/* :where() keeps these four groups at the same weight, so the later one wins: pointing at a star
+   previews that rating even after one is chosen (an id inside :has() would otherwise outrank hover) */
+.star-input:where(:has(#star-1:checked)) label:nth-of-type(-n+1),
+.star-input:where(:has(#star-2:checked)) label:nth-of-type(-n+2),
+.star-input:where(:has(#star-3:checked)) label:nth-of-type(-n+3),
+.star-input:where(:has(#star-4:checked)) label:nth-of-type(-n+4),
+.star-input:where(:has(#star-5:checked)) label:nth-of-type(-n+5) { color:var(--gold-deep); }
+.star-input:where(:has(label:hover)) label:nth-of-type(n) { color:#cbc4b6; }
+.star-input:where(:has(label:nth-of-type(1):hover)) label:nth-of-type(-n+1),
+.star-input:where(:has(label:nth-of-type(2):hover)) label:nth-of-type(-n+2),
+.star-input:where(:has(label:nth-of-type(3):hover)) label:nth-of-type(-n+3),
+.star-input:where(:has(label:nth-of-type(4):hover)) label:nth-of-type(-n+4),
+.star-input:where(:has(label:nth-of-type(5):hover)) label:nth-of-type(-n+5) { color:var(--gold-deep); }
+
+/* .booking-form and .section set display, which would beat the hidden attribute */
+.review-form[hidden], .reviews-closed[hidden], .tripadvisor[hidden], .reviews-summary[hidden], .reviews-empty[hidden] { display:none; }
+@media (prefers-reduced-motion:reduce) { .star-input label { transition:none; } .star-input label:hover { transform:none; } }
