@@ -215,7 +215,7 @@
   }
 
   function buildSummary(data, heading, reference) {
-    var lines = [heading || "H&R EXECUTIVE SERVICES — TRANSPORT ENQUIRY", ""];
+    var lines = [heading || "H&R EXECUTIVE CHAUFFEUR SERVICES — TRANSPORT ENQUIRY", ""];
     if (reference) lines.push("Reference: " + reference);
     ["service", "trip", "pickup", "destination", "date", "time", "returnDate", "returnTime", "passengers", "suitcases", "childSeats",
       "vehicle", "luggageVehicle", "airline", "flight", "flightRoute", "flightTime", "name", "email", "phone", "notes"].forEach(function (key) {
@@ -343,7 +343,7 @@
           invalid.setAttribute("aria-invalid", "true");
           invalid.focus();
         }
-        status.textContent = "Please complete the required fields before preparing your enquiry.";
+        status.textContent = "Please complete the required fields before sending your enquiry.";
         return;
       }
 

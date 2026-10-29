@@ -37,7 +37,7 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - Clearly separate company-owned vehicles from vehicles supplied by partner operators.
 - **Guest reviews** (`reviews.html`, 28 Oct 2026): guests write a review on the page; it goes to the H&R app (`reviews.api` in content.js) and shows only after the office publishes it in the back office. The page shows the name the guest chose, the stars, the words, the journey and the month, never the email. Linked from the footer of every page. Its dark top uses `assets/css/guests.css` (the Instagram-ad stage made for the home page's "Our guests" photos, which are not live yet: Renee is to confirm the guests are happy to be shown). Tripadvisor shows only once `tripadvisorUrl` is set; add Tripadvisor to the privacy notice when its widget goes on. Never write or edit a review for a guest.
 - Any non-client fleet photo must remain labeled as reference imagery and must have suitable commercial-use rights plus attribution where required.
-- Do not say online payment is enabled until a provider, credentials and payment workflow have been supplied.
+- Card payment is by a secure Fygaro payment link that Renee sends once a journey is priced (Juwan, 29 Oct 2026). Never say guests pay on the website itself.
 - Keep to the agreed basic website scope (pricing lives in the private notes repo, Technovabb/ridewithhr). Custom booking/payment systems, live availability, dispatch, user accounts and a full CMS are separate-scope features.
 
 ## Architecture

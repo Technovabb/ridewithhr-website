@@ -24,9 +24,10 @@
   const empty = $("[data-review-empty]");
 
   function showReviews(data) {
-    const items = Array.isArray(data && data.items) ? data.items : [];
+    // a review without a valid 1-5 rating isn't shown, so the page never shows stars the guest didn't give
+    const items = (Array.isArray(data && data.items) ? data.items : []).filter((r) => Number(r.rating) >= 1 && Number(r.rating) <= 5);
     wall.replaceChildren(...items.map((r) => {
-      const rating = Math.min(5, Math.max(1, Number(r.rating) || 5));
+      const rating = Math.round(Number(r.rating));
       const meta = [r.journey, monthName(r.month)].filter(Boolean).join(" · ");
       return make("figure", { class: "review-card" },
         make("p", { class: "stars", "aria-label": `${rating} out of 5 stars` }, stars(rating)),
