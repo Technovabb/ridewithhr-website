@@ -166,7 +166,7 @@
     if (config.booking && config.booking.emailCc) payload._cc = config.booking.emailCc;
     if (data.get("email")) {
       payload._replyto = data.get("email");
-      payload._autoresponse = "Thank you for your enquiry to H&R Executive Services (reference " + reference + "). " +
+      payload._autoresponse = "Thank you for your enquiry to H&R Executive Chauffeur Services (reference " + reference + "). " +
         "We'll reply with your price and confirmation. Nothing is booked until we confirm it.";
     }
     var controller = window.AbortController ? new AbortController() : null;
@@ -344,7 +344,7 @@
       if (mode === "email-direct" && bookingEmail) {
         var emailReference = makeReference();
         var submitButton = form.querySelector("[type='submit']");
-        var waFallback = whatsapp ? "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:", emailReference)) : "";
+        var waFallback = whatsapp ? "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(buildSummary(new FormData(form), "Hello H&R Executive Chauffeur Services, I'd like to arrange a journey:", emailReference)) : "";
         if (submitButton) submitButton.disabled = true;
         status.textContent = "Sending your enquiry. This can take up to half a minute.";
         Promise.all([
@@ -380,7 +380,7 @@
       // A new tab keeps the site open on desktop; phones hand over to the WhatsApp app.
       if (mode === "whatsapp" && whatsapp) {
         var reference = makeReference();
-        var message = buildSummary(new FormData(form), "Hello H&R Executive Services, I'd like to arrange a journey:", reference);
+        var message = buildSummary(new FormData(form), "Hello H&R Executive Chauffeur Services, I'd like to arrange a journey:", reference);
         if (config.booking && config.booking.emailCopy) sendEnquiryEmail(form, buildSummary(new FormData(form), null, reference), reference, true);
         sendToApp(form, reference, true); // fire and forget: WhatsApp must still open in this same tap
         var waUrl = "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message);
@@ -462,14 +462,14 @@
       '<button class="lb-next" type="button" aria-label="Next vehicle"><span aria-hidden="true">&#8250;</span></button>' +
       '<p class="lb-count"></p></div>' +
       '<div class="lb-caption" aria-live="polite"><strong class="lb-name"></strong><span class="lb-note"></span>' +
-      '<a class="lb-request" href="enquire.html">Plan a journey <b aria-hidden="true">&rarr;</b></a></div>' +
+      '<a class="lb-request" href="enquire">Plan a journey <b aria-hidden="true">&rarr;</b></a></div>' +
       '<button class="lb-close" type="button" aria-label="Close the image viewer"><span aria-hidden="true">&times;</span></button>';
     document.body.appendChild(viewer);
     var viewerImg = viewer.querySelector(".lb-img");
     var viewerRequest = viewer.querySelector(".lb-request");
     var shownIndex = 0;
 
-    var srcOf = function (img) { return img.currentSrc || img.getAttribute("src"); };
+    var srcOf = function (img) { return img.getAttribute("src"); };
     var showVehicle = function (index) {
       shownIndex = (index + viewerItems.length) % viewerItems.length;
       var item = viewerItems[shownIndex];

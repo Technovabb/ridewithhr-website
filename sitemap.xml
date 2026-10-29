@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ridewithhr.com/</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://ridewithhr.com/services.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://ridewithhr.com/fleet.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://ridewithhr.com/about.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://ridewithhr.com/enquire.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://ridewithhr.com/reviews.html</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://ridewithhr.com/privacy.html</loc><changefreq>yearly</changefreq></url>
-  <url><loc>https://ridewithhr.com/terms.html</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://ridewithhr.com/</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://ridewithhr.com/services</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://ridewithhr.com/airport-transfers</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://ridewithhr.com/fleet</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://ridewithhr.com/about</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://ridewithhr.com/enquire</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://ridewithhr.com/reviews</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://ridewithhr.com/privacy</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://ridewithhr.com/terms</loc><lastmod>2026-10-29</lastmod></url>
 </urlset>

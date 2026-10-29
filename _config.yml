@@ -1,0 +1,9 @@
+# GitHub Pages runs Jekyll on this repository. Publish the website only:
+# keep the handoff notes, README, licence and docs/ off https://ridewithhr.com.
+# The HTML pages have no front matter, so Jekyll copies them unchanged.
+# Do not replace this with .nojekyll: that would publish CLAUDE.md as plain text.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - LICENSE
+  - docs

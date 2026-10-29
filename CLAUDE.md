@@ -4,7 +4,7 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 
 ## Non-negotiable content rules
 
-- The business is **H&R Executive Services**, the name in its logo (Juwan, 17 Oct 2026). `ridewithhr.com` is only the web address (the available domain they chose). Earlier notes called it "H&R Transport" and "Ride With HR"; don't use either name on the site.
+- The business is **H&R Executive Chauffeur Services** (Juwan, 29 Oct 2026: "the name is H.r Executive Chauffeur Services"; it is the name on Renee's verified Google Business Profile and her approved Tripadvisor listing). Before that the site used **H&R Executive Services**, the wording in the logo (Juwan, 17 Oct 2026). The logo files still read "Executive Services" in their script text; changing the logo needs Renee's approval, and the app (separate repository) still uses the short name. `ridewithhr.com` is only the web address (the available domain they chose). Earlier notes called it "H&R Transport" and "Ride With HR"; don't use either name on the site. The structured data keeps "H&R Executive Services" as `alternateName`.
 - The logo files are in `assets/images/brand/`: the full logo, the dark-background version, the monogram (favicon), and `hr-executive-services-mark.svg` (the logo panel without the tagline, for the header). They are vector reconstructions of the client's logo; don't change the wording, colours or proportions without her approval.
 - Do not change the company name for SEO. Use local phrases naturally: Barbados airport transfer, Barbados chauffeur, private driver Barbados, executive transport Barbados, and Grantley Adams airport transfer.
 - **No prices on the site** (Juwan, 18 Oct 2026). She prices each journey after the request and sends the price and a payment link herself. Prices stay in the private notes repo only. Payment methods: card, cash and bank transfer.
@@ -50,6 +50,14 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
 - Since 28 Oct 2026 (Juwan: "yes, do both") each enquiry also goes to the H&R app's back office (`booking.appIntake` in content.js, `https://app.ridewithhr.com/api/public/enquiries`), sent beside the email with the same reference. The guest sees the confirmation if either arrives; WhatsApp is offered only if both fail. The form asks for an email or a mobile (at least one) so every request can be answered. Empty `appIntake` switches it off. `visitBeacon` (cookieless visitor counting) is still off.
 - The site is live at https://ridewithhr.com on GitHub Pages (from `main`, root; `CNAME` file; HTTPS enforced). Every push to `main` goes live. Asset links stay relative.
 - Preserve accessibility, responsive behavior and reduced-motion support.
+
+## Search (SEO)
+
+- Clean URLs everywhere (`/fleet`, not `fleet.html`), one unique title (60 characters or fewer) and description (155 or fewer) per page, one `h1`, and the keyword line folded into it as `<span class="eyebrow">`. Don't change the company name for SEO.
+- The JSON-LD business details (name, phone, email, WhatsApp) must match the footer and the Google Business Profile exactly. **No prices, no opening hours and no `sameAs` links** until the owner supplies them (hours and her real social links are still open; Instagram @ride.with.hr is wrong). Never put prices in meta tags or structured data.
+- Don't claim "wedding car" or a bridal car for the couple until Renee confirms it; the site says "wedding transport" for wedding parties and guests.
+- `_config.yml` keeps CLAUDE.md, README.md and `docs/` from being published; check `/CLAUDE.md` returns 404 after each deploy.
+- New page checklist: title, description, canonical, Open Graph and Twitter tags, JSON-LD, sitemap entry (with `lastmod`), a footer link, and `width`/`height`/`alt` on every image.
 
 ## Privacy and booking terms
 

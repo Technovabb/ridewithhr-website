@@ -1,4 +1,4 @@
-# H&R Executive Services website (ridewithhr.com)
+# H&R Executive Chauffeur Services website (ridewithhr.com)
 
 Premium, mobile-first website for **H&R Executive Services**, a private transport business in Barbados. The business name is the one in its logo (confirmed 17 Oct 2026). `ridewithhr.com` is the web address only.
 
@@ -16,7 +16,7 @@ Then open `http://localhost:4173`.
 
 - Business contact, domain, booking mode and fleet records: `assets/js/content.js`
 - Home page: `index.html`
-- Dedicated content pages: `services.html`, `fleet.html`, `about.html`, `enquire.html`, `privacy.html`, `terms.html` (privacy and booking terms are drafts: see CLAUDE.md)
+- Dedicated content pages: `services.html`, `airport-transfers.html`, `fleet.html`, `about.html`, `enquire.html`, `privacy.html`, `terms.html`, plus `404.html` (privacy and booking terms are drafts: see CLAUDE.md)
 - Original layout CSS: `assets/css/styles.css`; the new ivory / charcoal / champagne design, Cormorant Garamond + Manrope, responsive enhancements and fleet presentation: `assets/css/luxury-refresh.css` (loaded after the original on every page)
 - Navigation, form and animation behavior: `assets/js/app.js`
 
@@ -39,6 +39,21 @@ The site is live at **https://ridewithhr.com** (18 Oct 2026). GitHub Pages publi
 - `CNAME` holds `ridewithhr.com`. Don't remove it, or the site drops back to the Technovabb address.
 - DNS is at Namecheap: four GitHub Pages A records on `@` (185.199.108.153 to 185.199.111.153) and `www` as a CNAME to `technovabb.github.io`. The mail records (MX, SPF, autodiscover) belong to Microsoft 365; leave them alone.
 - Canonical, Open Graph, `sitemap.xml`, `robots.txt` and `business.website` all use `https://ridewithhr.com/`.
+
+## Search (SEO)
+
+Added 25 Oct 2026. Everything lives in the page source; there is no build step.
+
+- **Titles and descriptions:** every page has its own `<title>` (60 characters or fewer, ending " | H&R Executive Services") and meta description (155 or fewer). Keep them unique when adding a page.
+- **Clean URLs:** links, canonicals, `og:url`, the sitemap and the structured data use `/fleet`, `/services`, `/airport-transfers` and so on, never `.html`. GitHub Pages serves both, so the `<link rel="canonical">` is what stops them counting as two pages.
+- **Headings:** one `h1` per page. The keyword line sits inside it as `<span class="eyebrow">` (styled in luxury-refresh.css) so the heading carries the search words without changing the design.
+- **Structured data:** one JSON-LD block per page: a `LocalBusiness` (name, phone, email, WhatsApp, area served Barbados), the page, breadcrumbs and, on Services and Airport transfers, the `Service` entries. The name, phone and email must stay identical to the Google Business Profile. There are no opening hours, social links or prices in it because the site states none; add `openingHoursSpecification` and `sameAs` only when the owner supplies them.
+- **Share image:** `assets/images/share/hr-executive-services-share.jpg` (1200×630, under 100 KB) is used by every page's Open Graph and Twitter tags.
+- **Sitemap:** `sitemap.xml` lists the eight indexable pages with a `lastmod`. Change a page's `lastmod` when its content changes, and add new pages. `404.html` is `noindex` and is not listed.
+- **Fonts:** Cormorant Garamond and Manrope load from `<link>` tags in each page's head (with preconnect and preloads of the three Latin `.woff2` files), not from CSS `@import`. If Google changes the font file addresses, the preloads just stop helping; refresh them from the fonts CSS URL in the head.
+- **Images:** fleet photos have 800, 1200 and 1600 pixel copies (`srcset`). The two reference photos on the home page are local copies in `assets/images/reference/` (credits are in the home page footer and under Image licence below).
+- **Publishing:** `_config.yml` keeps CLAUDE.md, README.md, LICENSE and `docs/` off the public site.
+- **Guides:** `docs/google-business-profile.md` and `docs/search-console.md`.
 
 ## Client information still required
 
@@ -69,3 +84,7 @@ Since 17 Oct 2026 no page displays the photos below. They stay in `assets/images
 - **Mercedes-Benz EQE saloon** (`fleet/eqe-saloon.jpg`): Alexander Migl, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Source: <https://commons.wikimedia.org/wiki/File:Mercedes-AMG_EQE_43_(V295)_1X7A6059.jpg>
 - **Range Rover Sport** (`fleet/range-rover-sport.jpg`): Tokumeigakarinoaoshima, CC0 (public domain). Source: <https://commons.wikimedia.org/wiki/File:Land_Rover_RANGE_ROVER_SPORT_DYNAMIC_HSE_D300_(L461)_front.jpg>
 - **Toyota Hiace** (`fleet/toyota-hiace.jpg`): Ethan Llamas, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Source: <https://commons.wikimedia.org/wiki/File:2023_Toyota_Hiace_2.8_Super_Grandia_in_Platinum_White_Pearl_Mica,_front_right.jpg>
+
+### Local reference photos on the home page (25 Oct 2026)
+
+The home page's interior and beach photographs are now local WebP copies in `assets/images/reference/` (no longer loaded from Wikimedia Commons at view time). They are resized copies of the originals credited in the home page footer: *Mercedes-Benz EQS SUV interior* by Tokumeigakarinoaoshima and *Brandon's Beach, Barbados* by Barry haynes, both [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Keep the footer credit while they are shown.
