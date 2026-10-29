@@ -163,6 +163,7 @@
       email: data.get("email") || "",
       enquiry: summary
     };
+    if (config.booking && config.booking.emailCc) payload._cc = config.booking.emailCc;
     if (data.get("email")) {
       payload._replyto = data.get("email");
       payload._autoresponse = "Thank you for your enquiry to H&R Executive Services (reference " + reference + "). " +

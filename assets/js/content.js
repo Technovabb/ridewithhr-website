@@ -19,6 +19,9 @@ window.RIDE_WITH_HR = {
     // "whatsapp" opens WhatsApp with the enquiry ready to send; "email" opens a mail to business.email;
     // "preview" only shows a copyable summary.
     mode: "email-direct",
+    // Every enquiry email is also copied to Renee's own mailbox: admin@ is a shared mailbox she may not have in her Outlook,
+    // and a real guest's request (HR-261028-5309) went only there (Juwan, 28 Oct 2026: "make sure the requests go to Renee as well").
+    emailCc: "renee@ridewithhr.com",
     emailCopy: true, // in "whatsapp" mode, also email a copy through FormSubmit (needs a one-time activation click in that inbox)
     paymentEnabled: false,
     // The H&R app server (prepared 20 Oct 2026). Empty = switched off.
