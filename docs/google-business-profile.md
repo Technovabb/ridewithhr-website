@@ -162,7 +162,7 @@ Add new photos regularly, since recent photos help. Don't use photos that show p
 
 ## 8. Create and verify the profile (Renee does this herself)
 
-Only needed if no profile exists, or one must be re-created. Renee uses a Google account that belongs to her. If she has none, she creates it herself at accounts.google.com, using an email that stays with the business (for example the shared admin@ridewithhr.com address, or her own).
+Only needed if no profile exists, or one must be re-created. Renee uses a Google account that belongs to her. If she has none, she creates it herself at accounts.google.com, using an email that stays with the business (for example her own renee@ridewithhr.com).
 
 1. **Sign in** to her Google account in her own browser, then open **business.google.com** and choose **Add your business** (or search for "Google Business Profile" and select **Manage now**).
 2. **Name:** enter the business name chosen in section 0.
@@ -209,7 +209,7 @@ Google compares the profile with the website and its structured data (the JSON-L
 | Name | `H&R Executive Chauffeur Services` | Page titles, footer, logo, JSON-LD `name` |
 | Phone | +1 (246) 231-2679 (JSON-LD: `+1-246-231-2679`) | Footer, enquiry page, JSON-LD `telephone`, the call and WhatsApp links |
 | WhatsApp | +1 246-231-2679 (`https://wa.me/12462312679`) | Footer, floating button, JSON-LD `contactPoint` |
-| Email | `admin@ridewithhr.com` | Footer, enquiry page, JSON-LD `email` |
+| Email | `renee@ridewithhr.com` | Footer, enquiry page, JSON-LD `email` |
 | Website | `https://ridewithhr.com/` | Canonical tag, JSON-LD `url` |
 | Area served | Barbados | JSON-LD `areaServed` |
 | Address | None shown (hidden service-area business) | JSON-LD has the country (BB) only |

@@ -240,6 +240,28 @@
   }
 
   if (form) {
+    // Times are picked from a list instead of typed (Juwan, 29 Oct 2026): every 15 minutes, flight times every 5.
+    // The page itself keeps plain time boxes, so the form still works if this script doesn't run.
+    var timeLabel = function (hhmm) {
+      var h = Number(hhmm.slice(0, 2)), m = hhmm.slice(3);
+      var label = ((h + 11) % 12 + 1) + ":" + m + (h < 12 ? " am" : " pm");
+      return hhmm === "00:00" ? label + " (midnight)" : hhmm === "12:00" ? label + " (noon)" : label;
+    };
+    form.querySelectorAll("input[type='time']").forEach(function (box) {
+      var step = box.name === "flightTime" ? 5 : 15;
+      var list = document.createElement("select");
+      list.id = box.id;
+      list.name = box.name;
+      list.required = box.required;
+      list.disabled = box.disabled;
+      list.add(new Option("Choose a time", ""));
+      for (var minute = 0; minute < 24 * 60; minute += step) {
+        var hhmm = String(Math.floor(minute / 60)).padStart(2, "0") + ":" + String(minute % 60).padStart(2, "0");
+        list.add(new Option(timeLabel(hhmm), hhmm));
+      }
+      box.replaceWith(list);
+    });
+
     var serviceInput = form.querySelector("#service");
     var requestedService = new URLSearchParams(window.location.search).get("service");
     if (serviceInput && requestedService) {
@@ -272,7 +294,7 @@
       var isDeparture = service === "Airport departure";
       flightFields.forEach(function (field) {
         field.hidden = !isAirport;
-        var input = field.querySelector("input");
+        var input = field.querySelector("input, select");
         if (input) input.disabled = !isAirport;
       });
       var routeLabel = form.querySelector("[data-flight-route-label]");
@@ -301,7 +323,7 @@
       var isReturn = tripInput && tripInput.value === "Return";
       form.querySelectorAll("[data-return-field]").forEach(function (field) {
         field.hidden = !isReturn;
-        var input = field.querySelector("input");
+        var input = field.querySelector("input, select");
         input.disabled = !isReturn;
         input.required = isReturn;
       });
