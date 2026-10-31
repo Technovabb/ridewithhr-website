@@ -85,14 +85,14 @@ h2,h3 { text-wrap:balance; }
 .price-list .price-extra strong { color:#816032; }
 .service-note { color:#755e3f!important; }
 .section-link { margin-top:2.7rem; }
-.home-fleet,.page-cta,.island-band,.site-footer {
+.home-fleet,.page-cta,.explore-band,.site-footer {
   --ivory:#f7f2e9; --ink:#f7f2e9;
   --muted:#c9c3ba; --faint:#aaa59b;
   --line:rgba(255,255,255,.16); --line-strong:rgba(255,255,255,.26);
   --gold:#c5a36e; --on-gold:#221e19;
 }
 .home-fleet { background:#25282b; color:#f7f2e9; }
-.home-fleet h2,.page-cta h2,.island-band h2 { color:#f7f2e9; }
+.home-fleet h2,.page-cta h2,.explore-band h2 { color:#f7f2e9; }
 .home-fleet-copy>p:not(.eyebrow) { color:#c9c3ba; }
 .home-fleet-image { border-color:rgba(255,255,255,.18); background:#353638; }
 .home-fleet-image img { filter:contrast(1.035) saturate(.93) brightness(1.03); }
@@ -100,8 +100,6 @@ h2,h3 { text-wrap:balance; }
 .home-fleet .button-outline:hover,.site-footer .button-outline:hover { color:#242528; background:#e0c496; }
 .page-cta { background:#292b2c; color:#f8f4ed; }
 .page-cta>div:last-child>p { color:#cbc4b8; }
-.island-band { background:linear-gradient(135deg,#333537,#222526); color:#f7f2e9; }
-.island-copy>p:not(.eyebrow):not(.coverage-note) { color:#d1c8ba; }
 .page-hero { background:linear-gradient(125deg,#f8f6f0,#eee7db); border-color:#e4dcd0; min-height:27rem; }
 .page-hero::after { background:radial-gradient(circle,rgba(182,148,92,.18),transparent 68%); }
 .page-hero h1 { font-size:clamp(3.6rem,10.5vw,7.3rem); line-height:.92; }
@@ -148,7 +146,7 @@ h2,h3 { text-wrap:balance; }
 .fleet-gallery .fg-request { color:#916938; border-color:#b08c58; }
 .approach-intro>p:last-child,.steps p { color:#656a6b; }
 .steps li { border-color:#e0d9cf; }
-.island-band .eyebrow { color:#d7b57e; }
+.explore-band .eyebrow { color:#d7b57e; }
 .enquiry { background:#f1ede6; }
 .enquiry-copy>p:not(.eyebrow) { color:#626769; }
 .enquiry-notice { background:#f7efe1; border-left-color:#b08c56; }
@@ -772,3 +770,44 @@ h1 > .eyebrow { display:block; max-width:none; margin:0 0 1.2rem; font-family:va
 .faq-list h3 { margin:2rem 0 .5rem; font-size:1.5rem; }
 .faq-list h3:first-child { margin-top:0; }
 .faq-list p { margin:0; color:#616769; }
+/* Explore Barbados (about.html, 30 Oct 2026). It replaces the island outline,
+   dots and coordinates graphic that Renee turned down: real images, no decoration. */
+.explore-band { padding:5.5rem 1.2rem; background:linear-gradient(160deg,#2d2f31,#1e2022); color:#f7f2e9; border-block:1px solid rgba(255,255,255,.08); }
+.explore-head { max-width:46rem; margin:0 auto 3rem; text-align:center; }
+.explore-head h2 { margin:0 0 1.2rem; font-size:clamp(2.7rem,8.5vw,4.8rem); line-height:1; }
+.explore-head h2 em { color:#e0c496; }
+.explore-head>p:not(.eyebrow) { max-width:38rem; margin:0 auto; color:#d1c8ba; font-size:1.06rem; }
+.explore-grid { display:grid; gap:1.1rem; max-width:78rem; margin:0 auto; }
+.explore-card { position:relative; isolation:isolate; display:flex; flex-direction:column; justify-content:flex-end; min-height:27rem; overflow:hidden; border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); background:#232527; color:#f7f2e9; text-decoration:none; box-shadow:0 26px 60px rgba(0,0,0,.3); transition:border-color .4s, box-shadow .4s; }
+.explore-card::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(17,18,19,0) 26%,rgba(17,18,19,.66) 54%,rgba(17,18,19,.95)); }
+.explore-media { position:absolute; inset:0; z-index:-2; margin:0; }
+.explore-media img { width:100%; height:100%; object-fit:cover; transition:transform 1s cubic-bezier(.2,.7,.2,1); }
+/* the RIDE WITH HR Mercedes is a cut-out, so it sits whole on a warm evening tone */
+.explore-media-car { background:radial-gradient(130% 85% at 50% 22%,#7b6548 0%,#45392e 42%,#1f2022 100%); }
+.explore-media-car img { object-fit:contain; object-position:50% 16%; padding:1.5rem 1rem 0; }
+.explore-media-beach img { object-position:28% 50%; }
+.explore-tag { position:absolute; top:1rem; left:1rem; padding:.32rem .7rem; border-radius:999px; background:rgba(18,19,20,.55); color:#ece5d8; font-size:.6rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+.explore-body { padding:1.5rem 1.4rem 1.6rem; }
+.explore-num { display:block; margin-bottom:.55rem; color:#d7b57e; font-size:.7rem; font-weight:800; letter-spacing:.2em; }
+.explore-body h3 { margin:0 0 .45rem; color:#fbf7ef; font-size:clamp(1.85rem,6vw,2.35rem); }
+.explore-body p { margin:0 0 1rem; color:#ddd5c8; }
+.explore-more { display:inline-flex; gap:.45rem; padding-bottom:.25rem; color:#e0c496; font-size:.74rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; background:linear-gradient(#e0c496,#e0c496) left bottom/0 1px no-repeat; transition:background-size .45s; }
+.explore-card:hover,.explore-card:focus-visible { border-color:rgba(224,196,150,.55); box-shadow:0 30px 70px rgba(0,0,0,.42); }
+.explore-card:hover .explore-media img,.explore-card:focus-visible .explore-media img { transform:scale(1.045); }
+.explore-card:hover .explore-more,.explore-card:focus-visible .explore-more { background-size:100% 1px; }
+.explore-cta { display:flex; flex-direction:column; align-items:center; gap:1.1rem; margin-top:2.8rem; text-align:center; }
+.explore-cta .coverage-note { margin:0; color:#bdb5a8; }
+@media (min-width:42rem) {
+  .explore-grid { grid-template-columns:repeat(2,1fr); }
+  .explore-card { min-height:28rem; }
+  .explore-card-wide { grid-column:1/-1; min-height:22rem; }
+}
+@media (min-width:64rem) {
+  .explore-band { padding:7rem clamp(2rem,6vw,4.5rem); }
+  .explore-grid { grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+  .explore-card,.explore-card-wide { grid-column:auto; min-height:34rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .explore-media img,.explore-more { transition:none; }
+  .explore-card:hover .explore-media img,.explore-card:focus-visible .explore-media img { transform:none; }
+}
