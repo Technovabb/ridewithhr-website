@@ -28,10 +28,13 @@
 .moments-heading h2 { margin:0 0 1rem; font-size:clamp(2.6rem,8vw,4.6rem); line-height:1; }
 .moments-heading>p:not(.eyebrow) { max-width:38rem; margin:0 auto; color:var(--muted); }
 .moments-gallery .moments-heading>p:not(.eyebrow) { color:#d1c8ba; }
-.moments-featured .moments-heading h2 em, .moments-reviews .moments-heading h2 em { color:#8f693a; }   /* the light sections need a deeper gold */
+.moments-featured .moments-heading h2 em, .moments-reviews .moments-heading h2 em { color:#8f693a; }
+.moments-featured .eyebrow, .moments-reviews .eyebrow { color:#7d5a2c; }
+.moments-hero h1 > .eyebrow { margin-bottom:1.4rem; font-size:.69rem; letter-spacing:.16em; }
+.moments-hero-figure figcaption { padding:.65rem 1rem; color:#bdb5a8; font-size:.72rem; background:#1e2022; }   /* the light sections need a deeper gold */
 
 /* stars */
-.stars { color:#c79a52; letter-spacing:.14em; }
+.stars { color:#a07a3c; letter-spacing:.14em; }
 .moments-gallery .stars, .home-moments .stars, .featured-story .stars { color:#e0c496; }
 
 /* featured guest stories */
@@ -92,7 +95,7 @@
 .lightbox { position:fixed; inset:0; z-index:200; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:.5rem; padding:clamp(.6rem,3vw,2rem); background:rgba(12,12,14,.94); color:#f7f2e9; }
 .lightbox[hidden] { display:none; }
 .lightbox-figure { grid-column:2; margin:0; display:flex; flex-direction:column; align-items:center; gap:.9rem; min-width:0; }
-.lightbox-figure img { display:block; max-width:100%; max-height:78vh; border-radius:.8rem; box-shadow:0 30px 80px rgba(0,0,0,.6); touch-action:pan-y; user-select:none; }
+.lightbox-figure img { display:block; width:auto; height:auto; max-width:100%; max-height:78vh; object-fit:contain; border-radius:.8rem; box-shadow:0 30px 80px rgba(0,0,0,.6); touch-action:pan-y; user-select:none; }
 .lightbox-figure figcaption { max-width:40rem; color:#e3dacb; font-size:.95rem; text-align:center; }
 .lightbox-nav, .lightbox-close, .lightbox-share { border:1px solid rgba(224,196,150,.4); border-radius:999px; background:rgba(30,32,34,.8); color:#f7f2e9; cursor:pointer; font:inherit; }
 .lightbox-nav { width:3rem; height:3rem; font-size:1.8rem; line-height:1; }

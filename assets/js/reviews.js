@@ -33,7 +33,7 @@
     return make("figure", { class: "rv-card" },
       r.photo ? make("div", { class: "rv-photo" }, make("img", { src: r.photo.url, alt: `Photo from ${guestName(r.name)}'s journey`, width: r.photo.width, height: r.photo.height, loading: "lazy", decoding: "async" })) : null,
       make("div", { class: "rv-body" },
-        make("p", { class: "stars", "aria-label": `${rating} out of 5 stars` }, stars(rating)),
+        make("p", { class: "stars", role: "img", "aria-label": `${rating} out of 5 stars` }, stars(rating)),
         make("blockquote", {}, String(r.text || "")),
         make("figcaption", { class: "rv-who" }, make("strong", {}, guestName(r.name)), meta ? ` · ${meta}` : ""),
         make("p", { class: "rv-source" }, "Guest review on ridewithhr.com")));
@@ -42,9 +42,9 @@
   function featuredStory(r) {
     const rating = Math.round(Number(r.rating));
     return make("article", { class: "featured-story" },
-      make("figure", {}, make("img", { src: r.photo.url, alt: `${guestName(r.name)} on their journey with H&R`, width: r.photo.width, height: r.photo.height, loading: "lazy", decoding: "async" })),
+      make("figure", {}, make("img", { src: r.photo.url, alt: `Photo from ${guestName(r.name)}'s journey`, width: r.photo.width, height: r.photo.height, loading: "lazy", decoding: "async" })),
       make("div", { class: "story-copy" },
-        make("p", { class: "stars", "aria-label": `${rating} out of 5 stars` }, stars(rating)),
+        make("p", { class: "stars", role: "img", "aria-label": `${rating} out of 5 stars` }, stars(rating)),
         make("blockquote", {}, String(r.text || "")),
         make("p", { class: "story-meta" }, make("strong", {}, guestName(r.name)), [r.journey, monthName(r.month)].filter(Boolean).map((x) => ` · ${x}`).join(""))));
   }
@@ -86,11 +86,14 @@
     const solo = shown.length < 2;
     $("[data-lightbox-prev]").hidden = solo; $("[data-lightbox-next]").hidden = solo;
   }
+  // while the viewer is open, the rest of the page can't be reached by keyboard or screen reader
+  const setPageInert = (on) => [...document.body.children].forEach((n) => { if (n !== box) n.inert = on; });
   function openViewer(list, i, from) {
     shown = list; lastFocus = from || document.activeElement; box.hidden = false; document.body.style.overflow = "hidden";
+    setPageInert(true);
     showAt(i); $("[data-lightbox-close]").focus();
   }
-  function closeViewer() { box.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+  function closeViewer() { box.hidden = true; document.body.style.overflow = ""; setPageInert(false); if (lastFocus) lastFocus.focus(); }
   if (box) {
     $("[data-lightbox-close]").addEventListener("click", closeViewer);
     $("[data-lightbox-prev]").addEventListener("click", () => showAt(at - 1));
@@ -176,7 +179,8 @@
     const status = $("[data-review-status]");
     if (cfg.api) form.hidden = false; else $("[data-review-closed]").hidden = false;
     const shownAt = Date.now();
-    let photo = null;
+    let photo = null, preparing = false;
+    const submit = form.querySelector("button[type=submit]");
     const fileInput = form.elements.photo;
     const preview = $("[data-photo-preview]");
     const note = $("[data-photo-note]");
@@ -212,12 +216,13 @@
       if (!file) return resetPhoto();
       if (file.size > 30 * 1024 * 1024) return resetPhoto("That photo is too big. Choose one under 30 MB.");
       note.textContent = "Preparing your photo…";
+      preparing = true; submit.disabled = true;   // a review sent now would go without its photo
       try {
         photo = await shrink(file);
         $("[data-photo-img]").src = photo.url;
         preview.hidden = false; consentRow.hidden = false;
         note.textContent = "Ready. Its location details have been removed.";
-      } catch { resetPhoto("This browser couldn't open that photo. Try a JPEG or PNG."); }
+      } catch { resetPhoto("This browser couldn't open that photo. Try a JPEG or PNG."); } finally { preparing = false; submit.disabled = false; }
     });
     $("[data-photo-remove]").addEventListener("click", () => resetPhoto());
 
@@ -231,6 +236,7 @@
       const review = String(fd.get("review") || "").trim();
       const name = String(fd.get("name") || "").trim();
       const email = String(fd.get("email") || "").trim();
+      if (preparing) { say("Your photo is still being prepared. Send again in a moment."); return; }
       if (!rating) { status.textContent = "Choose from 1 to 5 stars."; $("#star-5").focus(); return; }
       if (review.length < 10) return bad("review", "Write a few words about your journey.");
       if (!name) return bad("name", "Add the name to show with your review.");
@@ -238,7 +244,7 @@
       if (photo && !form.elements.photoConsent.checked) return bad("photoConsent", "Tick the box to say everyone in the photo is happy to be shown, or remove the photo.");
       if (!form.elements.consent.checked) return bad("consent", "Tick the box so we can show your review.");
 
-      const button = form.querySelector("button[type=submit]");
+      const button = submit;
       button.disabled = true;
       say(photo ? "Sending your review and photo…" : "Sending…");
       try {

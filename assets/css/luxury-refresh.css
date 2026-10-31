@@ -207,7 +207,7 @@ h2,h3 { text-wrap:balance; }
  .site-nav a { font-size:.79rem; }
 }
 @media (max-width:63.99rem) {
- .site-nav { top:6.65rem; min-height:calc(100vh - 6.65rem); }
+ .site-nav { top:6.65rem; min-height:0; height:calc(100vh - 6.65rem); height:calc(100dvh - 6.65rem); overflow-y:auto; overscroll-behavior:contain; }
  .site-nav.open { box-shadow:0 25px 45px rgba(34,33,29,.13); }
  .site-nav a { border-bottom-color:#e2dbd0; }
  .site-nav .nav-cta { color:#27231e; }
