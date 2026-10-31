@@ -39,6 +39,9 @@ window.RIDE_WITH_HR = {
     // Switched on 28 Oct 2026 (Juwan: "get it live"), once the app server had the reviews update.
     // Empty it to switch the reviews off again.
     api: "https://app.ridewithhr.com/api/public/reviews",
+    // The Happy Moments gallery (30 Oct 2026): photos the office adds in the back office, each with the
+    // agreement of the people in it, shown once published. Empty = the gallery shows its empty state.
+    gallery: "https://app.ridewithhr.com/api/public/gallery",
     // Tripadvisor: the listing ("H&R Executive Chauffeur Services") was approved on 28 Oct 2026. Put its address here, and
     // optionally the script address from Tripadvisor's "Review snippets" widget code (https://www.jscache.com/wejs?...).
     // Add Tripadvisor to the privacy notice when the widget goes on.
