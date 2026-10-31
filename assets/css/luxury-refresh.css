@@ -811,3 +811,7 @@ h1 > .eyebrow { display:block; max-width:none; margin:0 0 1.2rem; font-family:va
   .explore-media img,.explore-more { transition:none; }
   .explore-card:hover .explore-media img,.explore-card:focus-visible .explore-media img { transform:none; }
 }
+/* Why travel with H&R (index.html, 30 Oct 2026): the About page's value cards, with a booking button */
+.why-hr-actions { display:flex; flex-wrap:wrap; gap:1rem 1.6rem; align-items:center; margin-top:2.4rem; }
+.why-hr-actions .text-link { font-weight:700; text-decoration:underline; text-underline-offset:.25em; }
+@media (min-width:64rem) { .why-hr .value-grid { grid-template-columns:repeat(4,1fr); } }

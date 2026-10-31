@@ -271,7 +271,7 @@
 
     // The homepage journey starter carries the first details into this full form.
     var requestedDetails = new URLSearchParams(window.location.search);
-    ["pickup", "destination", "date"].forEach(function (name) {
+    ["pickup", "destination", "date", "notes"].forEach(function (name) {
       var target = form.elements[name];
       var value = (requestedDetails.get(name) || "").trim();
       if (target && value) target.value = value.slice(0, 120);
