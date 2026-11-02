@@ -26,9 +26,10 @@ window.RIDE_WITH_HR = {
     // The H&R app server (prepared 20 Oct 2026). Empty = switched off.
     // appIntake: each enquiry also goes to the app's back office, beside the email; the guest's confirmation
     // shows if either arrives. Switched on 28 Oct 2026 (Juwan: website requests into the back office as well as the email).
-    // visitBeacon: "https://app.ridewithhr.com/api/public/hit" would add cookieless visitor counting (no IPs stored); still off.
+    // visitBeacon: cookieless visitor counting for the back office's Website visitors page (no IPs stored).
+    // Switched on 2 Nov 2026 (Juwan: "why can't we see that in back office"), with its paragraph on privacy.html.
     appIntake: "https://app.ridewithhr.com/api/public/enquiries",
-    visitBeacon: "",
+    visitBeacon: "https://app.ridewithhr.com/api/public/hit",
     // No prices on the site (Juwan, 18 Oct 2026): the owner prices each journey after the request.
     // Prices stay in the private notes repo (docs/pricing.md).
     arrivalMeetAndGreet: true, // every airport arrival includes a meet-and-greet
