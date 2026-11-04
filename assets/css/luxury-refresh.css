@@ -732,6 +732,13 @@ html.lb-open { overflow:hidden; }
 @media (max-width:41.99rem) { .home-fleet-image figcaption .fc-more { display:none; } }
 
 /* Enquiry form: "Flight details" sub-heading, shown for airport journeys only (app.js). */
+/* a time is two short lists: the hour (with am or pm) and the minutes (4 Nov 2026) */
+.time-pair { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:.5rem; }
+/* on phones the short lists sit in pairs (passengers and trip, suitcases and child seats); wider screens already use two columns */
+@media (max-width: 41.99rem) {
+  .booking-form { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .booking-form > :not(.field-pair) { grid-column:1/-1; }
+}
 .form-subhead { margin:.6rem 0 -.3rem; color:#8b6b43; font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
 .form-subhead span { color:#6b6f71; font-weight:500; letter-spacing:0; text-transform:none; }
 

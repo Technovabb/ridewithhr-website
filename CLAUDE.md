@@ -42,7 +42,8 @@ This is a buildless, multi-page static website. Work directly in `index.html`, `
   - The home page has a matching preview (`[data-home-moments]`, before the journey planner): up to three reviews (featured first) and six photos, hidden until something is published.
   - Business name in this section is H&R Executive Chauffeur Services, not "Ride With HR" (Juwan, 30 Oct 2026).
 - Any non-client fleet photo must remain labeled as reference imagery and must have suitable commercial-use rights plus attribution where required.
-- Card payment is by a secure Fygaro payment link that Renee sends once a journey is priced (Juwan, 29 Oct 2026). Never say guests pay on the website itself.
+- Card payment is by a secure Fygaro payment link that Renee sends once a journey is priced (Juwan, 29 Oct 2026). Never say guests pay on the website itself. Since 4 Nov 2026 (Juwan) the site says guests can **pay securely online by card** through that link; the old "No payment is taken on this website" lines read as "you can't pay online" and were removed from Home, Enquire, Airport transfers and Terms.
+- The enquiry form was made easier on 4 Nov 2026 (Juwan: "the form is too difficult for clients"): a time is two short lists (hour with am/pm, then minutes: 15-minute steps, 5 for flights) with a hidden "HH:MM" field; passengers, suitcases and child seats are lists, not number boxes; airport arrivals and departures fill in Grantley Adams International Airport (BGI), the app's own name for it; flight details are the flight number and its time only; a missing field is named in the message. The email shows times as "2:30 pm"; the app still gets "14:30".
 - Keep to the agreed basic website scope (pricing lives in the private notes repo, Technovabb/ridewithhr). Custom booking/payment systems, live availability, dispatch, user accounts and a full CMS are separate-scope features.
 
 ## Architecture

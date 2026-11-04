@@ -136,6 +136,12 @@
     return labels[name] || name;
   }
 
+  // "14:30" as "2:30 pm", for the time lists and the email (the app still gets "14:30").
+  function clock(hhmm) {
+    var h = Number(hhmm.slice(0, 2));
+    return ((h + 11) % 12 + 1) + ":" + hhmm.slice(3, 5) + (h < 12 ? " am" : " pm");
+  }
+
   // A short reference shared by the WhatsApp message and the email copy, e.g. HR-261018-4821.
   function makeReference() {
     var d = new Date();
@@ -220,7 +226,8 @@
     ["service", "trip", "pickup", "destination", "date", "time", "returnDate", "returnTime", "passengers", "suitcases", "childSeats",
       "vehicle", "luggageVehicle", "airline", "flight", "flightRoute", "flightTime", "name", "email", "phone", "notes"].forEach(function (key) {
       var value = String(data.get(key) || "").trim();
-      if (key === "childSeats" && value === "0") value = "";
+      if ((key === "childSeats" || key === "suitcases") && value === "0") value = "";
+      if ((key === "time" || key === "returnTime" || key === "flightTime") && /^\d{2}:\d{2}$/.test(value)) value = clock(value);
       if ((key === "date" || key === "returnDate") && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
         var parts = value.split("-");
         value = new Date(+parts[0], +parts[1] - 1, +parts[2]).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
@@ -240,26 +247,34 @@
   }
 
   if (form) {
-    // Times are picked from a list instead of typed (Juwan, 29 Oct 2026): every 15 minutes, flight times every 5.
+    // A time is two short lists, the hour (with am or pm) and the minutes (Juwan, 4 Nov 2026: one list of
+    // 96 times, 288 for flights, was too hard to scroll). A hidden field carries "14:30" for the email and the app.
     // The page itself keeps plain time boxes, so the form still works if this script doesn't run.
-    var timeLabel = function (hhmm) {
-      var h = Number(hhmm.slice(0, 2)), m = hhmm.slice(3);
-      var label = ((h + 11) % 12 + 1) + ":" + m + (h < 12 ? " am" : " pm");
-      return hhmm === "00:00" ? label + " (midnight)" : hhmm === "12:00" ? label + " (noon)" : label;
+    var hourLabel = function (h) {
+      return h === 0 ? "12 am (midnight)" : h === 12 ? "12 pm (noon)" : (h % 12) + (h < 12 ? " am" : " pm");
     };
     form.querySelectorAll("input[type='time']").forEach(function (box) {
       var step = box.name === "flightTime" ? 5 : 15;
-      var list = document.createElement("select");
-      list.id = box.id;
-      list.name = box.name;
-      list.required = box.required;
-      list.disabled = box.disabled;
-      list.add(new Option("Choose a time", ""));
-      for (var minute = 0; minute < 24 * 60; minute += step) {
-        var hhmm = String(Math.floor(minute / 60)).padStart(2, "0") + ":" + String(minute % 60).padStart(2, "0");
-        list.add(new Option(timeLabel(hhmm), hhmm));
-      }
-      box.replaceWith(list);
+      var hour = document.createElement("select");
+      hour.id = box.id;
+      hour.required = box.required;
+      hour.add(new Option("Hour", ""));
+      for (var h = 0; h < 24; h++) hour.add(new Option(hourLabel(h), String(h).padStart(2, "0")));
+      var minute = document.createElement("select");
+      minute.setAttribute("aria-label", "Minutes");
+      for (var m = 0; m < 60; m += step) minute.add(new Option(":" + String(m).padStart(2, "0"), String(m).padStart(2, "0")));
+      var value = document.createElement("input");
+      value.type = "hidden";
+      value.name = box.name;
+      [hour, minute, value].forEach(function (control) { control.disabled = box.disabled; });
+      var sync = function () { value.value = hour.value ? hour.value + ":" + minute.value : ""; };
+      hour.addEventListener("change", sync);
+      minute.addEventListener("change", sync);
+      form.addEventListener("reset", function () { setTimeout(sync); });   // a hidden field keeps its value through a reset
+      var pair = document.createElement("div");
+      pair.className = "time-pair";
+      pair.append(hour, minute, value);
+      box.replaceWith(pair);
     });
 
     var serviceInput = form.querySelector("#service");
@@ -285,6 +300,20 @@
     if (serviceInput) serviceInput.addEventListener("change", toggleAirportNote);
     toggleAirportNote();
 
+    // Arrivals start at the airport and departures end there, so that box is filled in for the guest.
+    var AIRPORT = "Grantley Adams International Airport (BGI)";
+    var fillAirport = function () {
+      var service = serviceInput ? serviceInput.value : "";
+      [["pickup", "Airport arrival"], ["destination", "Airport departure"]].forEach(function (pair) {
+        var box = form.elements[pair[0]];
+        if (!box) return;
+        if (service === pair[1] && !box.value.trim()) { box.value = AIRPORT; box.dataset.airport = "1"; }
+        else if (service !== pair[1] && box.dataset.airport && box.value === AIRPORT) { box.value = ""; delete box.dataset.airport; }
+      });
+    };
+    if (serviceInput) serviceInput.addEventListener("change", fillAirport);
+    fillAirport();
+
     // Flight details show only for airport journeys (hidden fields are disabled, so they stay out of the message).
     // The labels follow the service: arriving from / landing time, or flying to / departure time.
     var flightFields = form.querySelectorAll("[data-flight-field]");
@@ -294,13 +323,10 @@
       var isDeparture = service === "Airport departure";
       flightFields.forEach(function (field) {
         field.hidden = !isAirport;
-        var input = field.querySelector("input, select");
-        if (input) input.disabled = !isAirport;
+        field.querySelectorAll("input, select").forEach(function (input) { input.disabled = !isAirport; });
       });
-      var routeLabel = form.querySelector("[data-flight-route-label]");
       var timeLabel = form.querySelector("[data-flight-time-label]");
-      if (routeLabel) routeLabel.textContent = isDeparture ? "Flying to" : "Arriving from";
-      if (timeLabel) timeLabel.textContent = isDeparture ? "Scheduled departure time" : "Scheduled landing time";
+      if (timeLabel) timeLabel.textContent = isDeparture ? "Departure time" : "Landing time";
     };
     if (serviceInput) serviceInput.addEventListener("change", toggleFlight);
     toggleFlight();
@@ -323,9 +349,10 @@
       var isReturn = tripInput && tripInput.value === "Return";
       form.querySelectorAll("[data-return-field]").forEach(function (field) {
         field.hidden = !isReturn;
-        var input = field.querySelector("input, select");
-        input.disabled = !isReturn;
-        input.required = isReturn;
+        field.querySelectorAll("input, select").forEach(function (input) {
+          input.disabled = !isReturn;
+          input.required = isReturn;
+        });
       });
     };
     if (tripInput) tripInput.addEventListener("change", toggleReturn);
@@ -339,11 +366,16 @@
 
       if (!form.checkValidity()) {
         var invalid = form.querySelector(":invalid");
+        var what = invalid && invalid.labels && invalid.labels[0] && invalid.type !== "checkbox" ? invalid.labels[0].firstChild.textContent.trim() : "";
         if (invalid) {
           invalid.setAttribute("aria-invalid", "true");
           invalid.focus();
         }
-        status.textContent = "Please complete the required fields before sending your enquiry.";
+        status.textContent = !invalid ? "Please complete the required fields before sending your enquiry."
+          : invalid.type === "checkbox" ? "Please tick the box to agree we may use your details to reply."
+          : invalid.validity.rangeUnderflow ? "Please choose a date from today onwards."
+          : invalid.validity.typeMismatch ? "Please check your " + what.toLowerCase() + " address."
+          : (invalid.tagName === "SELECT" || invalid.type === "date" ? "Please choose " : "Please fill in ") + (/^your /i.test(what) ? "" : "the ") + what.toLowerCase() + ".";
         return;
       }
 

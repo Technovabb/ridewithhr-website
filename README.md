@@ -30,7 +30,7 @@ The business number (+1 246 231 2679, WhatsApp and calls) is also hard-coded in 
 - White vehicle model references are used for the BMW iX, BMW i5, EQE sedan and Range Rover via Wikimedia Commons `Special:FilePath` links. EQS SUV, EQE SUV and Toyota Hiace continue using locally held white-vehicle references. **All seven are illustrative model photos, not client fleet photographs.**
 - Wikimedia Commons links are intentionally external. Download appropriately licensed/approved final images to the local assets folder before launch to eliminate third-party network dependence, retaining license credits.
 - Update all pages' `luxury-refresh.css?v=1` cache key together after future style changes.
-- Follow up for complete client fleet photography and approved commercial/terms details. Do not imply online payment or confirmed partner-vehicle availability.
+- Follow up for complete client fleet photography and approved commercial/terms details. Online card payment is by the secure Fygaro link Renee sends once a journey is priced; never imply payment on the website itself, or confirmed partner-vehicle availability.
 
 ## Deployment
 
