@@ -135,7 +135,7 @@ Google offers different attributes for different categories, and they change. Ti
 | Wheelchair-accessible vehicle | **No, unless Renee confirms** a vehicle is |
 | Wi-Fi, child seats, extras | Only if Renee confirms. The terms say child seats are confirmed per request. |
 
-Bank transfer is not a Google payment attribute; the description already says it.
+H&R doesn't take bank transfer (Renee, 5 Nov 2026), so don't add it anywhere on the profile.
 
 ---
 
